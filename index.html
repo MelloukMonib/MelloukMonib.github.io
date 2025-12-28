@@ -4,12 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfolio - Monib Mellouk</title>
-    <meta name="description" content="Portfolio de Monib Mellouk, étudiant en BTS SIO">
-    
-    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- Configuration Tailwind -->
+    <script src="https://unpkg.com/lucide@latest"></script>
     <script>
         tailwind.config = {
             darkMode: 'class',
@@ -20,11 +16,11 @@
                         display: ['Space Grotesk', 'sans-serif'],
                     },
                     colors: {
-                        // Définition explicite pour éviter les conflits
-                        dark: {
-                            bg: '#0f172a', // Slate 900
-                            card: '#1e293b', // Slate 800
-                            text: '#f1f5f9', // Slate 100
+                        brand: {
+                            indigo: '#6366f1',
+                            cyan: '#06b6d4',
+                            yellow: '#fbbf24',
+                            dark: '#0f172a'
                         }
                     },
                     animation: {
@@ -32,604 +28,539 @@
                     },
                     keyframes: {
                         float: {
-                            '0%, 100%': { transform: 'translateY(0)' },
-                            '50%': { transform: 'translateY(-20px)' },
+                            '0%, 100%': { transform: 'translateY(0) rotate(2deg)' },
+                            '50%': { transform: 'translateY(-20px) rotate(-1deg)' },
                         }
                     }
                 },
             },
         }
     </script>
-    
-    <!-- Polices -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
-    
-    <!-- Icônes Lucide -->
-    <script src="https://unpkg.com/lucide@latest"></script>
-
     <style>
-        body { font-family: 'Inter', sans-serif; }
+        body { font-family: 'Inter', sans-serif; overflow-x: hidden; }
         h1, h2, h3, h4, h5, h6 { font-family: 'Space Grotesk', sans-serif; }
         
-        /* Navbar Glass Effect */
         .glass-nav {
-            background-color: rgba(255, 255, 255, 0.9);
-            backdrop-filter: blur(8px);
-            border-bottom: 1px solid #e2e8f0;
+            background-color: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(226, 232, 240, 0.8);
         }
         .dark .glass-nav {
-            background-color: rgba(15, 23, 42, 0.9); /* Slate 900 */
-            border-bottom: 1px solid #334155;
+            background-color: rgba(15, 23, 42, 0.85);
+            border-bottom: 1px solid rgba(51, 65, 85, 0.8);
         }
         
-        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .reveal { opacity: 0; transform: translateY(20px); transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1); }
+        .reveal.active { opacity: 1; transform: translateY(0); }
         
-        /* Animation d'apparition */
-        .reveal {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: all 0.6s ease-out;
+        .view { display: none; }
+        .view.active { display: block; animation: fadeIn 0.4s ease-out; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+        /* Timeline Styles */
+        .timeline-line {
+            position: absolute;
+            left: 2rem;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background-color: #e2e8f0;
         }
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
+        .dark .timeline-line { background-color: #334155; }
+        
+        .timeline-dot {
+            position: absolute;
+            left: 2rem;
+            transform: translateX(-50%);
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: #6366f1;
+            z-index: 10;
+            box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.2);
         }
+
+        .tab-btn.active {
+            background-color: #6366f1;
+            color: white;
+            box-shadow: 0 4px 14px 0 rgba(99, 102, 241, 0.39);
+        }
+
+        .synthesis-section { border-left: 4px solid #6366f1; padding-left: 2rem; margin-bottom: 5rem; }
     </style>
 </head>
 <body class="bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100 transition-colors duration-300">
 
     <!-- Navbar -->
-    <header class="fixed top-0 w-full z-50 glass-nav transition-colors duration-300">
+    <header class="fixed top-0 w-full z-50 glass-nav">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-16">
-                <!-- Logo -->
-                <div class="flex-shrink-0 flex items-center">
-                    <a href="#accueil" class="text-xl font-bold text-slate-900 dark:text-white group">
+                <div class="flex-shrink-0">
+                    <button onclick="showView('home')" class="text-xl font-bold group">
                         Portfolio<span class="text-indigo-600 dark:text-cyan-400">.Monib()</span>
-                    </a>
+                    </button>
                 </div>
-
-                <!-- Desktop Nav -->
                 <div class="hidden md:flex items-center space-x-8">
-                    <nav class="flex space-x-6">
-                        <a href="#accueil" class="text-sm font-medium text-slate-700 dark:text-slate-200 hover:text-indigo-600 dark:hover:text-cyan-400 transition-colors">Accueil</a>
-                        <a href="#cv" class="text-sm font-medium text-slate-700 dark:text-slate-200 hover:text-indigo-600 dark:hover:text-cyan-400 transition-colors">Parcours</a>
-                        <a href="#competences" class="text-sm font-medium text-slate-700 dark:text-slate-200 hover:text-indigo-600 dark:hover:text-cyan-400 transition-colors">Compétences</a>
-                        <a href="#compte-rendus" class="text-sm font-medium text-slate-700 dark:text-slate-200 hover:text-indigo-600 dark:hover:text-cyan-400 transition-colors">Projets</a>
-                        <a href="#veille" class="text-sm font-medium text-slate-700 dark:text-slate-200 hover:text-indigo-600 dark:hover:text-cyan-400 transition-colors">Veille</a>
-                        <a href="#contact" class="text-sm font-medium text-slate-700 dark:text-slate-200 hover:text-indigo-600 dark:hover:text-cyan-400 transition-colors">Contact</a>
+                    <nav class="flex space-x-6 text-sm font-medium">
+                        <button onclick="showView('home')" class="hover:text-indigo-600 dark:hover:text-cyan-400 transition-colors">Accueil</button>
+                        <button onclick="scrollToSection('cv')" class="hover:text-indigo-600 dark:hover:text-cyan-400 transition-colors">Parcours</button>
+                        <button onclick="scrollToSection('competences')" class="hover:text-indigo-600 dark:hover:text-cyan-400 transition-colors">Compétences</button>
+                        <button onclick="scrollToSection('veille')" class="hover:text-indigo-600 dark:hover:text-cyan-400 transition-colors">Veille</button>
+                        <button onclick="showView('synthesis')" class="px-5 py-2 bg-indigo-600 text-white rounded-xl font-bold hover:bg-indigo-700 transition-all shadow-lg">Synthèse PFMP</button>
+                        <button onclick="scrollToSection('contact')" class="hover:text-indigo-600 dark:hover:text-cyan-400 transition-colors">Contact</button>
                     </nav>
-                    
-                    <div class="flex items-center space-x-3 pl-4 border-l border-slate-200 dark:border-slate-700">
-                        <a href="https://github.com/WalterW920" target="_blank" class="text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white transition-colors">
-                            <i data-lucide="github" class="w-5 h-5"></i>
-                        </a>
-                        <a href="https://www.linkedin.com/in/monib-mellouk-5226a4341/" target="_blank" class="text-slate-500 hover:text-blue-600 dark:text-slate-400 dark:hover:text-cyan-400 transition-colors">
-                            <i data-lucide="linkedin" class="w-5 h-5"></i>
-                        </a>
-                        <!-- Bouton Thème -->
-                        <button id="theme-toggle" class="p-2 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-yellow-400 hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors focus:outline-none ring-1 ring-slate-200 dark:ring-slate-700">
+                    <div class="flex items-center space-x-4 border-l border-slate-200 dark:border-slate-800 pl-6">
+                        <button onclick="toggleTheme()" class="p-2 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-yellow-400 transition-colors">
                             <i data-lucide="sun" class="w-5 h-5 hidden dark:block"></i>
-                            <i data-lucide="moon" class="w-5 h-5 block dark:hidden text-indigo-600"></i>
+                            <i data-lucide="moon" class="w-5 h-5 block dark:hidden"></i>
                         </button>
                     </div>
                 </div>
-
-                <!-- Mobile Menu Button -->
-                <div class="flex items-center md:hidden space-x-4">
-                    <button id="theme-toggle-mobile" class="p-2 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-yellow-400 transition-colors">
-                        <i data-lucide="sun" class="w-5 h-5 hidden dark:block"></i>
-                        <i data-lucide="moon" class="w-5 h-5 block dark:hidden text-indigo-600"></i>
-                    </button>
-                    <button id="menu-btn" class="text-slate-700 dark:text-white p-2">
-                        <i data-lucide="menu" class="w-6 h-6"></i>
-                    </button>
+                <div class="md:hidden flex items-center gap-2">
+                    <button onclick="toggleTheme()" class="p-2 text-slate-700 dark:text-white"><i data-lucide="moon" class="w-5 h-5 dark:hidden"></i><i data-lucide="sun" class="w-5 h-5 hidden dark:block"></i></button>
+                    <button onclick="toggleMobileMenu()" class="p-2 text-slate-700 dark:text-white"><i data-lucide="menu"></i></button>
                 </div>
             </div>
         </div>
-
-        <!-- Mobile Menu -->
-        <div id="mobile-menu" class="hidden md:hidden glass-nav border-t border-slate-200 dark:border-slate-700">
-            <div class="px-4 pt-2 pb-6 space-y-1 shadow-lg bg-white dark:bg-slate-900">
-                <a href="#accueil" class="block px-3 py-3 rounded-md text-base font-medium text-slate-700 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-800">Accueil</a>
-                <a href="#cv" class="block px-3 py-3 rounded-md text-base font-medium text-slate-700 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-800">Parcours</a>
-                <a href="#competences" class="block px-3 py-3 rounded-md text-base font-medium text-slate-700 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-800">Compétences</a>
-                <a href="#compte-rendus" class="block px-3 py-3 rounded-md text-base font-medium text-slate-700 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-800">Projets</a>
-                <a href="#contact" class="block px-3 py-3 rounded-md text-base font-medium text-slate-700 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-800">Contact</a>
-            </div>
+        <div id="mobile-menu" class="hidden md:hidden bg-white dark:bg-slate-900 border-t dark:border-slate-800 p-4 space-y-4 shadow-xl">
+            <button onclick="showView('home'); toggleMobileMenu()" class="block w-full text-left font-medium p-2">Accueil</button>
+            <button onclick="showView('synthesis'); toggleMobileMenu()" class="block w-full text-left font-bold p-2 text-indigo-600">Synthèse PFMP</button>
+            <button onclick="scrollToSection('cv'); toggleMobileMenu()" class="block w-full text-left font-medium p-2">Parcours</button>
+            <button onclick="scrollToSection('contact'); toggleMobileMenu()" class="block w-full text-left font-medium p-2">Contact</button>
         </div>
     </header>
 
-    <!-- Hero Section -->
-    <section id="accueil" class="min-h-screen flex items-center pt-16 relative overflow-hidden bg-white dark:bg-slate-950 transition-colors">
-        <!-- Background Gradients -->
-        <div class="absolute top-0 right-0 w-1/2 h-1/2 bg-indigo-500/10 dark:bg-indigo-500/20 rounded-full blur-3xl -z-10 transform translate-x-1/3 -translate-y-1/4"></div>
-        <div class="absolute bottom-0 left-0 w-1/2 h-1/2 bg-cyan-500/10 dark:bg-cyan-500/20 rounded-full blur-3xl -z-10 transform -translate-x-1/3 translate-y-1/4"></div>
-
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-            <div class="flex flex-col-reverse md:flex-row items-center justify-between">
-                <div class="w-full md:w-1/2 mt-12 md:mt-0 text-center md:text-left reveal active">
-                    <div class="inline-flex items-center px-4 py-2 rounded-full border border-indigo-100 dark:border-indigo-900 bg-indigo-50 dark:bg-slate-900 text-indigo-700 dark:text-indigo-300 text-sm font-semibold mb-8 shadow-sm">
-                        <span class="relative flex h-2.5 w-2.5 mr-3">
-                            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-indigo-400 opacity-75"></span>
-                            <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-indigo-500 dark:bg-indigo-400"></span>
-                        </span>
+    <!-- PORTFOLIO VIEW -->
+    <main id="view-home" class="view active">
+        <!-- Hero Section -->
+        <section class="min-h-screen flex items-center pt-16 relative overflow-hidden bg-white dark:bg-slate-950">
+            <div class="max-w-7xl mx-auto px-6 w-full flex flex-col md:flex-row items-center justify-between">
+                <div class="w-full md:w-3/5 text-center md:text-left reveal active">
+                    <div class="inline-flex items-center px-4 py-2 rounded-full bg-indigo-50 dark:bg-indigo-900/30 text-indigo-700 dark:text-indigo-300 text-sm font-semibold mb-8 shadow-sm">
+                        <span class="w-2.5 h-2.5 rounded-full bg-indigo-500 mr-2 animate-pulse"></span>
                         Recherche stage: 26 jan - 21 mars 2025
                     </div>
-                    
-                    <h1 class="text-5xl md:text-7xl font-bold tracking-tight text-slate-900 dark:text-white mb-6">
+                    <h1 class="text-6xl md:text-8xl font-black mb-6 tracking-tighter leading-tight">
                         Bonjour, je suis <br/>
-                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-cyan-500 dark:from-indigo-400 dark:to-cyan-400">
-                            Monib Mellouk
-                        </span>
+                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-cyan-500 font-display">Monib Mellouk</span>
                     </h1>
-                    
-                    <h2 class="text-xl md:text-2xl text-slate-600 dark:text-slate-300 mb-8">
-                        Étudiant en 2ème année <span class="font-bold text-indigo-600 dark:text-cyan-400">BTS SIO</span>
-                    </h2>
-                    
-                    <p class="text-slate-600 dark:text-slate-400 text-lg mb-10 max-w-lg mx-auto md:mx-0 leading-relaxed">
-                        Explorateur du numérique passionné par le développement et les réseaux. 
-                        Je conçois des solutions modernes pour le monde de demain.
+                    <h2 class="text-2xl md:text-3xl text-slate-600 dark:text-slate-300 mb-8 font-medium italic">Étudiant en 2ème année <span class="text-indigo-600 font-bold not-italic underline decoration-cyan-400 underline-offset-8">BTS SIO</span></h2>
+                    <p class="text-slate-600 dark:text-slate-400 text-xl mb-10 max-w-2xl leading-relaxed">
+                        Explorateur du numérique passionné par le développement et les réseaux. Je conçois des solutions modernes pour le monde de demain avec rigueur et créativité.
                     </p>
-                    
-                    <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 justify-center md:justify-start">
-                        <a href="#cv" class="px-8 py-4 bg-indigo-600 hover:bg-indigo-700 text-white font-bold rounded-lg shadow-lg hover:shadow-indigo-500/30 transition-all hover:-translate-y-1 flex items-center justify-center">
-                            Mon Parcours <i data-lucide="arrow-right" class="ml-2 w-5 h-5"></i>
-                        </a>
-                        <a href="#contact" class="px-8 py-4 bg-white dark:bg-slate-800 text-slate-700 dark:text-white border border-slate-200 dark:border-slate-700 font-bold rounded-lg hover:bg-slate-50 dark:hover:bg-slate-700 transition-all hover:-translate-y-1 flex items-center justify-center">
-                            Me Contacter
-                        </a>
+                    <div class="flex flex-wrap gap-4 justify-center md:justify-start">
+                        <button onclick="scrollToSection('cv')" class="px-10 py-5 bg-indigo-600 text-white font-black rounded-2xl shadow-xl hover:shadow-indigo-500/40 transition-all hover:-translate-y-1">Mon Parcours <i data-lucide="arrow-down" class="ml-2 inline-block"></i></button>
+                        <button onclick="scrollToSection('contact')" class="px-10 py-5 bg-white dark:bg-slate-800 border-2 border-slate-200 dark:border-slate-700 font-black rounded-2xl hover:bg-slate-50 transition-all">Me Contacter</button>
                     </div>
                 </div>
-
-                <div class="w-full md:w-1/2 flex justify-center reveal active delay-100">
-                    <div class="relative animate-float">
-                        <div class="relative z-10 w-72 h-72 md:w-96 md:h-96 bg-gradient-to-tr from-slate-100 to-white dark:from-slate-800 dark:to-slate-900 rounded-3xl shadow-2xl border border-white dark:border-slate-700 flex items-center justify-center transform rotate-3">
-                            <i data-lucide="terminal" class="w-32 h-32 text-indigo-600 dark:text-cyan-400"></i>
-                            
-                            <!-- Floating badges -->
-                            <div class="absolute -top-6 -right-6 bg-white dark:bg-slate-800 p-4 rounded-2xl shadow-xl border border-slate-100 dark:border-slate-700 animate-bounce" style="animation-duration: 3s">
-                                <i data-lucide="code" class="w-8 h-8 text-cyan-500"></i>
-                            </div>
-                            <div class="absolute -bottom-6 -left-6 bg-white dark:bg-slate-800 p-4 rounded-2xl shadow-xl border border-slate-100 dark:border-slate-700 animate-bounce" style="animation-duration: 4s">
-                                <i data-lucide="server" class="w-8 h-8 text-indigo-500"></i>
-                            </div>
-                        </div>
-                        <div class="absolute inset-0 bg-indigo-600 rounded-3xl transform rotate-6 scale-95 -z-10 opacity-20 blur-xl"></div>
+                <div class="w-full md:w-2/5 flex justify-center mt-12 md:mt-0 animate-float">
+                    <div class="relative p-12 bg-slate-100 dark:bg-slate-900 rounded-[4rem] border-8 border-white dark:border-slate-800 shadow-2xl overflow-hidden group">
+                        <i data-lucide="terminal" class="w-48 h-48 md:w-64 md:h-64 text-indigo-600 group-hover:scale-110 transition-transform"></i>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Timeline / CV Section -->
-    <section id="cv" class="py-24 bg-slate-50 dark:bg-slate-900 transition-colors">
-        <div class="max-w-5xl mx-auto px-6">
-            <div class="text-center mb-16 reveal">
-                <h2 class="text-4xl font-bold text-slate-900 dark:text-white mb-4">Mon Parcours</h2>
-                <div class="h-1 w-20 bg-indigo-500 mx-auto rounded-full"></div>
-            </div>
-
-            <!-- Tabs Controls -->
-            <div class="flex justify-center mb-12 reveal">
-                <div class="bg-white dark:bg-slate-800 p-1.5 rounded-xl shadow-md inline-flex border border-slate-200 dark:border-slate-700">
-                    <button onclick="switchTab('formation')" id="tab-formation" class="px-6 py-2.5 rounded-lg text-sm font-bold transition-all bg-indigo-100 text-indigo-700 dark:bg-indigo-900 dark:text-indigo-200">
-                        Formations
-                    </button>
-                    <button onclick="switchTab('experience')" id="tab-experience" class="px-6 py-2.5 rounded-lg text-sm font-bold transition-all text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-700">
-                        Expériences
-                    </button>
-                </div>
-            </div>
-
-            <!-- Content: Formations -->
-            <div id="content-formation" class="space-y-8 reveal">
-                <div class="relative pl-8 border-l-2 border-slate-200 dark:border-slate-700 space-y-12">
-                    <!-- Item 1 -->
-                    <div class="relative">
-                        <div class="absolute -left-[41px] bg-indigo-600 h-6 w-6 rounded-full border-4 border-slate-50 dark:border-slate-900"></div>
-                        <div class="bg-white dark:bg-slate-800 p-6 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700">
-                            <div class="flex flex-col sm:flex-row justify-between sm:items-center mb-2">
-                                <h3 class="text-xl font-bold text-slate-900 dark:text-white">BTS SIO</h3>
-                                <span class="text-sm font-mono text-indigo-600 dark:text-cyan-400 font-bold">2024 - 2026</span>
-                            </div>
-                            <p class="text-slate-700 dark:text-slate-300 font-medium mb-1">Lycée René Descartes, Champs sur Marne</p>
-                            <p class="text-slate-500 dark:text-slate-400 text-sm">Option SISR (Solutions d'infrastructure, systèmes et réseaux) & SLAM</p>
-                        </div>
-                    </div>
-                    <!-- Item 2 -->
-                    <div class="relative">
-                        <div class="absolute -left-[41px] bg-slate-400 dark:bg-slate-600 h-6 w-6 rounded-full border-4 border-slate-50 dark:border-slate-900"></div>
-                        <div class="bg-white dark:bg-slate-800 p-6 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700">
-                             <div class="flex flex-col sm:flex-row justify-between sm:items-center mb-2">
-                                <h3 class="text-xl font-bold text-slate-900 dark:text-white">Baccalauréat professionnel</h3>
-                                <span class="text-sm font-mono text-slate-500 dark:text-slate-400 font-bold">2020 - 2024</span>
-                            </div>
-                            <p class="text-slate-700 dark:text-slate-300 font-medium mb-1">Lycée Claude Chappe, Nanterre</p>
-                            <p class="text-slate-500 dark:text-slate-400 text-sm">Systèmes numériques option RISC (Mention Bien)</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Content: Experience -->
-            <div id="content-experience" class="hidden space-y-8">
-                <div class="flex justify-center mb-10">
-                    <a href="./synthese_pfmp.pdf" download class="inline-flex items-center px-5 py-2.5 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-lg hover:opacity-90 transition-opacity font-bold shadow-md">
-                        <i data-lucide="download" class="w-4 h-4 mr-2"></i> Télécharger Synthèse PFMP
-                    </a>
+        <!-- Parcours Professionnel & Scolaire (Double Catégorie) -->
+        <section id="cv" class="py-32 bg-slate-50 dark:bg-slate-900 transition-colors">
+            <div class="max-w-5xl mx-auto px-6">
+                <div class="text-center mb-16 reveal">
+                    <h2 class="text-5xl font-black mb-4 uppercase tracking-tighter">Mon Parcours</h2>
+                    <div class="h-1.5 w-32 bg-indigo-600 mx-auto rounded-full"></div>
                 </div>
 
-                <div class="grid gap-6">
-                    <!-- Exp 1 -->
-                    <div class="bg-white dark:bg-slate-800 p-6 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 hover:border-indigo-500 transition-colors">
-                        <div class="flex items-start justify-between mb-4">
-                            <div>
-                                <h3 class="text-lg font-bold text-slate-900 dark:text-white">Les réparateurs Mac et Pc</h3>
-                                <p class="text-indigo-600 dark:text-cyan-400 font-medium text-sm">Juin 2025 (Prévu) • Montreuil</p>
-                            </div>
-                            <div class="bg-indigo-50 dark:bg-indigo-900/30 p-2 rounded-lg text-indigo-600 dark:text-indigo-400">
-                                <i data-lucide="wrench" class="w-5 h-5"></i>
-                            </div>
-                        </div>
-                        <ul class="list-disc list-inside text-slate-600 dark:text-slate-300 text-sm space-y-1">
-                            <li>Réparation électronique de précision</li>
-                            <li>Gestion de la relation client</li>
-                            <li>Logistique et commandes</li>
-                        </ul>
-                    </div>
-
-                    <!-- Exp 2 -->
-                     <div class="bg-white dark:bg-slate-800 p-6 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 hover:border-indigo-500 transition-colors">
-                        <div class="flex items-start justify-between mb-4">
-                            <div>
-                                <h3 class="text-lg font-bold text-slate-900 dark:text-white">LAPHONY</h3>
-                                <p class="text-slate-500 dark:text-slate-400 font-medium text-sm">Sept 2023 - Jan 2024 • Paris</p>
-                            </div>
-                            <div class="bg-slate-100 dark:bg-slate-700 p-2 rounded-lg text-slate-600 dark:text-slate-300">
-                                <i data-lucide="smartphone" class="w-5 h-5"></i>
-                            </div>
-                        </div>
-                        <ul class="list-disc list-inside text-slate-600 dark:text-slate-300 text-sm space-y-1">
-                            <li>Maintenance hardware multi-marques</li>
-                            <li>Diagnostic de pannes complexes</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Skills Section -->
-    <section id="competences" class="py-24 bg-white dark:bg-slate-950 transition-colors">
-        <div class="max-w-6xl mx-auto px-6">
-            <div class="text-center mb-16 reveal">
-                <h2 class="text-4xl font-bold text-slate-900 dark:text-white mb-4">Mes Compétences</h2>
-                <div class="h-1 w-20 bg-cyan-500 mx-auto rounded-full"></div>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16 reveal">
-                <div class="p-8 bg-slate-50 dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 hover:-translate-y-2 transition-transform duration-300">
-                    <div class="w-14 h-14 bg-indigo-100 dark:bg-indigo-900/50 rounded-xl flex items-center justify-center text-indigo-600 dark:text-indigo-400 mb-6">
-                        <i data-lucide="cpu" class="w-7 h-7"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-3">Hardware</h3>
-                    <p class="text-slate-600 dark:text-slate-400 leading-relaxed">Expertise avancée en diagnostic et réparation sur PC, Mac et Smartphones.</p>
-                </div>
-                 <div class="p-8 bg-slate-50 dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 hover:-translate-y-2 transition-transform duration-300">
-                    <div class="w-14 h-14 bg-cyan-100 dark:bg-cyan-900/50 rounded-xl flex items-center justify-center text-cyan-600 dark:text-cyan-400 mb-6">
-                        <i data-lucide="code-2" class="w-7 h-7"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-3">Développement</h3>
-                    <p class="text-slate-600 dark:text-slate-400 leading-relaxed">Création de solutions web modernes et scripts d'automatisation (Python).</p>
-                </div>
-                 <div class="p-8 bg-slate-50 dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 hover:-translate-y-2 transition-transform duration-300">
-                    <div class="w-14 h-14 bg-emerald-100 dark:bg-emerald-900/50 rounded-xl flex items-center justify-center text-emerald-600 dark:text-emerald-400 mb-6">
-                        <i data-lucide="users" class="w-7 h-7"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-3">Relationnel</h3>
-                    <p class="text-slate-600 dark:text-slate-400 leading-relaxed">Support technique utilisateur, pédagogie et gestion de service après-vente.</p>
-                </div>
-            </div>
-
-            <!-- Detailed Skills Bars -->
-            <div class="grid md:grid-cols-2 gap-12 reveal">
-                <div class="bg-slate-50 dark:bg-slate-900 p-8 rounded-2xl border border-slate-200 dark:border-slate-800">
-                    <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-6 flex items-center">
-                        <i data-lucide="code" class="mr-3 text-indigo-500"></i> Développement
-                    </h3>
-                    <div class="space-y-6">
-                        <div>
-                            <div class="flex justify-between mb-2">
-                                <span class="font-medium text-slate-700 dark:text-slate-300">HTML / CSS / Tailwind</span>
-                                <span class="font-bold text-slate-500 dark:text-slate-400">85%</span>
-                            </div>
-                            <div class="h-2 w-full bg-slate-200 dark:bg-slate-700 rounded-full overflow-hidden">
-                                <div class="h-full bg-indigo-500 rounded-full" style="width: 85%"></div>
-                            </div>
-                        </div>
-                        <div>
-                            <div class="flex justify-between mb-2">
-                                <span class="font-medium text-slate-700 dark:text-slate-300">JavaScript</span>
-                                <span class="font-bold text-slate-500 dark:text-slate-400">70%</span>
-                            </div>
-                            <div class="h-2 w-full bg-slate-200 dark:bg-slate-700 rounded-full overflow-hidden">
-                                <div class="h-full bg-indigo-500 rounded-full" style="width: 70%"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="bg-slate-50 dark:bg-slate-900 p-8 rounded-2xl border border-slate-200 dark:border-slate-800">
-                     <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-6 flex items-center">
-                        <i data-lucide="server" class="mr-3 text-cyan-500"></i> Infrastructure
-                    </h3>
-                    <div class="space-y-6">
-                        <div>
-                            <div class="flex justify-between mb-2">
-                                <span class="font-medium text-slate-700 dark:text-slate-300">Maintenance & Dépannage</span>
-                                <span class="font-bold text-slate-500 dark:text-slate-400">95%</span>
-                            </div>
-                            <div class="h-2 w-full bg-slate-200 dark:bg-slate-700 rounded-full overflow-hidden">
-                                <div class="h-full bg-cyan-500 rounded-full" style="width: 95%"></div>
-                            </div>
-                        </div>
-                        <div>
-                            <div class="flex justify-between mb-2">
-                                <span class="font-medium text-slate-700 dark:text-slate-300">Administration Système (Linux/Win)</span>
-                                <span class="font-bold text-slate-500 dark:text-slate-400">75%</span>
-                            </div>
-                            <div class="h-2 w-full bg-slate-200 dark:bg-slate-700 rounded-full overflow-hidden">
-                                <div class="h-full bg-cyan-500 rounded-full" style="width: 75%"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Projects Placeholder -->
-    <section id="compte-rendus" class="py-24 bg-slate-50 dark:bg-slate-900 transition-colors">
-        <div class="max-w-4xl mx-auto px-6 text-center reveal">
-            <h2 class="text-3xl font-bold text-slate-900 dark:text-white mb-12">Projets & Comptes Rendus</h2>
-            
-            <div class="border-2 border-dashed border-slate-300 dark:border-slate-700 rounded-3xl p-12 flex flex-col items-center justify-center bg-white dark:bg-slate-800">
-                <div class="w-20 h-20 bg-slate-100 dark:bg-slate-700 rounded-full flex items-center justify-center text-slate-400 dark:text-slate-500 mb-6">
-                    <i data-lucide="folder-open" class="w-10 h-10"></i>
-                </div>
-                <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-2">Section en construction</h3>
-                <p class="text-slate-600 dark:text-slate-400 max-w-md mx-auto">
-                    Mes projets et documentations techniques seront bientôt disponibles ici.
-                </p>
-                <span class="mt-6 inline-block px-4 py-1 bg-amber-100 text-amber-800 text-xs font-bold rounded-full uppercase tracking-wider">Coming Soon</span>
-            </div>
-        </div>
-    </section>
-
-    <!-- Veille -->
-    <section id="veille" class="py-24 bg-white dark:bg-slate-950 transition-colors">
-        <div class="max-w-6xl mx-auto px-6">
-             <div class="text-center mb-16 reveal">
-                <h2 class="text-4xl font-bold text-slate-900 dark:text-white mb-4">Veille Technologique</h2>
-                <div class="h-1 w-20 bg-indigo-500 mx-auto rounded-full"></div>
-            </div>
-
-            <div class="bg-gradient-to-br from-indigo-900 to-slate-900 rounded-3xl p-8 md:p-12 shadow-2xl text-white relative overflow-hidden reveal">
-                <div class="absolute top-0 right-0 w-64 h-64 bg-indigo-500 rounded-full blur-[100px] opacity-30"></div>
-                
-                <div class="relative z-10 flex flex-col md:flex-row gap-12 items-start">
-                    <div class="flex-1">
-                        <div class="inline-block px-3 py-1 bg-indigo-500/30 border border-indigo-400/30 rounded text-indigo-200 text-xs font-bold uppercase mb-6">
-                            Sujet Principal
-                        </div>
-                        <h3 class="text-3xl font-bold mb-6">Le Cloud Computing</h3>
-                        <p class="text-indigo-100 text-lg leading-relaxed mb-8">
-                            Analyse de la transformation des infrastructures IT vers le modèle "As a Service" (IaaS, PaaS, SaaS) et ses impacts sur la sécurité et l'évolutivité.
-                        </p>
-                        <a href="./dossier_veille.pdf" download class="inline-flex items-center px-6 py-3 bg-white text-slate-900 rounded-lg font-bold hover:bg-indigo-50 transition-colors">
-                            <i data-lucide="file-down" class="w-5 h-5 mr-2"></i> Télécharger le dossier
-                        </a>
-                    </div>
-                    
-                    <div class="w-full md:w-1/3 bg-white/10 backdrop-blur-md rounded-xl p-6 border border-white/10">
-                        <h4 class="font-bold text-lg mb-4 flex items-center"><i data-lucide="rss" class="w-4 h-4 mr-2"></i> Points Clés</h4>
-                        <ul class="space-y-3 text-sm text-indigo-100">
-                            <li class="flex items-start"><span class="mr-2">•</span> Sécurité & Souveraineté</li>
-                            <li class="flex items-start"><span class="mr-2">•</span> Architecture Serverless</li>
-                            <li class="flex items-start"><span class="mr-2">•</span> Optimisation des coûts (FinOps)</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact -->
-    <section id="contact" class="py-24 bg-slate-50 dark:bg-slate-900 transition-colors">
-        <div class="max-w-4xl mx-auto px-6">
-             <div class="text-center mb-16 reveal">
-                <h2 class="text-4xl font-bold text-slate-900 dark:text-white mb-4">Me Contacter</h2>
-                <div class="h-1 w-20 bg-cyan-500 mx-auto rounded-full"></div>
-            </div>
-
-            <div class="grid md:grid-cols-2 gap-12">
-                <div class="space-y-8 reveal">
-                    <h3 class="text-2xl font-bold text-slate-900 dark:text-white">Coordonnées</h3>
-                    <p class="text-slate-600 dark:text-slate-400">
-                        Ouvert aux opportunités de stage et de collaboration. N'hésitez pas à me contacter.
-                    </p>
-                    
-                    <div class="space-y-4">
-                        <a href="mailto:melloukmonib3@gmail.com" class="flex items-center p-4 bg-white dark:bg-slate-800 rounded-xl shadow-sm hover:shadow-md transition-all">
-                            <div class="w-10 h-10 bg-indigo-100 dark:bg-indigo-900/50 rounded-full flex items-center justify-center text-indigo-600 dark:text-indigo-400 mr-4">
-                                <i data-lucide="mail" class="w-5 h-5"></i>
-                            </div>
-                            <span class="text-slate-800 dark:text-slate-200 font-medium">melloukmonib3@gmail.com</span>
-                        </a>
-                        
-                        <a href="tel:0781642430" class="flex items-center p-4 bg-white dark:bg-slate-800 rounded-xl shadow-sm hover:shadow-md transition-all">
-                            <div class="w-10 h-10 bg-cyan-100 dark:bg-cyan-900/50 rounded-full flex items-center justify-center text-cyan-600 dark:text-cyan-400 mr-4">
-                                <i data-lucide="phone" class="w-5 h-5"></i>
-                            </div>
-                            <span class="text-slate-800 dark:text-slate-200 font-medium">07 81 64 24 30</span>
-                        </a>
-                        
-                        <div class="flex items-center p-4 bg-white dark:bg-slate-800 rounded-xl shadow-sm">
-                            <div class="w-10 h-10 bg-slate-100 dark:bg-slate-700 rounded-full flex items-center justify-center text-slate-600 dark:text-slate-400 mr-4">
-                                <i data-lucide="map-pin" class="w-5 h-5"></i>
-                            </div>
-                            <span class="text-slate-800 dark:text-slate-200 font-medium">Nanterre, 92000</span>
-                        </div>
-                    </div>
-                </div>
-
-                <form class="bg-white dark:bg-slate-800 p-8 rounded-2xl shadow-lg border border-slate-100 dark:border-slate-700 reveal">
-                    <div class="space-y-4">
-                        <div>
-                            <label class="block text-sm font-bold text-slate-700 dark:text-slate-300 mb-1">Nom</label>
-                            <input type="text" class="w-full px-4 py-3 rounded-lg bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white focus:ring-2 focus:ring-indigo-500 outline-none" placeholder="Votre nom">
-                        </div>
-                        <div>
-                            <label class="block text-sm font-bold text-slate-700 dark:text-slate-300 mb-1">Email</label>
-                            <input type="email" class="w-full px-4 py-3 rounded-lg bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white focus:ring-2 focus:ring-indigo-500 outline-none" placeholder="email@exemple.com">
-                        </div>
-                        <div>
-                            <label class="block text-sm font-bold text-slate-700 dark:text-slate-300 mb-1">Message</label>
-                            <textarea rows="4" class="w-full px-4 py-3 rounded-lg bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white focus:ring-2 focus:ring-indigo-500 outline-none" placeholder="Votre message..."></textarea>
-                        </div>
-                        <button type="submit" class="w-full py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-bold rounded-lg transition-colors">
-                            Envoyer le message
+                <!-- Tabs Selector -->
+                <div class="flex justify-center mb-16 reveal">
+                    <div class="bg-white dark:bg-slate-800 p-1.5 rounded-2xl shadow-xl inline-flex border border-slate-200 dark:border-slate-700">
+                        <button onclick="switchParcoursTab('scolaire')" id="btn-tab-scolaire" class="tab-btn active px-8 py-3 rounded-xl text-sm font-bold transition-all">
+                            Scolaire
+                        </button>
+                        <button onclick="switchParcoursTab('stages')" id="btn-tab-stages" class="tab-btn px-8 py-3 rounded-xl text-sm font-bold transition-all text-slate-500 hover:text-indigo-600">
+                            Expériences (Stages)
                         </button>
                     </div>
-                </form>
-            </div>
-        </div>
-    </section>
+                </div>
 
-    <!-- Footer -->
-    <footer class="bg-slate-900 text-slate-400 py-12 text-center border-t border-slate-800">
-        <h3 class="text-2xl font-bold text-white mb-2">Monib Mellouk</h3>
-        <p class="mb-6">Portfolio BTS SIO 2024 - 2026</p>
-        <div class="flex justify-center space-x-6 mb-8">
-            <a href="#" class="hover:text-white transition-colors"><i data-lucide="github"></i></a>
-            <a href="#" class="hover:text-white transition-colors"><i data-lucide="linkedin"></i></a>
+                <!-- Tab Content: Scolaire -->
+                <div id="parcours-scolaire" class="space-y-12 relative pl-16 reveal active">
+                    <div class="timeline-line"></div>
+                    
+                    <!-- BTS SIO -->
+                    <div class="relative bg-white dark:bg-slate-800 p-8 rounded-[2rem] shadow-xl border border-slate-100 dark:border-slate-700">
+                        <div class="timeline-dot top-10"></div>
+                        <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-4">
+                            <h3 class="text-2xl font-black text-slate-900 dark:text-white">BTS SIO</h3>
+                            <span class="text-indigo-600 font-bold font-mono">2024 - 2026</span>
+                        </div>
+                        <p class="text-lg font-bold text-slate-700 dark:text-slate-300 mb-2">Lycée René Descartes, Champs sur Marne</p>
+                        <p class="text-slate-500 dark:text-slate-400">Option SISR (Solutions d'infrastructure, systèmes et réseaux) & SLAM</p>
+                    </div>
+
+                    <!-- Bac Pro -->
+                    <div class="relative bg-white dark:bg-slate-800 p-8 rounded-[2rem] shadow-xl border border-slate-100 dark:border-slate-700">
+                        <div class="timeline-dot top-10 bg-slate-400"></div>
+                        <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-4">
+                            <h3 class="text-2xl font-black text-slate-900 dark:text-white">Baccalauréat professionnel</h3>
+                            <span class="text-slate-500 font-bold font-mono">2020 - 2024</span>
+                        </div>
+                        <p class="text-lg font-bold text-slate-700 dark:text-slate-300 mb-2">Lycée Claude Chappe, Nanterre</p>
+                        <p class="text-slate-500 dark:text-slate-400">Systèmes numériques option RISC <span class="ml-2 px-3 py-1 bg-emerald-100 text-emerald-700 text-xs font-black rounded-full uppercase">Mention Assez Bien</span></p>
+                    </div>
+                </div>
+
+                <!-- Tab Content: Stages -->
+                <div id="parcours-stages" class="hidden space-y-8 relative pl-16 reveal">
+                    <div class="timeline-line"></div>
+
+                    <!-- Stage 6: Les réparateurs Mac et Pc (A VENIR) -->
+                    <div class="relative bg-white dark:bg-slate-800 p-8 rounded-[2rem] shadow-xl border border-slate-100 dark:border-slate-700 hover:border-indigo-500 transition-all">
+                        <div class="timeline-dot top-10 bg-indigo-500"></div>
+                        <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-4">
+                            <h3 class="text-xl font-black">Les réparateurs Mac et Pc - Montreuil</h3>
+                            <span class="text-indigo-600 font-bold font-mono">JUIN 2025</span>
+                        </div>
+                        <div class="mb-4"><span class="px-4 py-1.5 bg-amber-100 text-amber-700 text-xs font-black rounded-full uppercase tracking-widest">À Venir</span></div>
+                        <p class="text-brand-indigo font-bold text-sm mb-3 uppercase tracking-tighter">Stage – Réparateur Informatique</p>
+                        <ul class="text-sm text-slate-500 dark:text-slate-400 space-y-1">
+                            <li>• Réparation de différents appareils électroniques</li>
+                            <li>• Accueil de clients en boutique</li>
+                            <li>• Réception des commandes</li>
+                        </ul>
+                    </div>
+
+                    <!-- Stage 5: LAPHONY -->
+                    <div class="relative bg-white dark:bg-slate-800 p-8 rounded-[2rem] shadow-xl border border-slate-100 dark:border-slate-700">
+                        <div class="timeline-dot top-10"></div>
+                        <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-4">
+                            <h3 class="text-xl font-black">LAPHONY - Paris</h3>
+                            <span class="text-slate-500 font-bold font-mono">SEPT 2023 - JAN 2024</span>
+                        </div>
+                        <div class="mb-4"><span class="px-4 py-1.5 bg-emerald-100 text-emerald-700 text-xs font-black rounded-full uppercase tracking-widest">Effectué</span></div>
+                        <p class="text-brand-indigo font-bold text-sm mb-3 uppercase tracking-tighter">Stage – Réparateur Informatique</p>
+                        <ul class="text-sm text-slate-500 dark:text-slate-400 space-y-1">
+                            <li>• Réparation smartphones & terminaux mobiles</li>
+                            <li>• Diagnostic de pannes hardware</li>
+                        </ul>
+                    </div>
+
+                    <!-- Stage 4: Speed Laptop -->
+                    <div class="relative bg-white dark:bg-slate-800 p-8 rounded-[2rem] shadow-xl border border-slate-100 dark:border-slate-700">
+                        <div class="timeline-dot top-10"></div>
+                        <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-4">
+                            <h3 class="text-xl font-black">Speed Laptop - Nanterre</h3>
+                            <span class="text-slate-500 font-bold font-mono">JUIN 2023</span>
+                        </div>
+                        <div class="mb-4"><span class="px-4 py-1.5 bg-emerald-100 text-emerald-700 text-xs font-black rounded-full uppercase tracking-widest">Effectué</span></div>
+                        <p class="text-brand-indigo font-bold text-sm mb-3 uppercase tracking-tighter">Stage – Réparateur Informatique</p>
+                        <p class="text-sm text-slate-500">Installation systèmes Windows 10/11 et tri de composants.</p>
+                    </div>
+
+                    <!-- Stage 3: Les réparateurs Mac et Pc -->
+                    <div class="relative bg-white dark:bg-slate-800 p-8 rounded-[2rem] shadow-xl border border-slate-100 dark:border-slate-700">
+                        <div class="timeline-dot top-10"></div>
+                        <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-4">
+                            <h3 class="text-xl font-black">Les réparateurs Mac et Pc - Montreuil</h3>
+                            <span class="text-slate-500 font-bold font-mono">JANVIER 2023</span>
+                        </div>
+                        <div class="mb-4"><span class="px-4 py-1.5 bg-emerald-100 text-emerald-700 text-xs font-black rounded-full uppercase tracking-widest">Effectué</span></div>
+                        <p class="text-brand-indigo font-bold text-sm mb-3 uppercase tracking-tighter">Stage – Réparateur Informatique</p>
+                        <p class="text-sm text-slate-500">Maintenance hardware de précision et gestion SAV.</p>
+                    </div>
+
+                    <!-- Stage 2: Presta Plus -->
+                    <div class="relative bg-white dark:bg-slate-800 p-8 rounded-[2rem] shadow-xl border border-slate-100 dark:border-slate-700">
+                        <div class="timeline-dot top-10"></div>
+                        <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-4">
+                            <h3 class="text-xl font-black">Presta Plus - La Garenne-Colombes</h3>
+                            <span class="text-slate-500 font-bold font-mono">JUIN 2022</span>
+                        </div>
+                        <div class="mb-4"><span class="px-4 py-1.5 bg-emerald-100 text-emerald-700 text-xs font-black rounded-full uppercase tracking-widest">Effectué</span></div>
+                        <p class="text-brand-indigo font-bold text-sm mb-3 uppercase tracking-tighter">Stage – Réparateur Informatique</p>
+                    </div>
+
+                    <!-- Stage 1: XXL info -->
+                    <div class="relative bg-white dark:bg-slate-800 p-8 rounded-[2rem] shadow-xl border border-slate-100 dark:border-slate-700">
+                        <div class="timeline-dot top-10"></div>
+                        <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-4">
+                            <h3 class="text-xl font-black">XXL info - Paris</h3>
+                            <span class="text-slate-500 font-bold font-mono">JANVIER 2022</span>
+                        </div>
+                        <div class="mb-4"><span class="px-4 py-1.5 bg-emerald-100 text-emerald-700 text-xs font-black rounded-full uppercase tracking-widest">Effectué</span></div>
+                        <p class="text-brand-indigo font-bold text-sm mb-3 uppercase tracking-tighter">Stage – Réparateur Informatique</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Compétences (3 Main Cards + Barres) -->
+        <section id="competences" class="py-32 bg-white dark:bg-slate-950">
+            <div class="max-w-6xl mx-auto px-6">
+                <div class="text-center mb-20 reveal">
+                    <h2 class="text-5xl font-black mb-4 uppercase tracking-tighter">Mes Compétences</h2>
+                    <div class="h-1.5 w-24 bg-cyan-500 mx-auto rounded-full"></div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-10 mb-20 reveal">
+                    <div class="p-12 bg-white dark:bg-slate-900 rounded-[3.5rem] border border-slate-100 dark:border-slate-800 shadow-2xl transition-all group hover:-translate-y-2">
+                        <div class="w-16 h-16 bg-indigo-50 dark:bg-indigo-900/30 rounded-2xl flex items-center justify-center text-indigo-600 mb-8"><i data-lucide="cpu" class="w-8 h-8"></i></div>
+                        <h3 class="text-2xl font-black mb-4">Hardware</h3>
+                        <p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">Expertise avancée en diagnostic et réparation hardware sur PC, Mac et Smartphones haut de gamme.</p>
+                    </div>
+                    <div class="p-12 bg-white dark:bg-slate-900 rounded-[3.5rem] border border-slate-100 dark:border-slate-800 shadow-2xl transition-all group hover:-translate-y-2">
+                        <div class="w-16 h-16 bg-cyan-50 dark:bg-cyan-900/30 rounded-2xl flex items-center justify-center text-cyan-600 mb-8"><i data-lucide="code-2" class="w-8 h-8"></i></div>
+                        <h3 class="text-2xl font-black mb-4">Développement</h3>
+                        <p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">Création de solutions web modernes (React, Tailwind) et scripts d'automatisation performants en Python.</p>
+                    </div>
+                    <div class="p-12 bg-white dark:bg-slate-900 rounded-[3.5rem] border border-slate-100 dark:border-slate-800 shadow-2xl transition-all group hover:-translate-y-2">
+                        <div class="w-16 h-16 bg-emerald-50 dark:bg-emerald-900/30 rounded-2xl flex items-center justify-center text-emerald-600 mb-8"><i data-lucide="users" class="w-8 h-8"></i></div>
+                        <h3 class="text-2xl font-black mb-4">Relationnel</h3>
+                        <p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">Support technique de niveau 1 et 2, pédagogie et gestion rigoureuse du service après-vente.</p>
+                    </div>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-16 reveal">
+                    <div class="bg-slate-50 dark:bg-slate-900 p-12 rounded-[4rem] border dark:border-slate-800 shadow-xl">
+                        <h3 class="text-2xl font-black mb-10 flex items-center gap-4 text-indigo-600"><i data-lucide="code"></i> Développement</h3>
+                        <div class="space-y-10">
+                            <div><div class="flex justify-between mb-3 text-sm font-black uppercase tracking-widest opacity-70"><span>HTML / CSS / Tailwind</span><span>85%</span></div><div class="h-2.5 w-full bg-slate-200 dark:bg-slate-800 rounded-full overflow-hidden"><div class="h-full bg-indigo-600" style="width: 85%"></div></div></div>
+                            <div><div class="flex justify-between mb-3 text-sm font-black uppercase tracking-widest opacity-70"><span>JavaScript</span><span>70%</span></div><div class="h-2.5 w-full bg-slate-200 dark:bg-slate-800 rounded-full overflow-hidden"><div class="h-full bg-indigo-600" style="width: 70%"></div></div></div>
+                        </div>
+                    </div>
+                    <div class="bg-slate-50 dark:bg-slate-900 p-12 rounded-[4rem] border dark:border-slate-800 shadow-xl">
+                        <h3 class="text-2xl font-black mb-10 flex items-center gap-4 text-cyan-600"><i data-lucide="server"></i> Infrastructure</h3>
+                        <div class="space-y-10">
+                            <div><div class="flex justify-between mb-3 text-sm font-black uppercase tracking-widest opacity-70"><span>Maintenance & Dépannage</span><span>95%</span></div><div class="h-2.5 w-full bg-slate-200 dark:bg-slate-800 rounded-full overflow-hidden"><div class="h-full bg-cyan-600" style="width: 95%"></div></div></div>
+                            <div><div class="flex justify-between mb-3 text-sm font-black uppercase tracking-widest opacity-70"><span>Admin Système (Linux/Win)</span><span>75%</span></div><div class="h-2.5 w-full bg-slate-200 dark:bg-slate-800 rounded-full overflow-hidden"><div class="h-full bg-cyan-600" style="width: 75%"></div></div></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Veille Technologique -->
+        <section id="veille" class="py-32 bg-slate-50 dark:bg-slate-900">
+            <div class="max-w-6xl mx-auto px-6">
+                <div class="text-center mb-16 reveal">
+                    <h2 class="text-4xl font-bold mb-4">Veille Technologique</h2>
+                    <div class="h-1.5 w-24 bg-indigo-500 mx-auto rounded-full"></div>
+                </div>
+                <div class="bg-gradient-to-br from-indigo-900 to-brand-dark rounded-[4rem] p-16 md:p-24 text-white relative overflow-hidden shadow-2xl reveal">
+                    <div class="relative z-10 grid md:grid-cols-3 gap-16">
+                        <div class="md:col-span-2">
+                            <h3 class="text-5xl font-black mb-10 tracking-tight leading-tight uppercase">Le Cloud Computing <br/> & l'Infrastructure As Code</h3>
+                            <p class="text-indigo-100 text-2xl leading-relaxed mb-12">Analyse comparative des modèles de déploiement cloud et étude de la transition vers le "Full Stack Cloud Native".</p>
+                            <button class="px-10 py-5 bg-white text-indigo-900 rounded-2xl font-black flex items-center shadow-2xl"><i data-lucide="file-text" class="mr-3"></i> Télécharger le Dossier</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-32 bg-white dark:bg-slate-950">
+            <div class="max-w-5xl mx-auto px-6 text-center">
+                <h2 class="text-5xl font-black mb-20 reveal uppercase tracking-tighter">Me Contacter</h2>
+                <div class="grid md:grid-cols-2 gap-20 text-left reveal">
+                    <div class="space-y-12">
+                        <h3 class="text-3xl font-black">Coordonnées</h3>
+                        <div class="space-y-8">
+                            <div class="flex items-center gap-8 p-8 bg-slate-50 dark:bg-slate-800 rounded-[2.5rem] shadow-xl border dark:border-slate-700">
+                                <div class="w-16 h-16 bg-indigo-100 dark:bg-indigo-900 flex items-center justify-center rounded-2xl text-indigo-600"><i data-lucide="mail" class="w-8 h-8"></i></div>
+                                <span class="font-black text-xl">melloukmonib3@gmail.com</span>
+                            </div>
+                            <div class="flex items-center gap-8 p-8 bg-slate-50 dark:bg-slate-800 rounded-[2.5rem] shadow-xl border dark:border-slate-700">
+                                <div class="w-16 h-16 bg-cyan-100 dark:bg-cyan-900 flex items-center justify-center rounded-2xl text-cyan-600"><i data-lucide="phone" class="w-8 h-8"></i></div>
+                                <span class="font-black text-xl">07 81 64 24 30</span>
+                            </div>
+                        </div>
+                    </div>
+                    <form class="bg-slate-50 dark:bg-slate-800 p-16 rounded-[4rem] shadow-2xl space-y-8">
+                        <input type="text" placeholder="Nom" class="w-full p-6 rounded-3xl bg-white dark:bg-slate-900 border dark:border-slate-700 outline-none focus:ring-4 ring-indigo-500/20">
+                        <textarea placeholder="Message..." rows="6" class="w-full p-6 rounded-3xl bg-white dark:bg-slate-900 border dark:border-slate-700 outline-none focus:ring-4 ring-indigo-500/20"></textarea>
+                        <button type="submit" class="w-full py-6 bg-indigo-600 text-white font-black text-xl rounded-3xl hover:bg-indigo-700 transition-all shadow-2xl">Envoyer</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- INTEGRAL SYNTHESE PFMP VIEW -->
+    <main id="view-synthesis" class="view">
+        <section class="pt-32 pb-32 max-w-7xl mx-auto px-6">
+            <button onclick="showView('home')" class="mb-12 inline-flex items-center gap-4 font-black text-indigo-600 hover:-translate-x-2 transition-transform group uppercase tracking-widest text-sm">
+                <i data-lucide="arrow-left" class="group-hover:-translate-x-2 transition-transform"></i> Retour au Portfolio
+            </button>
+
+            <!-- Dossier Synthesis Card -->
+            <div class="bg-white dark:bg-slate-900 rounded-[4rem] shadow-[0_50px_100px_-20px_rgba(0,0,0,0.1)] overflow-hidden reveal active">
+                <div class="p-10 md:p-24 bg-gradient-to-br from-indigo-800 to-slate-900 text-white relative">
+                    <span class="inline-block px-4 py-1.5 bg-white/10 border border-white/20 rounded-xl text-xs font-black uppercase tracking-[0.2em] mb-8">Dossier de Synthèse</span>
+                    <h1 class="text-5xl md:text-8xl font-black mb-10 leading-none tracking-tighter uppercase">Rapport de <br/> Synthèse PFMP</h1>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-12 font-black text-lg border-t border-white/10 pt-10">
+                        <div><p class="text-xs uppercase opacity-50 mb-3 tracking-[0.2em]">Candidat</p><p>Mellouk Monib</p></div>
+                        <div><p class="text-xs uppercase opacity-50 mb-3 tracking-[0.2em]">Filière</p><p>Bac Pro SN CIEL (RISC)</p></div>
+                        <div><p class="text-xs uppercase opacity-50 mb-3 tracking-[0.2em]">Lycée</p><p>L.P Claude Chappe</p></div>
+                        <div><p class="text-xs uppercase opacity-50 mb-3 tracking-[0.2em]">Sujet</p><p>Maintenance & Systèmes</p></div>
+                    </div>
+                </div>
+
+                <div class="p-10 md:p-24 space-y-40">
+                    <!-- Remerciements -->
+                    <section class="synthesis-section">
+                        <h2 class="text-4xl font-black mb-12 uppercase tracking-tight flex items-center gap-6 text-indigo-600"><i data-lucide="heart"></i> Remerciements</h2>
+                        <div class="prose dark:prose-invert max-w-4xl text-slate-600 dark:text-slate-400 text-2xl leading-relaxed italic font-medium">
+                            "Je tenais à remercier les équipes des boutiques Laphony, Speed Laptop et Les réparateurs Mac et Pc pour m'avoir transmis leur savoir-faire en micro-maintenance et relation client. Ces 22 semaines ont été fondamentales pour mon projet d'études supérieures en BTS SIO."
+                        </div>
+                    </section>
+
+                    <!-- Introduction -->
+                    <section class="synthesis-section">
+                        <h2 class="text-4xl font-black mb-12 uppercase tracking-tight flex items-center gap-6 text-indigo-600"><i data-lucide="info"></i> Introduction</h2>
+                        <div class="text-slate-600 dark:text-slate-400 text-xl leading-relaxed max-w-5xl space-y-8">
+                            <p>Ce dossier retrace mon parcours technique lors de mes périodes de formation en milieu professionnel (PFMP). Il résume les interventions critiques effectuées en hardware et l'accompagnement des utilisateurs au quotidien.</p>
+                        </div>
+                    </section>
+
+                    <!-- Comptes Rendus (Les 8 activités) -->
+                    <section class="synthesis-section">
+                        <h2 class="text-4xl font-black mb-16 uppercase tracking-tight flex items-center gap-6 text-indigo-600"><i data-lucide="clipboard-list"></i> Activités Réalisées</h2>
+                        <div class="grid md:grid-cols-2 gap-12">
+                            <div class="p-12 bg-slate-50 dark:bg-slate-800 rounded-[3rem] shadow-xl border dark:border-slate-700">
+                                <h4 class="text-2xl font-black mb-6">1) Réparation d'écran</h4>
+                                <p class="text-slate-500 leading-relaxed">Retrait de l'écran endommagé via plaque chauffante (80°C), nettoyage des résidus de colle B7000 et installation du nouveau bloc afficheur/tactile.</p>
+                            </div>
+                            <div class="p-12 bg-slate-50 dark:bg-slate-800 rounded-[3rem] shadow-xl border dark:border-slate-700">
+                                <h4 class="text-2xl font-black mb-6">2) Réinstallation OS PC</h4>
+                                <p class="text-slate-500 leading-relaxed">Création de clés USB bootables (Windows 10/11), configuration du BIOS/UEFI et déploiement de l'OS avec installation des drivers propriétaires.</p>
+                            </div>
+                            <div class="p-12 bg-slate-50 dark:bg-slate-800 rounded-[3rem] shadow-xl border dark:border-slate-700">
+                                <h4 class="text-2xl font-black mb-6">3) Changement de batterie</h4>
+                                <p class="text-slate-500 leading-relaxed">Ouverture sécurisée du terminal, retrait des bandes adhésives et installation d'une batterie neuve avec test de cycles de charge.</p>
+                            </div>
+                            <div class="p-12 bg-slate-50 dark:bg-slate-800 rounded-[3rem] shadow-xl border dark:border-slate-700">
+                                <h4 class="text-2xl font-black mb-6">4) Pâte thermique</h4>
+                                <p class="text-slate-500 leading-relaxed">Nettoyage du die CPU à l'alcool isopropylique et application de pâte MX-4 pour optimiser la dissipation thermique.</p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Étude de Cas -->
+                    <section class="synthesis-section">
+                        <div class="bg-indigo-900 text-white p-16 md:p-24 rounded-[4rem] shadow-2xl relative">
+                            <h2 class="text-4xl md:text-6xl font-black mb-12 uppercase">Étude de Cas : GPU & SSD</h2>
+                            <p class="text-xl md:text-2xl font-medium mb-16 opacity-90 leading-relaxed italic">"Problématique : Rétablir un PC Tour avec artefacts graphiques et SSD non détecté."</p>
+                            <div class="grid md:grid-cols-2 gap-20">
+                                <div class="space-y-8">
+                                    <h4 class="text-brand-yellow font-black uppercase text-xs tracking-widest">Matériel engagé</h4>
+                                    <ul class="space-y-4">
+                                        <li class="flex items-center gap-4 bg-white/10 p-4 rounded-2xl">SSD Kingston A400 1.92To</li>
+                                        <li class="flex items-center gap-4 bg-white/10 p-4 rounded-2xl">MSI GeForce RTX 3060</li>
+                                        <li class="flex items-center gap-4 bg-white/10 p-4 rounded-2xl">Clé USB Windows 10</li>
+                                    </ul>
+                                </div>
+                                <div class="space-y-10">
+                                    <h4 class="text-brand-yellow font-black uppercase text-xs tracking-widest">Résolution</h4>
+                                    <p class="text-indigo-100 text-lg leading-relaxed">Après diagnostic, le SSD d'origine présentait une défaillance de contrôleur. Le GPU, causant les pixels morts, a été remplacé. L'intervention s'est finie par une réinstallation complète via Win10.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Bilan -->
+                    <section class="synthesis-section">
+                        <h2 class="text-4xl font-black mb-12 uppercase tracking-tight flex items-center gap-6 text-indigo-600"><i data-lucide="graduation-cap"></i> Bilan Personnel</h2>
+                        <div class="p-16 bg-slate-50 dark:bg-slate-900 rounded-[4rem] border-4 border-dashed border-indigo-200 dark:border-indigo-800">
+                            <p class="text-2xl font-black text-slate-800 dark:text-slate-100 mb-12 leading-relaxed">"Ce parcours m'a permis de développer une rigueur technique indispensable. Aujourd'hui en BTS SIO, j'utilise ces bases solides pour me spécialiser en réseau et cybersécurité."</p>
+                        </div>
+                    </section>
+                </div>
+                
+                <div class="bg-slate-900 p-24 text-center text-white/40 font-black tracking-[1em] uppercase text-[10px]">
+                    Fin du Dossier - Monib Mellouk
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer Global -->
+    <footer class="bg-slate-900 text-slate-500 py-32 text-center border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-6">
+            <h3 class="text-4xl font-black text-white mb-6">Monib Mellouk</h3>
+            <p class="mb-12 text-sm opacity-50 uppercase tracking-[0.5em]">BTS SIO 2024 - 2026</p>
+            <div class="flex justify-center space-x-12 mb-16">
+                <a href="https://github.com/WalterW920" target="_blank" class="text-white/40 hover:text-white transition-all transform hover:scale-125"><i data-lucide="github" class="w-10 h-10"></i></a>
+                <a href="https://www.linkedin.com/in/monib-mellouk-5226a4341/" target="_blank" class="text-white/40 hover:text-white transition-all transform hover:scale-125"><i data-lucide="linkedin" class="w-10 h-10"></i></a>
+            </div>
+            <p class="text-[10px] font-black opacity-20 uppercase tracking-[1em]">&copy; 2024 MONIB MELLOUK</p>
         </div>
-        <p class="text-xs">&copy; <span id="copyright-year"></span> Tous droits réservés.</p>
     </footer>
 
-    <!-- Scripts Logic -->
     <script>
-        lucide.createIcons();
-        document.getElementById('copyright-year').textContent = new Date().getFullYear();
-
-        // Gestion du thème
-        const html = document.documentElement;
-        const themeBtns = document.querySelectorAll('#theme-toggle, #theme-toggle-mobile');
-
-        // Initialisation
-        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-            html.classList.add('dark');
-        } else {
-            html.classList.remove('dark');
+        function updateIcons() { if(window.lucide) window.lucide.createIcons(); }
+        
+        function toggleTheme() {
+            document.documentElement.classList.toggle('dark');
+            localStorage.theme = document.documentElement.classList.contains('dark') ? 'dark' : 'light';
+            updateIcons();
         }
 
-        // Toggle Event
-        themeBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                html.classList.toggle('dark');
-                if (html.classList.contains('dark')) {
-                    localStorage.theme = 'dark';
-                } else {
-                    localStorage.theme = 'light';
+        function showView(id) {
+            document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
+            document.getElementById('view-' + id).classList.add('active');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            updateIcons();
+        }
+
+        function scrollToSection(id) {
+            showView('home');
+            setTimeout(() => {
+                const element = document.getElementById(id);
+                if(element) {
+                    const y = element.getBoundingClientRect().top + window.pageYOffset - 80;
+                    window.scrollTo({top: y, behavior: 'smooth'});
                 }
-            });
-        });
+            }, 50);
+        }
 
-        // Menu Mobile
-        const menuBtn = document.getElementById('menu-btn');
-        const mobileMenu = document.getElementById('mobile-menu');
-        menuBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
-        document.querySelectorAll('#mobile-menu a').forEach(link => {
-            link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
-        });
+        function toggleMobileMenu() {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        }
 
-        // Tabs Logic
-        window.switchTab = function(tabName) {
-            const contentFormation = document.getElementById('content-formation');
-            const contentExperience = document.getElementById('content-experience');
-            const btnFormation = document.getElementById('tab-formation');
-            const btnExperience = document.getElementById('tab-experience');
+        function switchParcoursTab(tab) {
+            const btnScolaire = document.getElementById('btn-tab-scolaire');
+            const btnStages = document.getElementById('btn-tab-stages');
+            const contentScolaire = document.getElementById('parcours-scolaire');
+            const contentStages = document.getElementById('parcours-stages');
 
-            if (tabName === 'formation') {
-                contentFormation.classList.remove('hidden');
-                contentExperience.classList.add('hidden');
-                btnFormation.classList.add('bg-indigo-100', 'text-indigo-700', 'dark:bg-indigo-900', 'dark:text-indigo-200');
-                btnFormation.classList.remove('text-slate-600', 'dark:text-slate-400', 'hover:bg-slate-100', 'dark:hover:bg-slate-700');
-                btnExperience.classList.remove('bg-indigo-100', 'text-indigo-700', 'dark:bg-indigo-900', 'dark:text-indigo-200');
-                btnExperience.classList.add('text-slate-600', 'dark:text-slate-400', 'hover:bg-slate-100', 'dark:hover:bg-slate-700');
+            if (tab === 'scolaire') {
+                btnScolaire.classList.add('active');
+                btnScolaire.classList.remove('text-slate-500');
+                btnStages.classList.remove('active');
+                btnStages.classList.add('text-slate-500');
+                contentScolaire.classList.remove('hidden');
+                contentStages.classList.add('hidden');
             } else {
-                contentFormation.classList.add('hidden');
-                contentExperience.classList.remove('hidden');
-                btnExperience.classList.add('bg-indigo-100', 'text-indigo-700', 'dark:bg-indigo-900', 'dark:text-indigo-200');
-                btnExperience.classList.remove('text-slate-600', 'dark:text-slate-400', 'hover:bg-slate-100', 'dark:hover:bg-slate-700');
-                btnFormation.classList.remove('bg-indigo-100', 'text-indigo-700', 'dark:bg-indigo-900', 'dark:text-indigo-200');
-                btnFormation.classList.add('text-slate-600', 'dark:text-slate-400', 'hover:bg-slate-100', 'dark:hover:bg-slate-700');
+                btnStages.classList.add('active');
+                btnStages.classList.remove('text-slate-500');
+                btnScolaire.classList.remove('active');
+                btnScolaire.classList.add('text-slate-500');
+                contentStages.classList.remove('hidden');
+                contentScolaire.classList.add('hidden');
             }
-        };
+            updateIcons();
+        }
 
-        // Scroll Animation
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) entry.target.classList.add('active');
-            });
-        }, { threshold: 0.1 });
-        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-        
-        // Form
-        document.querySelector('form').addEventListener('submit', (e) => {
-            e.preventDefault();
-            alert('Simulation d\'envoi réussie !');
+        document.addEventListener('DOMContentLoaded', () => {
+            if (localStorage.theme === 'dark' || (!localStorage.theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                document.documentElement.classList.add('dark');
+            }
+            updateIcons();
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('active'); });
+            }, { threshold: 0.1 });
+            document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
         });
     </script>
-<!-- Code injected by live-server -->
-<script>
-	// <![CDATA[  <-- For SVG support
-	if ('WebSocket' in window) {
-		(function () {
-			function refreshCSS() {
-				var sheets = [].slice.call(document.getElementsByTagName("link"));
-				var head = document.getElementsByTagName("head")[0];
-				for (var i = 0; i < sheets.length; ++i) {
-					var elem = sheets[i];
-					var parent = elem.parentElement || head;
-					parent.removeChild(elem);
-					var rel = elem.rel;
-					if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
-						var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
-						elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
-					}
-					parent.appendChild(elem);
-				}
-			}
-			var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
-			var address = protocol + window.location.host + window.location.pathname + '/ws';
-			var socket = new WebSocket(address);
-			socket.onmessage = function (msg) {
-				if (msg.data == 'reload') window.location.reload();
-				else if (msg.data == 'refreshcss') refreshCSS();
-			};
-			if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
-				console.log('Live reload enabled.');
-				sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
-			}
-		})();
-	}
-	else {
-		console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
-	}
-	// ]]>
-</script>
 </body>
 </html>
