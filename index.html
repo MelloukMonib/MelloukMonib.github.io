@@ -37,58 +37,7 @@
         }
     </script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        body { font-family: 'Inter', sans-serif; overflow-x: hidden; }
-        h1, h2, h3, h4, h5, h6 { font-family: 'Space Grotesk', sans-serif; }
-        
-        .glass-nav {
-            background-color: rgba(255, 255, 255, 0.85);
-            backdrop-filter: blur(12px);
-            border-bottom: 1px solid rgba(226, 232, 240, 0.8);
-        }
-        .dark .glass-nav {
-            background-color: rgba(15, 23, 42, 0.85);
-            border-bottom: 1px solid rgba(51, 65, 85, 0.8);
-        }
-        
-        .reveal { opacity: 0; transform: translateY(20px); transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1); }
-        .reveal.active { opacity: 1; transform: translateY(0); }
-        
-        .view { display: none; }
-        .view.active { display: block; animation: fadeIn 0.4s ease-out; }
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-
-        /* Timeline Styles */
-        .timeline-line {
-            position: absolute;
-            left: 2rem;
-            top: 0;
-            bottom: 0;
-            width: 2px;
-            background-color: #e2e8f0;
-        }
-        .dark .timeline-line { background-color: #334155; }
-        
-        .timeline-dot {
-            position: absolute;
-            left: 2rem;
-            transform: translateX(-50%);
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background-color: #6366f1;
-            z-index: 10;
-            box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.2);
-        }
-
-        .tab-btn.active {
-            background-color: #6366f1;
-            color: white;
-            box-shadow: 0 4px 14px 0 rgba(99, 102, 241, 0.39);
-        }
-
-        .synthesis-section { border-left: 4px solid #6366f1; padding-left: 2rem; margin-bottom: 5rem; }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body class="bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100 transition-colors duration-300">
 
@@ -107,7 +56,7 @@
                         <button onclick="scrollToSection('cv')" class="hover:text-indigo-600 dark:hover:text-cyan-400 transition-colors">Parcours</button>
                         <button onclick="scrollToSection('competences')" class="hover:text-indigo-600 dark:hover:text-cyan-400 transition-colors">Compétences</button>
                         <button onclick="scrollToSection('veille')" class="hover:text-indigo-600 dark:hover:text-cyan-400 transition-colors">Veille</button>
-                        <button onclick="showView('synthesis')" class="px-5 py-2 bg-indigo-600 text-white rounded-xl font-bold hover:bg-indigo-700 transition-all shadow-lg">Synthèse PFMP</button>
+                        <a href="synthese.html" class="px-5 py-2 bg-indigo-600 text-white rounded-xl font-bold hover:bg-indigo-700 transition-all shadow-lg">Synthèse PFMP</a>
                         <button onclick="scrollToSection('contact')" class="hover:text-indigo-600 dark:hover:text-cyan-400 transition-colors">Contact</button>
                     </nav>
                     <div class="flex items-center space-x-4 border-l border-slate-200 dark:border-slate-800 pl-6">
@@ -125,7 +74,7 @@
         </div>
         <div id="mobile-menu" class="hidden md:hidden bg-white dark:bg-slate-900 border-t dark:border-slate-800 p-4 space-y-4 shadow-xl">
             <button onclick="showView('home'); toggleMobileMenu()" class="block w-full text-left font-medium p-2">Accueil</button>
-            <button onclick="showView('synthesis'); toggleMobileMenu()" class="block w-full text-left font-bold p-2 text-indigo-600">Synthèse PFMP</button>
+            <a href="synthese.html" class="block w-full text-left font-bold p-2 text-indigo-600">Synthèse PFMP</a>
             <button onclick="scrollToSection('cv'); toggleMobileMenu()" class="block w-full text-left font-medium p-2">Parcours</button>
             <button onclick="scrollToSection('contact'); toggleMobileMenu()" class="block w-full text-left font-medium p-2">Contact</button>
         </div>
@@ -162,7 +111,7 @@
             </div>
         </section>
 
-        <!-- Parcours Professionnel & Scolaire (Double Catégorie) -->
+        <!-- Parcours Professionnel & Scolaire -->
         <section id="cv" class="py-32 bg-slate-50 dark:bg-slate-900 transition-colors">
             <div class="max-w-5xl mx-auto px-6">
                 <div class="text-center mb-16 reveal">
@@ -183,7 +132,7 @@
                 </div>
 
                 <!-- Tab Content: Scolaire -->
-                <div id="parcours-scolaire" class="space-y-12 relative pl-16 reveal active">
+                <div id="parcours-scolaire" class="timeline-container space-y-12 reveal active">
                     <div class="timeline-line"></div>
                     
                     <!-- BTS SIO -->
@@ -210,22 +159,39 @@
                 </div>
 
                 <!-- Tab Content: Stages -->
-                <div id="parcours-stages" class="hidden space-y-8 relative pl-16 reveal">
+                <div id="parcours-stages" class="timeline-container hidden space-y-8 reveal">
                     <div class="timeline-line"></div>
 
-                    <!-- Stage 6: Les réparateurs Mac et Pc (A VENIR) -->
+                    <!-- CALL TO ACTION SYNTHESE -->
+                    <div class="relative mb-12 bg-indigo-600 p-8 rounded-[2.5rem] shadow-2xl border border-indigo-400 group overflow-hidden">
+                        <div class="absolute -right-10 -top-10 w-40 h-40 bg-white/10 rounded-full blur-3xl group-hover:scale-150 transition-transform"></div>
+                        <div class="relative z-10 flex flex-col md:flex-row items-center justify-between gap-6">
+                            <div class="text-center md:text-left">
+                                <h3 class="text-2xl font-black text-white mb-2">Synthèse PFMP</h3>
+                                <p class="text-indigo-100 text-sm">Consultez mon rapport détaillé des activités réalisées lors de mes stages.</p>
+                            </div>
+                            <a href="synthese.html" class="px-8 py-4 bg-white text-indigo-600 font-black rounded-2xl shadow-xl hover:bg-indigo-50 transition-all flex items-center gap-3 whitespace-nowrap">
+                                Voir la synthèse <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Stages Fusionnés: Les réparateurs Mac et Pc -->
                     <div class="relative bg-white dark:bg-slate-800 p-8 rounded-[2rem] shadow-xl border border-slate-100 dark:border-slate-700 hover:border-indigo-500 transition-all">
                         <div class="timeline-dot top-10 bg-indigo-500"></div>
                         <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-4">
                             <h3 class="text-xl font-black">Les réparateurs Mac et Pc - Montreuil</h3>
-                            <span class="text-indigo-600 font-bold font-mono">JUIN 2025</span>
+                            <div class="flex flex-col items-end">
+                                <span class="text-indigo-600 font-bold font-mono text-sm">JUIN 2025</span>
+                                <span class="text-indigo-600 font-bold font-mono text-sm">JANVIER 2026</span>
+                            </div>
                         </div>
                         <div class="mb-4"><span class="px-4 py-1.5 bg-amber-100 text-amber-700 text-xs font-black rounded-full uppercase tracking-widest">À Venir</span></div>
                         <p class="text-brand-indigo font-bold text-sm mb-3 uppercase tracking-tighter">Stage – Réparateur Informatique</p>
                         <ul class="text-sm text-slate-500 dark:text-slate-400 space-y-1">
-                            <li>• Réparation de différents appareils électroniques</li>
-                            <li>• Accueil de clients en boutique</li>
-                            <li>• Réception des commandes</li>
+                            <li>• Perfectionnement sur micro-soudure de composants CMS</li>
+                            <li>• Maintenance préventive et curative de parcs informatiques</li>
+                            <li>• Accueil et diagnostic client approfondi</li>
                         </ul>
                     </div>
 
@@ -240,7 +206,7 @@
                         <p class="text-brand-indigo font-bold text-sm mb-3 uppercase tracking-tighter">Stage – Réparateur Informatique</p>
                         <ul class="text-sm text-slate-500 dark:text-slate-400 space-y-1">
                             <li>• Réparation smartphones & terminaux mobiles</li>
-                            <li>• Diagnostic de pannes hardware</li>
+                            <li>• Diagnostic de pannes hardware complexes</li>
                         </ul>
                     </div>
 
@@ -253,7 +219,7 @@
                         </div>
                         <div class="mb-4"><span class="px-4 py-1.5 bg-emerald-100 text-emerald-700 text-xs font-black rounded-full uppercase tracking-widest">Effectué</span></div>
                         <p class="text-brand-indigo font-bold text-sm mb-3 uppercase tracking-tighter">Stage – Réparateur Informatique</p>
-                        <p class="text-sm text-slate-500">Installation systèmes Windows 10/11 et tri de composants.</p>
+                        <p class="text-sm text-slate-500">Installation systèmes Windows 10/11 et tri rigoureux de composants hardware.</p>
                     </div>
 
                     <!-- Stage 3: Les réparateurs Mac et Pc -->
@@ -265,7 +231,7 @@
                         </div>
                         <div class="mb-4"><span class="px-4 py-1.5 bg-emerald-100 text-emerald-700 text-xs font-black rounded-full uppercase tracking-widest">Effectué</span></div>
                         <p class="text-brand-indigo font-bold text-sm mb-3 uppercase tracking-tighter">Stage – Réparateur Informatique</p>
-                        <p class="text-sm text-slate-500">Maintenance hardware de précision et gestion SAV.</p>
+                        <p class="text-sm text-slate-500">Maintenance hardware de précision et gestion administrative du SAV.</p>
                     </div>
 
                     <!-- Stage 2: Presta Plus -->
@@ -293,7 +259,7 @@
             </div>
         </section>
 
-        <!-- Compétences (3 Main Cards + Barres) -->
+        <!-- Compétences -->
         <section id="competences" class="py-32 bg-white dark:bg-slate-950">
             <div class="max-w-6xl mx-auto px-6">
                 <div class="text-center mb-20 reveal">
@@ -349,8 +315,8 @@
                     <div class="relative z-10 grid md:grid-cols-3 gap-16">
                         <div class="md:col-span-2">
                             <h3 class="text-5xl font-black mb-10 tracking-tight leading-tight uppercase">Le Cloud Computing <br/> & l'Infrastructure As Code</h3>
-                            <p class="text-indigo-100 text-2xl leading-relaxed mb-12">Analyse comparative des modèles de déploiement cloud et étude de la transition vers le "Full Stack Cloud Native".</p>
-                            <button class="px-10 py-5 bg-white text-indigo-900 rounded-2xl font-black flex items-center shadow-2xl"><i data-lucide="file-text" class="mr-3"></i> Télécharger le Dossier</button>
+                            <p class="text-indigo-100 text-2xl leading-relaxed mb-12">Analyse comparative des modèles de déploiement cloud et étude de la transition vers le "Full Stack Cloud Native". Focus sur la sécurité des conteneurs et l'orchestration Kubernetes.</p>
+                            <button class="px-10 py-5 bg-white text-indigo-900 rounded-2xl font-black flex items-center shadow-2xl hover:scale-105 transition-transform"><i data-lucide="file-text" class="mr-3"></i> Télécharger le Dossier</button>
                         </div>
                     </div>
                 </div>
@@ -385,104 +351,6 @@
         </section>
     </main>
 
-    <!-- INTEGRAL SYNTHESE PFMP VIEW -->
-    <main id="view-synthesis" class="view">
-        <section class="pt-32 pb-32 max-w-7xl mx-auto px-6">
-            <button onclick="showView('home')" class="mb-12 inline-flex items-center gap-4 font-black text-indigo-600 hover:-translate-x-2 transition-transform group uppercase tracking-widest text-sm">
-                <i data-lucide="arrow-left" class="group-hover:-translate-x-2 transition-transform"></i> Retour au Portfolio
-            </button>
-
-            <!-- Dossier Synthesis Card -->
-            <div class="bg-white dark:bg-slate-900 rounded-[4rem] shadow-[0_50px_100px_-20px_rgba(0,0,0,0.1)] overflow-hidden reveal active">
-                <div class="p-10 md:p-24 bg-gradient-to-br from-indigo-800 to-slate-900 text-white relative">
-                    <span class="inline-block px-4 py-1.5 bg-white/10 border border-white/20 rounded-xl text-xs font-black uppercase tracking-[0.2em] mb-8">Dossier de Synthèse</span>
-                    <h1 class="text-5xl md:text-8xl font-black mb-10 leading-none tracking-tighter uppercase">Rapport de <br/> Synthèse PFMP</h1>
-                    <div class="grid grid-cols-2 md:grid-cols-4 gap-12 font-black text-lg border-t border-white/10 pt-10">
-                        <div><p class="text-xs uppercase opacity-50 mb-3 tracking-[0.2em]">Candidat</p><p>Mellouk Monib</p></div>
-                        <div><p class="text-xs uppercase opacity-50 mb-3 tracking-[0.2em]">Filière</p><p>Bac Pro SN CIEL (RISC)</p></div>
-                        <div><p class="text-xs uppercase opacity-50 mb-3 tracking-[0.2em]">Lycée</p><p>L.P Claude Chappe</p></div>
-                        <div><p class="text-xs uppercase opacity-50 mb-3 tracking-[0.2em]">Sujet</p><p>Maintenance & Systèmes</p></div>
-                    </div>
-                </div>
-
-                <div class="p-10 md:p-24 space-y-40">
-                    <!-- Remerciements -->
-                    <section class="synthesis-section">
-                        <h2 class="text-4xl font-black mb-12 uppercase tracking-tight flex items-center gap-6 text-indigo-600"><i data-lucide="heart"></i> Remerciements</h2>
-                        <div class="prose dark:prose-invert max-w-4xl text-slate-600 dark:text-slate-400 text-2xl leading-relaxed italic font-medium">
-                            "Je tenais à remercier les équipes des boutiques Laphony, Speed Laptop et Les réparateurs Mac et Pc pour m'avoir transmis leur savoir-faire en micro-maintenance et relation client. Ces 22 semaines ont été fondamentales pour mon projet d'études supérieures en BTS SIO."
-                        </div>
-                    </section>
-
-                    <!-- Introduction -->
-                    <section class="synthesis-section">
-                        <h2 class="text-4xl font-black mb-12 uppercase tracking-tight flex items-center gap-6 text-indigo-600"><i data-lucide="info"></i> Introduction</h2>
-                        <div class="text-slate-600 dark:text-slate-400 text-xl leading-relaxed max-w-5xl space-y-8">
-                            <p>Ce dossier retrace mon parcours technique lors de mes périodes de formation en milieu professionnel (PFMP). Il résume les interventions critiques effectuées en hardware et l'accompagnement des utilisateurs au quotidien.</p>
-                        </div>
-                    </section>
-
-                    <!-- Comptes Rendus (Les 8 activités) -->
-                    <section class="synthesis-section">
-                        <h2 class="text-4xl font-black mb-16 uppercase tracking-tight flex items-center gap-6 text-indigo-600"><i data-lucide="clipboard-list"></i> Activités Réalisées</h2>
-                        <div class="grid md:grid-cols-2 gap-12">
-                            <div class="p-12 bg-slate-50 dark:bg-slate-800 rounded-[3rem] shadow-xl border dark:border-slate-700">
-                                <h4 class="text-2xl font-black mb-6">1) Réparation d'écran</h4>
-                                <p class="text-slate-500 leading-relaxed">Retrait de l'écran endommagé via plaque chauffante (80°C), nettoyage des résidus de colle B7000 et installation du nouveau bloc afficheur/tactile.</p>
-                            </div>
-                            <div class="p-12 bg-slate-50 dark:bg-slate-800 rounded-[3rem] shadow-xl border dark:border-slate-700">
-                                <h4 class="text-2xl font-black mb-6">2) Réinstallation OS PC</h4>
-                                <p class="text-slate-500 leading-relaxed">Création de clés USB bootables (Windows 10/11), configuration du BIOS/UEFI et déploiement de l'OS avec installation des drivers propriétaires.</p>
-                            </div>
-                            <div class="p-12 bg-slate-50 dark:bg-slate-800 rounded-[3rem] shadow-xl border dark:border-slate-700">
-                                <h4 class="text-2xl font-black mb-6">3) Changement de batterie</h4>
-                                <p class="text-slate-500 leading-relaxed">Ouverture sécurisée du terminal, retrait des bandes adhésives et installation d'une batterie neuve avec test de cycles de charge.</p>
-                            </div>
-                            <div class="p-12 bg-slate-50 dark:bg-slate-800 rounded-[3rem] shadow-xl border dark:border-slate-700">
-                                <h4 class="text-2xl font-black mb-6">4) Pâte thermique</h4>
-                                <p class="text-slate-500 leading-relaxed">Nettoyage du die CPU à l'alcool isopropylique et application de pâte MX-4 pour optimiser la dissipation thermique.</p>
-                            </div>
-                        </div>
-                    </section>
-
-                    <!-- Étude de Cas -->
-                    <section class="synthesis-section">
-                        <div class="bg-indigo-900 text-white p-16 md:p-24 rounded-[4rem] shadow-2xl relative">
-                            <h2 class="text-4xl md:text-6xl font-black mb-12 uppercase">Étude de Cas : GPU & SSD</h2>
-                            <p class="text-xl md:text-2xl font-medium mb-16 opacity-90 leading-relaxed italic">"Problématique : Rétablir un PC Tour avec artefacts graphiques et SSD non détecté."</p>
-                            <div class="grid md:grid-cols-2 gap-20">
-                                <div class="space-y-8">
-                                    <h4 class="text-brand-yellow font-black uppercase text-xs tracking-widest">Matériel engagé</h4>
-                                    <ul class="space-y-4">
-                                        <li class="flex items-center gap-4 bg-white/10 p-4 rounded-2xl">SSD Kingston A400 1.92To</li>
-                                        <li class="flex items-center gap-4 bg-white/10 p-4 rounded-2xl">MSI GeForce RTX 3060</li>
-                                        <li class="flex items-center gap-4 bg-white/10 p-4 rounded-2xl">Clé USB Windows 10</li>
-                                    </ul>
-                                </div>
-                                <div class="space-y-10">
-                                    <h4 class="text-brand-yellow font-black uppercase text-xs tracking-widest">Résolution</h4>
-                                    <p class="text-indigo-100 text-lg leading-relaxed">Après diagnostic, le SSD d'origine présentait une défaillance de contrôleur. Le GPU, causant les pixels morts, a été remplacé. L'intervention s'est finie par une réinstallation complète via Win10.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </section>
-
-                    <!-- Bilan -->
-                    <section class="synthesis-section">
-                        <h2 class="text-4xl font-black mb-12 uppercase tracking-tight flex items-center gap-6 text-indigo-600"><i data-lucide="graduation-cap"></i> Bilan Personnel</h2>
-                        <div class="p-16 bg-slate-50 dark:bg-slate-900 rounded-[4rem] border-4 border-dashed border-indigo-200 dark:border-indigo-800">
-                            <p class="text-2xl font-black text-slate-800 dark:text-slate-100 mb-12 leading-relaxed">"Ce parcours m'a permis de développer une rigueur technique indispensable. Aujourd'hui en BTS SIO, j'utilise ces bases solides pour me spécialiser en réseau et cybersécurité."</p>
-                        </div>
-                    </section>
-                </div>
-                
-                <div class="bg-slate-900 p-24 text-center text-white/40 font-black tracking-[1em] uppercase text-[10px]">
-                    Fin du Dossier - Monib Mellouk
-                </div>
-            </div>
-        </section>
-    </main>
-
     <!-- Footer Global -->
     <footer class="bg-slate-900 text-slate-500 py-32 text-center border-t border-slate-800">
         <div class="max-w-7xl mx-auto px-6">
@@ -496,70 +364,95 @@
         </div>
     </footer>
 
+    <!-- Logic Script -->
     <script>
-        function updateIcons() { if(window.lucide) window.lucide.createIcons(); }
-        
-        function toggleTheme() {
-            document.documentElement.classList.toggle('dark');
-            localStorage.theme = document.documentElement.classList.contains('dark') ? 'dark' : 'light';
-            updateIcons();
-        }
+        const updateIcons = () => {
+          if (window.lucide) {
+            window.lucide.createIcons();
+          }
+        };
 
-        function showView(id) {
-            document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
-            document.getElementById('view-' + id).classList.add('active');
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-            updateIcons();
-        }
+        const toggleTheme = () => {
+          document.documentElement.classList.toggle('dark');
+          localStorage.theme = document.documentElement.classList.contains('dark') ? 'dark' : 'light';
+          updateIcons();
+        };
 
-        function scrollToSection(id) {
-            showView('home');
-            setTimeout(() => {
-                const element = document.getElementById(id);
-                if(element) {
-                    const y = element.getBoundingClientRect().top + window.pageYOffset - 80;
-                    window.scrollTo({top: y, behavior: 'smooth'});
-                }
-            }, 50);
-        }
+        const showView = (id) => {
+          document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
+          const target = document.getElementById('view-' + id);
+          if (target) {
+            target.classList.add('active');
+          }
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+          updateIcons();
+        };
 
-        function toggleMobileMenu() {
-            document.getElementById('mobile-menu').classList.toggle('hidden');
-        }
-
-        function switchParcoursTab(tab) {
-            const btnScolaire = document.getElementById('btn-tab-scolaire');
-            const btnStages = document.getElementById('btn-tab-stages');
-            const contentScolaire = document.getElementById('parcours-scolaire');
-            const contentStages = document.getElementById('parcours-stages');
-
-            if (tab === 'scolaire') {
-                btnScolaire.classList.add('active');
-                btnScolaire.classList.remove('text-slate-500');
-                btnStages.classList.remove('active');
-                btnStages.classList.add('text-slate-500');
-                contentScolaire.classList.remove('hidden');
-                contentStages.classList.add('hidden');
-            } else {
-                btnStages.classList.add('active');
-                btnStages.classList.remove('text-slate-500');
-                btnScolaire.classList.remove('active');
-                btnScolaire.classList.add('text-slate-500');
-                contentStages.classList.remove('hidden');
-                contentScolaire.classList.add('hidden');
+        const scrollToSection = (id) => {
+          showView('home');
+          setTimeout(() => {
+            const element = document.getElementById(id);
+            if (element) {
+              const y = element.getBoundingClientRect().top + window.pageYOffset - 80;
+              window.scrollTo({ top: y, behavior: 'smooth' });
             }
-            updateIcons();
-        }
+          }, 50);
+        };
+
+        const toggleMobileMenu = () => {
+          const menu = document.getElementById('mobile-menu');
+          if (menu) {
+            menu.classList.toggle('hidden');
+          }
+        };
+
+        const switchParcoursTab = (tab) => {
+          const btnScolaire = document.getElementById('btn-tab-scolaire');
+          const btnStages = document.getElementById('btn-tab-stages');
+          const contentScolaire = document.getElementById('parcours-scolaire');
+          const contentStages = document.getElementById('parcours-stages');
+
+          if (tab === 'scolaire') {
+            btnScolaire?.classList.add('active');
+            btnScolaire?.classList.remove('text-slate-500');
+            btnStages?.classList.remove('active');
+            btnStages?.classList.add('text-slate-500');
+            contentScolaire?.classList.remove('hidden');
+            contentStages?.classList.add('hidden');
+          } else {
+            btnStages?.classList.add('active');
+            btnStages?.classList.remove('text-slate-500');
+            btnScolaire?.classList.remove('active');
+            btnScolaire?.classList.add('text-slate-500');
+            contentStages?.classList.remove('hidden');
+            contentScolaire?.classList.add('hidden');
+          }
+          updateIcons();
+        };
+
+        // Expose to window for inline HTML handlers
+        window.updateIcons = updateIcons;
+        window.toggleTheme = toggleTheme;
+        window.showView = showView;
+        window.scrollToSection = scrollToSection;
+        window.toggleMobileMenu = toggleMobileMenu;
+        window.switchParcoursTab = switchParcoursTab;
 
         document.addEventListener('DOMContentLoaded', () => {
-            if (localStorage.theme === 'dark' || (!localStorage.theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-                document.documentElement.classList.add('dark');
-            }
-            updateIcons();
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('active'); });
-            }, { threshold: 0.1 });
-            document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+          if (localStorage.theme === 'dark' || (!localStorage.theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+          }
+          updateIcons();
+          
+          const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add('active');
+              }
+            });
+          }, { threshold: 0.1 });
+          
+          document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
         });
     </script>
 </body>
