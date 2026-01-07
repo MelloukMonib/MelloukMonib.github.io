@@ -55,8 +55,8 @@
                         <button onclick="showView('home')" class="hover:text-indigo-600 dark:hover:text-cyan-400 transition-colors">Accueil</button>
                         <button onclick="scrollToSection('cv')" class="hover:text-indigo-600 dark:hover:text-cyan-400 transition-colors">Parcours</button>
                         <button onclick="scrollToSection('competences')" class="hover:text-indigo-600 dark:hover:text-cyan-400 transition-colors">Compétences</button>
+                        <button onclick="scrollToSection('tps')" class="hover:text-indigo-600 dark:hover:text-cyan-400 transition-colors">TPS</button>
                         <button onclick="scrollToSection('veille')" class="hover:text-indigo-600 dark:hover:text-cyan-400 transition-colors">Veille</button>
-                        <a href="synthese.html" class="px-5 py-2 bg-indigo-600 text-white rounded-xl font-bold hover:bg-indigo-700 transition-all shadow-lg">Synthèse PFMP</a>
                         <button onclick="scrollToSection('contact')" class="hover:text-indigo-600 dark:hover:text-cyan-400 transition-colors">Contact</button>
                     </nav>
                     <div class="flex items-center space-x-4 border-l border-slate-200 dark:border-slate-800 pl-6">
@@ -74,8 +74,8 @@
         </div>
         <div id="mobile-menu" class="hidden md:hidden bg-white dark:bg-slate-900 border-t dark:border-slate-800 p-4 space-y-4 shadow-xl">
             <button onclick="showView('home'); toggleMobileMenu()" class="block w-full text-left font-medium p-2">Accueil</button>
-            <a href="synthese.html" class="block w-full text-left font-bold p-2 text-indigo-600">Synthèse PFMP</a>
             <button onclick="scrollToSection('cv'); toggleMobileMenu()" class="block w-full text-left font-medium p-2">Parcours</button>
+            <button onclick="scrollToSection('tps'); toggleMobileMenu()" class="block w-full text-left font-medium p-2">TPS</button>
             <button onclick="scrollToSection('contact'); toggleMobileMenu()" class="block w-full text-left font-medium p-2">Contact</button>
         </div>
     </header>
@@ -304,8 +304,25 @@
             </div>
         </section>
 
+        <!-- Travaux Pratiques (TPS) -->
+        <section id="tps" class="py-32 bg-slate-50 dark:bg-slate-900 transition-colors">
+            <div class="max-w-6xl mx-auto px-6">
+                <div class="text-center mb-20 reveal">
+                    <h2 class="text-5xl font-black mb-4 uppercase tracking-tighter">Travaux Pratiques</h2>
+                    <div class="h-1.5 w-24 bg-brand-indigo mx-auto rounded-full"></div>
+                </div>
+                
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 reveal">
+                    <!-- Section vide pour ajout futur par l'utilisateur -->
+                    <div class="col-span-full text-center py-20 border-2 border-dashed border-slate-200 dark:border-slate-700 rounded-[3rem]">
+                        <p class="text-slate-400 font-medium italic">Mes travaux pratiques seront ajoutés prochainement.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- Veille Technologique -->
-        <section id="veille" class="py-32 bg-slate-50 dark:bg-slate-900">
+        <section id="veille" class="py-32 bg-white dark:bg-slate-950">
             <div class="max-w-6xl mx-auto px-6">
                 <div class="text-center mb-16 reveal">
                     <h2 class="text-4xl font-bold mb-4">Veille Technologique</h2>
@@ -324,26 +341,26 @@
         </section>
 
         <!-- Contact Section -->
-        <section id="contact" class="py-32 bg-white dark:bg-slate-950">
+        <section id="contact" class="py-32 bg-slate-50 dark:bg-slate-900">
             <div class="max-w-5xl mx-auto px-6 text-center">
                 <h2 class="text-5xl font-black mb-20 reveal uppercase tracking-tighter">Me Contacter</h2>
                 <div class="grid md:grid-cols-2 gap-20 text-left reveal">
                     <div class="space-y-12">
                         <h3 class="text-3xl font-black">Coordonnées</h3>
                         <div class="space-y-8">
-                            <div class="flex items-center gap-8 p-8 bg-slate-50 dark:bg-slate-800 rounded-[2.5rem] shadow-xl border dark:border-slate-700">
+                            <div class="flex items-center gap-8 p-8 bg-white dark:bg-slate-800 rounded-[2.5rem] shadow-xl border dark:border-slate-700">
                                 <div class="w-16 h-16 bg-indigo-100 dark:bg-indigo-900 flex items-center justify-center rounded-2xl text-indigo-600"><i data-lucide="mail" class="w-8 h-8"></i></div>
                                 <span class="font-black text-xl">melloukmonib3@gmail.com</span>
                             </div>
-                            <div class="flex items-center gap-8 p-8 bg-slate-50 dark:bg-slate-800 rounded-[2.5rem] shadow-xl border dark:border-slate-700">
+                            <div class="flex items-center gap-8 p-8 bg-white dark:bg-slate-800 rounded-[2.5rem] shadow-xl border dark:border-slate-700">
                                 <div class="w-16 h-16 bg-cyan-100 dark:bg-cyan-900 flex items-center justify-center rounded-2xl text-cyan-600"><i data-lucide="phone" class="w-8 h-8"></i></div>
                                 <span class="font-black text-xl">07 81 64 24 30</span>
                             </div>
                         </div>
                     </div>
-                    <form class="bg-slate-50 dark:bg-slate-800 p-16 rounded-[4rem] shadow-2xl space-y-8">
-                        <input type="text" placeholder="Nom" class="w-full p-6 rounded-3xl bg-white dark:bg-slate-900 border dark:border-slate-700 outline-none focus:ring-4 ring-indigo-500/20">
-                        <textarea placeholder="Message..." rows="6" class="w-full p-6 rounded-3xl bg-white dark:bg-slate-900 border dark:border-slate-700 outline-none focus:ring-4 ring-indigo-500/20"></textarea>
+                    <form class="bg-white dark:bg-slate-800 p-16 rounded-[4rem] shadow-2xl space-y-8">
+                        <input type="text" placeholder="Nom" class="w-full p-6 rounded-3xl bg-slate-50 dark:bg-slate-900 border dark:border-slate-700 outline-none focus:ring-4 ring-indigo-500/20">
+                        <textarea placeholder="Message..." rows="6" class="w-full p-6 rounded-3xl bg-slate-50 dark:bg-slate-900 border dark:border-slate-700 outline-none focus:ring-4 ring-indigo-500/20"></textarea>
                         <button type="submit" class="w-full py-6 bg-indigo-600 text-white font-black text-xl rounded-3xl hover:bg-indigo-700 transition-all shadow-2xl">Envoyer</button>
                     </form>
                 </div>
