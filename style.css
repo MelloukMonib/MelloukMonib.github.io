@@ -1,0 +1,56 @@
+body { font-family: 'Inter', sans-serif; overflow-x: hidden; }
+h1, h2, h3, h4, h5, h6 { font-family: 'Space Grotesk', sans-serif; }
+
+.glass-nav {
+    background-color: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+}
+.dark .glass-nav {
+    background-color: rgba(15, 23, 42, 0.85);
+    border-bottom: 1px solid rgba(51, 65, 85, 0.8);
+}
+
+.reveal { opacity: 0; transform: translateY(20px); transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1); }
+.reveal.active { opacity: 1; transform: translateY(0); }
+
+.view { display: none; }
+.view.active { display: block; animation: fadeIn 0.4s ease-out; }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+/* Timeline Styles - Absolute precision alignment */
+.timeline-container {
+    position: relative;
+    padding-left: 4rem; /* Spacing for the line */
+}
+
+.timeline-line {
+    position: absolute;
+    left: 2rem; /* Exact center of the dot area */
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background-color: #e2e8f0;
+    z-index: 0;
+}
+.dark .timeline-line { background-color: #334155; }
+
+.timeline-dot {
+    position: absolute;
+    left: -2rem; /* Moves it back onto the line (Line at 2rem, Card starts at 4rem -> 4 - 2 = 2rem) */
+    transform: translateX(-50%);
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background-color: #6366f1;
+    z-index: 10;
+    box-shadow: 0 0 0 6px rgba(99, 102, 241, 0.15);
+}
+
+.tab-btn.active {
+    background-color: #6366f1;
+    color: white;
+    box-shadow: 0 4px 14px 0 rgba(99, 102, 241, 0.39);
+}
+
+.synthesis-section { border-left: 4px solid #6366f1; padding-left: 2rem; margin-bottom: 5rem; }
