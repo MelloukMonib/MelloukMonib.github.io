@@ -350,16 +350,30 @@
 
         <!-- Travaux Pratiques (TPS) -->
         <section id="tps" class="py-32 bg-slate-50 dark:bg-slate-900 transition-colors">
-            <div class="max-w-6xl mx-auto px-6">
+            <div class="max-w-7xl mx-auto px-6">
                 <div class="text-center mb-20 reveal">
                     <h2 class="text-5xl font-black mb-4 uppercase tracking-tighter">Travaux Pratiques</h2>
                     <div class="h-1.5 w-24 bg-brand-indigo mx-auto rounded-full"></div>
                 </div>
                 
                 <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 reveal">
-                    <!-- Section vide pour ajout futur par l'utilisateur -->
-                    <div class="col-span-full text-center py-20 border-2 border-dashed border-slate-200 dark:border-slate-700 rounded-[3rem]">
-                        <p class="text-slate-400 font-medium italic">Mes travaux pratiques seront ajoutés prochainement.</p>
+                    <!-- TP 1: VPN Site à Site (Stormshield) -->
+                    <div class="flex flex-col p-8 bg-indigo-50 dark:bg-indigo-900/20 rounded-[2.5rem] border border-indigo-100 dark:border-indigo-800 hover:border-indigo-500 transition-all group h-full shadow-lg">
+                        <div class="w-14 h-14 bg-indigo-600 rounded-2xl flex items-center justify-center text-white mb-8 group-hover:rotate-12 transition-transform shadow-indigo-200 dark:shadow-indigo-900 shadow-xl">
+                            <i data-lucide="shield-check" class="w-8 h-8"></i>
+                        </div>
+                        <h3 class="text-2xl font-black text-indigo-700 dark:text-indigo-400 mb-4 uppercase tracking-tight">VPN Site à Site SNS</h3>
+                        <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-8 flex-grow">
+                            Configuration d'un tunnel VPN IPsec entre deux sites distants via des pare-feu Stormshield. Gestion de la PKI, des certificats serveurs et des politiques de filtrage inter-sites.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-8">
+                            <span class="px-3 py-1 bg-white/50 dark:bg-indigo-900/40 rounded-full text-[10px] font-bold uppercase text-indigo-600">Stormshield</span>
+                            <span class="px-3 py-1 bg-white/50 dark:bg-indigo-900/40 rounded-full text-[10px] font-bold uppercase text-indigo-600">IPsec</span>
+                            <span class="px-3 py-1 bg-white/50 dark:bg-indigo-900/40 rounded-full text-[10px] font-bold uppercase text-indigo-600">Sécurité</span>
+                        </div>
+                        <a href="VPN SNS Stormshield.pdf" download class="w-full py-4 bg-white dark:bg-slate-800 border-2 border-indigo-600 dark:border-indigo-500 text-indigo-600 dark:text-indigo-400 font-black rounded-2xl flex items-center justify-center gap-3 hover:bg-indigo-600 hover:text-white transition-all">
+                            <i data-lucide="download" class="w-4 h-4"></i> Compte-Rendu
+                        </a>
                     </div>
                 </div>
             </div>
