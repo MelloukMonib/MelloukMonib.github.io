@@ -1,4 +1,4 @@
-body { font-family: 'Inter', sans-serif; overflow-x: hidden; }
+body { font-family: 'Inter', sans-serif; overflow-x: hidden; width: 100%; }
 h1, h2, h3, h4, h5, h6 { font-family: 'Space Grotesk', sans-serif; }
 
 .glass-nav {
@@ -18,33 +18,21 @@ h1, h2, h3, h4, h5, h6 { font-family: 'Space Grotesk', sans-serif; }
 .view.active { display: block; animation: fadeIn 0.4s ease-out; }
 @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
-/* Timeline Styles - Absolute precision alignment */
-.timeline-container {
-    position: relative;
-    padding-left: 4rem; /* Spacing for the line */
-}
-
-.timeline-line {
-    position: absolute;
-    left: 2rem; /* Exact center of the dot area */
-    top: 0;
-    bottom: 0;
-    width: 2px;
-    background-color: #e2e8f0;
-    z-index: 0;
-}
+/* Timeline Styles */
+.timeline-container { position: relative; padding-left: 4rem; }
+.timeline-line { position: absolute; left: 2rem; top: 0; bottom: 0; width: 2px; background-color: #e2e8f0; }
 .dark .timeline-line { background-color: #334155; }
-
-.timeline-dot {
-    position: absolute;
-    left: -2rem; /* Moves it back onto the line (Line at 2rem, Card starts at 4rem -> 4 - 2 = 2rem) */
-    transform: translateX(-50%);
-    width: 16px;
-    height: 16px;
-    border-radius: 50%;
-    background-color: #6366f1;
-    z-index: 10;
-    box-shadow: 0 0 0 6px rgba(99, 102, 241, 0.15);
+.timeline-dot { 
+    position: absolute; 
+    left: -2rem; 
+    top: 2.5rem;
+    transform: translateX(-50%); 
+    width: 16px; 
+    height: 16px; 
+    border-radius: 50%; 
+    background-color: #6366f1; 
+    z-index: 10; 
+    box-shadow: 0 0 0 6px rgba(99, 102, 241, 0.15); 
 }
 
 .tab-btn.active {
