@@ -412,10 +412,12 @@
                             </div>
                         </div>
                     </div>
-                    <form class="bg-white dark:bg-slate-800 p-16 rounded-[4rem] shadow-2xl space-y-8">
-                        <input type="text" placeholder="Nom" class="w-full p-6 rounded-3xl bg-slate-50 dark:bg-slate-900 border dark:border-slate-700 outline-none focus:ring-4 ring-indigo-500/20">
-                        <textarea placeholder="Message..." rows="6" class="w-full p-6 rounded-3xl bg-slate-50 dark:bg-slate-900 border dark:border-slate-700 outline-none focus:ring-4 ring-indigo-500/20"></textarea>
-                        <button type="submit" class="w-full py-6 bg-indigo-600 text-white font-black text-xl rounded-3xl hover:bg-indigo-700 transition-all shadow-2xl">Envoyer</button>
+                    <form id="contact-form" action="https://formspree.io/f/YOUR_FORMSPREE_ID" method="POST" class="bg-white dark:bg-slate-800 p-16 rounded-[4rem] shadow-2xl space-y-8">
+                        <input type="text" name="name" placeholder="Nom" required class="w-full p-6 rounded-3xl bg-slate-50 dark:bg-slate-900 border dark:border-slate-700 outline-none focus:ring-4 ring-indigo-500/20">
+                        <input type="email" name="email" placeholder="Votre Email" required class="w-full p-6 rounded-3xl bg-slate-50 dark:bg-slate-900 border dark:border-slate-700 outline-none focus:ring-4 ring-indigo-500/20">
+                        <textarea name="message" placeholder="Message..." rows="6" required class="w-full p-6 rounded-3xl bg-slate-50 dark:bg-slate-900 border dark:border-slate-700 outline-none focus:ring-4 ring-indigo-500/20"></textarea>
+                        <button type="submit" id="submit-btn" class="w-full py-6 bg-indigo-600 text-white font-black text-xl rounded-3xl hover:bg-indigo-700 transition-all shadow-2xl">Envoyer</button>
+                        <p id="form-status" class="hidden text-center font-bold"></p>
                     </form>
                 </div>
             </div>
@@ -495,6 +497,46 @@
             entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('active'); });
           }, { threshold: 0.1 });
           document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+          
+          // Contact Form Submission
+          const contactForm = document.getElementById('contact-form');
+          const formStatus = document.getElementById('form-status');
+          const submitBtn = document.getElementById('submit-btn');
+
+          if (contactForm) {
+            contactForm.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                submitBtn.disabled = true;
+                submitBtn.innerText = 'Envoi en cours...';
+                
+                const formData = new FormData(contactForm);
+                try {
+                    const response = await fetch(contactForm.action, {
+                        method: 'POST',
+                        body: formData,
+                        headers: {
+                            'Accept': 'application/json'
+                        }
+                    });
+                    
+                    if (response.ok) {
+                        formStatus.innerText = 'Merci ! Votre message a été envoyé.';
+                        formStatus.classList.remove('hidden', 'text-red-500');
+                        formStatus.classList.add('text-emerald-500');
+                        contactForm.reset();
+                    } else {
+                        throw new Error();
+                    }
+                } catch (err) {
+                    formStatus.innerText = 'Oups ! Une erreur est survenue.';
+                    formStatus.classList.remove('hidden', 'text-emerald-500');
+                    formStatus.classList.add('text-red-500');
+                } finally {
+                    submitBtn.disabled = false;
+                    submitBtn.innerText = 'Envoyer';
+                }
+            });
+          }
         });
     </script>
 </body>
