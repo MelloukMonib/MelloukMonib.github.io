@@ -507,14 +507,19 @@
             contactForm.addEventListener('submit', async (e) => {
                 e.preventDefault();
                 submitBtn.disabled = true;
+                const originalBtnText = submitBtn.innerText;
                 submitBtn.innerText = 'Envoi en cours...';
                 
                 const formData = new FormData(contactForm);
+                const data = {};
+                formData.forEach((value, key) => { data[key] = value; });
+
                 try {
                     const response = await fetch(contactForm.action, {
                         method: 'POST',
-                        body: formData,
+                        body: JSON.stringify(data),
                         headers: {
+                            'Content-Type': 'application/json',
                             'Accept': 'application/json'
                         }
                     });
@@ -525,15 +530,18 @@
                         formStatus.classList.add('text-emerald-500');
                         contactForm.reset();
                     } else {
-                        throw new Error();
+                        const errorData = await response.json();
+                        console.error('Formspree Error:', errorData);
+                        throw new Error(errorData.error || 'Erreur lors de l\'envoi');
                     }
                 } catch (err) {
-                    formStatus.innerText = 'Oups ! Une erreur est survenue.';
+                    console.error('Submission Error:', err);
+                    formStatus.innerText = 'Oups ! Une erreur est survenue. Assurez-vous d\'avoir confirmé votre e-mail sur Formspree.';
                     formStatus.classList.remove('hidden', 'text-emerald-500');
                     formStatus.classList.add('text-red-500');
                 } finally {
                     submitBtn.disabled = false;
-                    submitBtn.innerText = 'Envoyer';
+                    submitBtn.innerText = originalBtnText;
                 }
             });
           }
