@@ -321,6 +321,7 @@
                     <div class="h-1.5 w-24 bg-brand-indigo mx-auto rounded-full"></div>
                 </div>
                 <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 reveal">
+                    <!-- VPN SNS (Existing) -->
                     <div class="flex flex-col p-8 bg-indigo-50 dark:bg-indigo-900/20 rounded-[2.5rem] border border-indigo-100 dark:border-indigo-800 hover:border-indigo-500 transition-all group h-full shadow-lg">
                         <div class="w-14 h-14 bg-indigo-600 rounded-2xl flex items-center justify-center text-white mb-8 group-hover:rotate-12 transition-transform shadow-xl">
                             <i data-lucide="shield-check" class="w-8 h-8"></i>
@@ -328,6 +329,102 @@
                         <h3 class="text-2xl font-black text-indigo-700 dark:text-indigo-400 mb-4 uppercase tracking-tight">VPN Site à Site SNS</h3>
                         <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-8 flex-grow">Configuration d'un tunnel VPN IPsec entre deux sites distants via des pare-feu Stormshield.</p>
                         <a href="vpn sns.pdf" download class="w-full py-4 bg-white dark:bg-slate-800 border-2 border-indigo-600 dark:border-indigo-500 text-indigo-600 dark:text-indigo-400 font-black rounded-2xl flex items-center justify-center gap-3 hover:bg-indigo-600 hover:text-white transition-all">
+                            <i data-lucide="download" class="w-4 h-4"></i> Télécharger le PDF
+                        </a>
+                    </div>
+
+                    <!-- Labo Réplication -->
+                    <div class="flex flex-col p-8 bg-indigo-50 dark:bg-indigo-900/20 rounded-[2.5rem] border border-indigo-100 dark:border-indigo-800 hover:border-indigo-500 transition-all group h-full shadow-lg">
+                        <div class="w-14 h-14 bg-indigo-600 rounded-2xl flex items-center justify-center text-white mb-8 group-hover:rotate-12 transition-transform shadow-xl">
+                            <i data-lucide="copy" class="w-8 h-8"></i>
+                        </div>
+                        <h3 class="text-2xl font-black text-indigo-700 dark:text-indigo-400 mb-4 uppercase tracking-tight">Réplication & GlusterFS</h3>
+                        <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-8 flex-grow">Mise en place d'une réplication de données haute disponibilité entre serveurs Debian avec Rsync et GlusterFS.</p>
+                        <a href="#" download class="w-full py-4 bg-white dark:bg-slate-800 border-2 border-indigo-600 dark:border-indigo-500 text-indigo-600 dark:text-indigo-400 font-black rounded-2xl flex items-center justify-center gap-3 hover:bg-indigo-600 hover:text-white transition-all">
+                            <i data-lucide="download" class="w-4 h-4"></i> Télécharger le PDF
+                        </a>
+                    </div>
+
+                    <!-- Labo UTM -->
+                    <div class="flex flex-col p-8 bg-indigo-50 dark:bg-indigo-900/20 rounded-[2.5rem] border border-indigo-100 dark:border-indigo-800 hover:border-indigo-500 transition-all group h-full shadow-lg">
+                        <div class="w-14 h-14 bg-indigo-600 rounded-2xl flex items-center justify-center text-white mb-8 group-hover:rotate-12 transition-transform shadow-xl">
+                            <i data-lucide="shield-alert" class="w-8 h-8"></i>
+                        </div>
+                        <h3 class="text-2xl font-black text-indigo-700 dark:text-indigo-400 mb-4 uppercase tracking-tight">Labo UTM pfSense</h3>
+                        <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-8 flex-grow">Configuration d'un portail UTM complet : Proxy Squid, filtrage web et détection d'intrusion Snort/Suricata.</p>
+                        <a href="#" download class="w-full py-4 bg-white dark:bg-slate-800 border-2 border-indigo-600 dark:border-indigo-500 text-indigo-600 dark:text-indigo-400 font-black rounded-2xl flex items-center justify-center gap-3 hover:bg-indigo-600 hover:text-white transition-all">
+                            <i data-lucide="download" class="w-4 h-4"></i> Télécharger le PDF
+                        </a>
+                    </div>
+
+                    <!-- Labo DNS -->
+                    <div class="flex flex-col p-8 bg-indigo-50 dark:bg-indigo-900/20 rounded-[2.5rem] border border-indigo-100 dark:border-indigo-800 hover:border-indigo-500 transition-all group h-full shadow-lg">
+                        <div class="w-14 h-14 bg-indigo-600 rounded-2xl flex items-center justify-center text-white mb-8 group-hover:rotate-12 transition-transform shadow-xl">
+                            <i data-lucide="globe" class="w-8 h-8"></i>
+                        </div>
+                        <h3 class="text-2xl font-black text-indigo-700 dark:text-indigo-400 mb-4 uppercase tracking-tight">DNS Bind9 Debian</h3>
+                        <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-8 flex-grow">Installation et configuration d'un serveur DNS Bind9 pour la gestion de zones locales et résolution de noms.</p>
+                        <a href="#" download class="w-full py-4 bg-white dark:bg-slate-800 border-2 border-indigo-600 dark:border-indigo-500 text-indigo-600 dark:text-indigo-400 font-black rounded-2xl flex items-center justify-center gap-3 hover:bg-indigo-600 hover:text-white transition-all">
+                            <i data-lucide="download" class="w-4 h-4"></i> Télécharger le PDF
+                        </a>
+                    </div>
+
+                    <!-- Labo Windows Server -->
+                    <div class="flex flex-col p-8 bg-indigo-50 dark:bg-indigo-900/20 rounded-[2.5rem] border border-indigo-100 dark:border-indigo-800 hover:border-indigo-500 transition-all group h-full shadow-lg">
+                        <div class="w-14 h-14 bg-indigo-600 rounded-2xl flex items-center justify-center text-white mb-8 group-hover:rotate-12 transition-transform shadow-xl">
+                            <i data-lucide="layout-grid" class="w-8 h-8"></i>
+                        </div>
+                        <h3 class="text-2xl font-black text-indigo-700 dark:text-indigo-400 mb-4 uppercase tracking-tight">Windows Server & AD</h3>
+                        <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-8 flex-grow">Administration Active Directory : gestion des utilisateurs, déploiement de GPOs et automatisation PowerShell.</p>
+                        <a href="#" download class="w-full py-4 bg-white dark:bg-slate-800 border-2 border-indigo-600 dark:border-indigo-500 text-indigo-600 dark:text-indigo-400 font-black rounded-2xl flex items-center justify-center gap-3 hover:bg-indigo-600 hover:text-white transition-all">
+                            <i data-lucide="download" class="w-4 h-4"></i> Télécharger le PDF
+                        </a>
+                    </div>
+
+                    <!-- Labo RAID -->
+                    <div class="flex flex-col p-8 bg-indigo-50 dark:bg-indigo-900/20 rounded-[2.5rem] border border-indigo-100 dark:border-indigo-800 hover:border-indigo-500 transition-all group h-full shadow-lg">
+                        <div class="w-14 h-14 bg-indigo-600 rounded-2xl flex items-center justify-center text-white mb-8 group-hover:rotate-12 transition-transform shadow-xl">
+                            <i data-lucide="hard-drive" class="w-8 h-8"></i>
+                        </div>
+                        <h3 class="text-2xl font-black text-indigo-700 dark:text-indigo-400 mb-4 uppercase tracking-tight">RAID Linux mdadm</h3>
+                        <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-8 flex-grow">Mise en œuvre de grappes RAID 1 et RAID 5 logicielles pour assurer la redondance des données système.</p>
+                        <a href="#" download class="w-full py-4 bg-white dark:bg-slate-800 border-2 border-indigo-600 dark:border-indigo-500 text-indigo-600 dark:text-indigo-400 font-black rounded-2xl flex items-center justify-center gap-3 hover:bg-indigo-600 hover:text-white transition-all">
+                            <i data-lucide="download" class="w-4 h-4"></i> Télécharger le PDF
+                        </a>
+                    </div>
+
+                    <!-- Sécurité Web -->
+                    <div class="flex flex-col p-8 bg-indigo-50 dark:bg-indigo-900/20 rounded-[2.5rem] border border-indigo-100 dark:border-indigo-800 hover:border-indigo-500 transition-all group h-full shadow-lg">
+                        <div class="w-14 h-14 bg-indigo-600 rounded-2xl flex items-center justify-center text-white mb-8 group-hover:rotate-12 transition-transform shadow-xl">
+                            <i data-lucide="lock" class="w-8 h-8"></i>
+                        </div>
+                        <h3 class="text-2xl font-black text-indigo-700 dark:text-indigo-400 mb-4 uppercase tracking-tight">Sécurité & Pentest</h3>
+                        <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-8 flex-grow">Analyse de vulnérabilités avec Kali Linux et Burp Suite sur l'environnement Mutillidae II.</p>
+                        <a href="#" download class="w-full py-4 bg-white dark:bg-slate-800 border-2 border-indigo-600 dark:border-indigo-500 text-indigo-600 dark:text-indigo-400 font-black rounded-2xl flex items-center justify-center gap-3 hover:bg-indigo-600 hover:text-white transition-all">
+                            <i data-lucide="download" class="w-4 h-4"></i> Télécharger le PDF
+                        </a>
+                    </div>
+
+                    <!-- Labo Apache -->
+                    <div class="flex flex-col p-8 bg-indigo-50 dark:bg-indigo-900/20 rounded-[2.5rem] border border-indigo-100 dark:border-indigo-800 hover:border-indigo-500 transition-all group h-full shadow-lg">
+                        <div class="w-14 h-14 bg-indigo-600 rounded-2xl flex items-center justify-center text-white mb-8 group-hover:rotate-12 transition-transform shadow-xl">
+                            <i data-lucide="server" class="w-8 h-8"></i>
+                        </div>
+                        <h3 class="text-2xl font-black text-indigo-700 dark:text-indigo-400 mb-4 uppercase tracking-tight">Serveur Web Apache</h3>
+                        <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-8 flex-grow">Configuration avancée d'Apache2 : VirtualHosts, sécurisation SSL/TLS et gestion des répertoires.</p>
+                        <a href="#" download class="w-full py-4 bg-white dark:bg-slate-800 border-2 border-indigo-600 dark:border-indigo-500 text-indigo-600 dark:text-indigo-400 font-black rounded-2xl flex items-center justify-center gap-3 hover:bg-indigo-600 hover:text-white transition-all">
+                            <i data-lucide="download" class="w-4 h-4"></i> Télécharger le PDF
+                        </a>
+                    </div>
+
+                    <!-- Labo Firewalling -->
+                    <div class="flex flex-col p-8 bg-indigo-50 dark:bg-indigo-900/20 rounded-[2.5rem] border border-indigo-100 dark:border-indigo-800 hover:border-indigo-500 transition-all group h-full shadow-lg">
+                        <div class="w-14 h-14 bg-indigo-600 rounded-2xl flex items-center justify-center text-white mb-8 group-hover:rotate-12 transition-transform shadow-xl">
+                            <i data-lucide="shield" class="w-8 h-8"></i>
+                        </div>
+                        <h3 class="text-2xl font-black text-indigo-700 dark:text-indigo-400 mb-4 uppercase tracking-tight">Firewalling pfSense</h3>
+                        <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-8 flex-grow">Mise en place de règles de filtrage complexes, translation d'adresses (NAT) et isolation DMZ.</p>
+                        <a href="#" download class="w-full py-4 bg-white dark:bg-slate-800 border-2 border-indigo-600 dark:border-indigo-500 text-indigo-600 dark:text-indigo-400 font-black rounded-2xl flex items-center justify-center gap-3 hover:bg-indigo-600 hover:text-white transition-all">
                             <i data-lucide="download" class="w-4 h-4"></i> Télécharger le PDF
                         </a>
                     </div>
