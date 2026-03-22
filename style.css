@@ -1,5 +1,26 @@
-body { font-family: 'JetBrains Mono', monospace; overflow-x: hidden; width: 100%; background-color: #050505; color: #e2e8f0; }
-h1, h2, h3, h4, h5, h6 { font-family: 'JetBrains Mono', monospace; }
+body { 
+    font-family: 'Inter', sans-serif; 
+    overflow-x: hidden; 
+    width: 100%; 
+    cursor: crosshair;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+::-webkit-scrollbar-track {
+    background: #0f172a;
+}
+::-webkit-scrollbar-thumb {
+    background: #6366f1;
+    border-radius: 0;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #06b6d4;
+}
+
+h1, h2, h3, h4, h5, h6 { font-family: 'Space Grotesk', sans-serif; }
 
 .glass-nav {
     background-color: rgba(255, 255, 255, 0.85);
@@ -14,11 +35,42 @@ h1, h2, h3, h4, h5, h6 { font-family: 'JetBrains Mono', monospace; }
 .reveal { opacity: 0; transform: translateY(20px); transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1); }
 .reveal.active { opacity: 1; transform: translateY(0); }
 
-/* Watch Dogs Glitch Text */
+.view { display: none; }
+.view.active { display: block; animation: fadeIn 0.4s ease-out; }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+/* Timeline Styles */
+.timeline-container { position: relative; padding-left: 4rem; }
+.timeline-line { position: absolute; left: 2rem; top: 0; bottom: 0; width: 2px; background-color: #e2e8f0; }
+.dark .timeline-line { background-color: #334155; }
+.timeline-dot { 
+    position: absolute; 
+    left: -2rem; 
+    top: 2.5rem;
+    transform: translateX(-50%); 
+    width: 16px; 
+    height: 16px; 
+    border-radius: 0; 
+    background-color: #6366f1; 
+    z-index: 10; 
+    box-shadow: 0 0 10px rgba(99, 102, 241, 0.5); 
+}
+
+.tab-btn.active {
+    background-color: #6366f1;
+    color: white;
+    border-radius: 0;
+    box-shadow: 0 0 15px rgba(99, 102, 241, 0.4);
+}
+
+.synthesis-section { border-left: 4px solid #6366f1; padding-left: 2rem; margin-bottom: 5rem; }
+
+/* Watch Dogs / Hacker Effects */
 .glitch-text {
     position: relative;
     display: inline-block;
 }
+
 .glitch-text::before,
 .glitch-text::after {
     content: attr(data-text);
@@ -27,14 +79,16 @@ h1, h2, h3, h4, h5, h6 { font-family: 'JetBrains Mono', monospace; }
     left: 0;
     width: 100%;
     height: 100%;
-    background: transparent;
+    background: inherit;
 }
+
 .glitch-text::before {
     left: 2px;
     text-shadow: -2px 0 #ff00c1;
     clip: rect(44px, 450px, 56px, 0);
     animation: glitch-anim 5s infinite linear alternate-reverse;
 }
+
 .glitch-text::after {
     left: -2px;
     text-shadow: -2px 0 #00fff9, 2px 2px #ff00c1;
@@ -42,120 +96,91 @@ h1, h2, h3, h4, h5, h6 { font-family: 'JetBrains Mono', monospace; }
 }
 
 @keyframes glitch-anim {
-  0% { clip: rect(31px, 9999px, 94px, 0); transform: skew(0.85deg); }
-  5% { clip: rect(70px, 9999px, 71px, 0); transform: skew(0.58deg); }
-  10% { clip: rect(62px, 9999px, 29px, 0); transform: skew(0.4deg); }
-  15% { clip: rect(16px, 9999px, 32px, 0); transform: skew(0.81deg); }
-  20% { clip: rect(93px, 9999px, 12px, 0); transform: skew(0.18deg); }
-  25% { clip: rect(66px, 9999px, 51px, 0); transform: skew(0.97deg); }
-  30% { clip: rect(90px, 9999px, 63px, 0); transform: skew(0.1deg); }
-  35% { clip: rect(70px, 9999px, 78px, 0); transform: skew(0.46deg); }
-  40% { clip: rect(83px, 9999px, 45px, 0); transform: skew(0.68deg); }
-  45% { clip: rect(96px, 9999px, 19px, 0); transform: skew(0.38deg); }
-  50% { clip: rect(66px, 9999px, 50px, 0); transform: skew(0.71deg); }
-  55% { clip: rect(44px, 9999px, 72px, 0); transform: skew(0.82deg); }
-  60% { clip: rect(88px, 9999px, 86px, 0); transform: skew(0.91deg); }
-  65% { clip: rect(86px, 9999px, 91px, 0); transform: skew(0.3deg); }
-  70% { clip: rect(13px, 9999px, 43px, 0); transform: skew(0.94deg); }
-  75% { clip: rect(82px, 9999px, 66px, 0); transform: skew(0.31deg); }
-  80% { clip: rect(25px, 9999px, 29px, 0); transform: skew(0.6deg); }
-  85% { clip: rect(44px, 9999px, 41px, 0); transform: skew(0.01deg); }
-  90% { clip: rect(87px, 9999px, 100px, 0); transform: skew(0.48deg); }
-  95% { clip: rect(99px, 9999px, 93px, 0); transform: skew(0.41deg); }
-  100% { clip: rect(100px, 9999px, 100px, 0); transform: skew(0.9deg); }
+    0% { clip: rect(31px, 9999px, 94px, 0); transform: skew(0.85deg); }
+    5% { clip: rect(70px, 9999px, 71px, 0); transform: skew(0.85deg); }
+    10% { clip: rect(29px, 9999px, 83px, 0); transform: skew(0.85deg); }
+    15% { clip: rect(16px, 9999px, 91px, 0); transform: skew(0.85deg); }
+    20% { clip: rect(2px, 9999px, 23px, 0); transform: skew(0.85deg); }
+    25% { clip: rect(5px, 9999px, 55px, 0); transform: skew(0.85deg); }
+    30% { clip: rect(15px, 9999px, 6px, 0); transform: skew(0.85deg); }
+    35% { clip: rect(69px, 9999px, 12px, 0); transform: skew(0.85deg); }
+    40% { clip: rect(95px, 9999px, 25px, 0); transform: skew(0.85deg); }
+    45% { clip: rect(14px, 9999px, 33px, 0); transform: skew(0.85deg); }
+    50% { clip: rect(6px, 9999px, 75px, 0); transform: skew(0.85deg); }
+    55% { clip: rect(22px, 9999px, 53px, 0); transform: skew(0.85deg); }
+    60% { clip: rect(80px, 9999px, 70px, 0); transform: skew(0.85deg); }
+    65% { clip: rect(77px, 9999px, 49px, 0); transform: skew(0.85deg); }
+    70% { clip: rect(2px, 9999px, 11px, 0); transform: skew(0.85deg); }
+    75% { clip: rect(79px, 9999px, 32px, 0); transform: skew(0.85deg); }
+    80% { clip: rect(41px, 9999px, 30px, 0); transform: skew(0.85deg); }
+    85% { clip: rect(23px, 9999px, 10px, 0); transform: skew(0.85deg); }
+    90% { clip: rect(3px, 9999px, 26px, 0); transform: skew(0.85deg); }
+    95% { clip: rect(97px, 9999px, 71px, 0); transform: skew(0.85deg); }
+    100% { clip: rect(82px, 9999px, 3px, 0); transform: skew(0.85deg); }
 }
 
 @keyframes glitch-anim2 {
-  0% { clip: rect(65px, 9999px, 100px, 0); transform: skew(0.42deg); }
-  23% { clip: rect(51px, 9999px, 30px, 0); transform: skew(0.34deg); }
-  49% { clip: rect(78px, 9999px, 26px, 0); transform: skew(0.55deg); }
-  72% { clip: rect(13px, 9999px, 61px, 0); transform: skew(0.18deg); }
-  100% { clip: rect(100px, 9999px, 100px, 0); transform: skew(0.46deg); }
+    0% { clip: rect(65px, 9999px, 100px, 0); transform: skew(0.13deg); }
+    23% { clip: rect(1px, 9999px, 12px, 0); transform: skew(0.13deg); }
+    49% { clip: rect(88px, 9999px, 95px, 0); transform: skew(0.13deg); }
+    76% { clip: rect(21px, 9999px, 44px, 0); transform: skew(0.13deg); }
+    100% { clip: rect(33px, 9999px, 56px, 0); transform: skew(0.13deg); }
 }
 
-/* HUD Elements */
-.hud-card {
+.scanline {
+    width: 100%;
+    height: 100px;
+    z-index: 50;
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0) 0%, rgba(99, 102, 241, 0.1) 50%, rgba(0, 0, 0, 0) 100%);
+    opacity: 0.1;
+    position: fixed;
+    bottom: 100%;
+    pointer-events: none;
+    animation: scanline 8s linear infinite;
+}
+
+@keyframes scanline {
+    0% { bottom: 100%; }
+    100% { bottom: -100px; }
+}
+
+.hacker-grid {
+    background-image: radial-gradient(rgba(99, 102, 241, 0.1) 1px, transparent 1px);
+    background-size: 30px 30px;
+}
+
+.cyber-border {
     position: relative;
-    border: 1px solid rgba(0, 255, 255, 0.1);
-    background: rgba(5, 5, 5, 0.6);
-    backdrop-filter: blur(10px);
-    transition: all 0.3s ease;
+    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0 100%);
 }
-.hud-card:hover {
-    border-color: rgba(0, 255, 255, 0.5);
-    box-shadow: 0 0 20px rgba(0, 255, 255, 0.1);
-}
-.hud-card::before {
-    content: '';
+
+.cyber-border::after {
+    content: "";
     position: absolute;
-    top: -1px;
-    left: -1px;
-    width: 10px;
-    height: 10px;
-    border-top: 2px solid #00ffff;
-    border-left: 2px solid #00ffff;
-}
-.hud-card::after {
-    content: '';
-    position: absolute;
-    bottom: -1px;
-    right: -1px;
-    width: 10px;
-    height: 10px;
-    border-bottom: 2px solid #00ffff;
-    border-right: 2px solid #00ffff;
+    bottom: 0;
+    right: 0;
+    width: 40px;
+    height: 2px;
+    background: #6366f1;
+    transform: rotate(-45deg);
+    transform-origin: bottom right;
 }
 
-.hud-btn {
-    position: relative;
-    overflow: hidden;
-    transition: all 0.3s ease;
-    border: 1px solid #00ffff;
-    background: transparent;
-    color: #00ffff;
-    font-family: 'JetBrains Mono', monospace;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-}
-.hud-btn:hover {
-    background: #00ffff;
-    color: #050505;
-    box-shadow: 0 0 15px #00ffff;
+.terminal-window {
+    background: #0f172a;
+    border: 1px solid #334155;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.5);
 }
 
-.view { display: none; }
-.view.active { display: block; animation: fadeIn 0.4s ease-out; }
-@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-
-/* Timeline Styles */
-.timeline-container { position: relative; padding-left: 4rem; }
-.timeline-line { position: absolute; left: 2rem; top: 0; bottom: 0; width: 1px; background-color: rgba(0, 255, 255, 0.2); }
-.timeline-dot { 
-    position: absolute; 
-    left: -2rem; 
-    top: 2.5rem;
-    transform: translateX(-50%); 
-    width: 12px; 
-    height: 12px; 
-    border: 2px solid #00ffff;
-    background-color: #050505; 
-    z-index: 10; 
-    box-shadow: 0 0 10px rgba(0, 255, 255, 0.5); 
+.terminal-header {
+    background: #1e293b;
+    padding: 8px 16px;
+    display: flex;
+    gap: 6px;
+    border-bottom: 1px solid #334155;
 }
 
-.tab-btn {
-    font-family: 'JetBrains Mono', monospace;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    border: 1px solid rgba(0, 255, 255, 0.2);
-    transition: all 0.3s ease;
-}
+.terminal-dot-red { width: 12px; height: 12px; border-radius: 50%; background: #ef4444; }
+.terminal-dot-yellow { width: 12px; height: 12px; border-radius: 50%; background: #f59e0b; }
+.terminal-dot-green { width: 12px; height: 12px; border-radius: 50%; background: #10b981; }
 
-.tab-btn.active {
-    background-color: #00ffff;
-    color: #050505;
-    border-color: #00ffff;
-    box-shadow: 0 0 15px rgba(0, 255, 255, 0.3);
-}
-
-.synthesis-section { border-left: 2px solid #00ffff; padding-left: 2rem; margin-bottom: 5rem; }
