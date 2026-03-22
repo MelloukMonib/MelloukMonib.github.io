@@ -39,19 +39,21 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
-<body class="bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100 transition-colors duration-300">
+<body class="bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100 transition-colors duration-300 hacker-grid">
+    <!-- Global Scanline -->
+    <div class="scanline"></div>
 
     <!-- Navbar -->
-    <header class="fixed top-0 w-full z-50 glass-nav">
+    <header class="fixed top-0 w-full z-50 glass-nav border-b border-indigo-600/30">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-16">
                 <div class="flex-shrink-0">
-                    <button onclick="showView('home')" class="text-xl font-bold group">
-                        Portfolio<span class="text-indigo-600 dark:text-cyan-400">.Monib</span>
+                    <button onclick="showView('home')" class="text-xl font-black group font-mono">
+                        <span class="text-indigo-600 dark:text-cyan-400">SYS.</span>PORTFOLIO
                     </button>
                 </div>
                 <div class="hidden md:flex items-center space-x-8">
-                    <nav class="flex space-x-6 text-sm font-medium">
+                    <nav class="flex space-x-6 text-[10px] font-mono uppercase tracking-[0.2em]">
                         <button onclick="showView('home')" class="hover:text-indigo-600 dark:hover:text-cyan-400 transition-colors">Accueil</button>
                         <button onclick="scrollToSection('cv')" class="hover:text-indigo-600 dark:hover:text-cyan-400 transition-colors">Parcours</button>
                         <button onclick="scrollToSection('competences')" class="hover:text-indigo-600 dark:hover:text-cyan-400 transition-colors">Compétences</button>
@@ -72,12 +74,13 @@
                 </div>
             </div>
         </div>
-        <div id="mobile-menu" class="hidden md:hidden bg-white dark:bg-slate-900 border-t dark:border-slate-800 p-4 space-y-4 shadow-xl">
-            <button onclick="showView('home'); toggleMobileMenu()" class="block w-full text-left font-medium p-2">Accueil</button>
-            <button onclick="scrollToSection('cv'); toggleMobileMenu()" class="block w-full text-left font-medium p-2">Parcours</button>
-            <button onclick="scrollToSection('veille'); toggleMobileMenu()" class="block w-full text-left font-medium p-2">Veille</button>
-            <button onclick="scrollToSection('tps'); toggleMobileMenu()" class="block w-full text-left font-medium p-2">TPS</button>
-            <button onclick="scrollToSection('contact'); toggleMobileMenu()" class="block w-full text-left font-medium p-2">Contact</button>
+        <div id="mobile-menu" class="hidden md:hidden bg-slate-950 border-t border-indigo-600/30 p-6 space-y-6 shadow-2xl font-mono text-[10px] uppercase tracking-[0.2em]">
+            <button onclick="showView('home'); toggleMobileMenu()" class="block w-full text-left p-2 hover:text-indigo-400 transition-colors border-b border-indigo-600/10">Accueil</button>
+            <button onclick="scrollToSection('cv'); toggleMobileMenu()" class="block w-full text-left p-2 hover:text-indigo-400 transition-colors border-b border-indigo-600/10">Parcours</button>
+            <button onclick="scrollToSection('competences'); toggleMobileMenu()" class="block w-full text-left p-2 hover:text-indigo-400 transition-colors border-b border-indigo-600/10">Compétences</button>
+            <button onclick="scrollToSection('tps'); toggleMobileMenu()" class="block w-full text-left p-2 hover:text-indigo-400 transition-colors border-b border-indigo-600/10">TPS</button>
+            <button onclick="scrollToSection('veille'); toggleMobileMenu()" class="block w-full text-left p-2 hover:text-indigo-400 transition-colors border-b border-indigo-600/10">Veille</button>
+            <button onclick="scrollToSection('contact'); toggleMobileMenu()" class="block w-full text-left p-2 hover:text-indigo-400 transition-colors border-b border-indigo-600/10">Contact</button>
         </div>
     </header>
 
@@ -85,49 +88,89 @@
     <main id="view-home" class="view active">
         <!-- Hero Section -->
         <section class="min-h-screen flex items-center pt-16 relative overflow-hidden bg-white dark:bg-slate-950">
-            <div class="max-w-7xl mx-auto px-6 w-full flex flex-col md:flex-row items-center justify-between">
+            <div class="max-w-7xl mx-auto px-6 w-full flex flex-col md:flex-row items-center justify-between relative z-10">
                 <div class="w-full md:w-3/5 text-center md:text-left reveal active">
-                    <div class="inline-flex items-center px-4 py-2 rounded-full bg-indigo-50 dark:bg-indigo-900/30 text-indigo-700 dark:text-indigo-300 text-sm font-semibold mb-8 shadow-sm">
-                        <span class="w-2.5 h-2.5 rounded-full bg-indigo-500 mr-2 animate-pulse"></span>
-                        Recherche stage: 26 jan - 21 mars 2025
+                    <div class="inline-flex items-center px-4 py-2 bg-indigo-600 text-white text-xs font-mono tracking-[0.2em] uppercase mb-8 shadow-lg">
+                        <span class="w-2 h-2 bg-white mr-3 animate-pulse"></span>
+                        Status: Recherche de stage [26 JAN - 21 MARS 2025]
                     </div>
                     <h1 class="text-6xl md:text-8xl font-black mb-6 tracking-tighter leading-tight">
-                        Bonjour, je suis <br/>
-                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-cyan-500 font-display">Monib Mellouk</span>
+                        <span class="block text-sm font-mono text-indigo-600 dark:text-cyan-400 mb-2 uppercase tracking-[0.5em]">Initialisation_Identité()</span>
+                        <span class="glitch-text" data-text="MONIB MELLOUK">MONIB MELLOUK</span>
                     </h1>
-                    <h2 class="text-2xl md:text-3xl text-slate-600 dark:text-slate-300 mb-8 font-medium italic">Étudiant en 2ème année <span class="text-indigo-600 font-bold not-italic underline decoration-cyan-400 underline-offset-8">BTS SIO</span></h2>
-                    <p class="text-slate-600 dark:text-slate-400 text-xl mb-10 max-w-2xl leading-relaxed">
-                        Explorateur du numérique passionné par l'infrastructure, les systèmes et les réseaux. Je conçois des architectures robustes et sécurisées pour le monde de demain.
+                    <h2 class="text-2xl md:text-3xl text-slate-600 dark:text-slate-300 mb-8 font-mono">
+                        <span class="text-indigo-600 font-bold">>_</span> Étudiant en 2ème année <span class="text-indigo-600 font-bold underline decoration-cyan-400 underline-offset-8">BTS SIO SISR</span>
+                    </h2>
+                    <p class="text-slate-600 dark:text-slate-400 text-xl mb-10 max-w-2xl leading-relaxed font-mono text-sm md:text-base">
+                        Expertise en infrastructure, systèmes et réseaux. Conception d'architectures sécurisées et résilientes pour les environnements critiques.
                     </p>
                     <div class="flex flex-wrap gap-4 justify-center md:justify-start">
-                        <button onclick="scrollToSection('cv')" class="px-10 py-5 bg-indigo-600 text-white font-black rounded-2xl shadow-xl hover:shadow-indigo-500/40 transition-all hover:-translate-y-1">Mon Parcours <i data-lucide="arrow-down" class="ml-2 inline-block"></i></button>
-                        <button onclick="scrollToSection('contact')" class="px-10 py-5 bg-white dark:bg-slate-800 border-2 border-slate-200 dark:border-slate-700 font-black rounded-2xl hover:bg-slate-50 transition-all">Me Contacter</button>
+                        <button onclick="scrollToSection('cv')" class="px-8 py-4 bg-indigo-600 text-white font-black uppercase tracking-widest hover:bg-indigo-700 transition-all relative group overflow-hidden">
+                            <span class="relative z-10">Accéder_Données <i data-lucide="database" class="ml-2 inline-block w-5 h-5"></i></span>
+                            <div class="absolute inset-0 bg-white/10 translate-y-full group-hover:translate-y-0 transition-transform"></div>
+                        </button>
+                        <button onclick="scrollToSection('contact')" class="px-8 py-4 bg-transparent border-2 border-indigo-600 text-indigo-600 dark:text-cyan-400 font-black uppercase tracking-widest hover:bg-indigo-600 hover:text-white transition-all">
+                            Liaison_Directe
+                        </button>
                     </div>
                 </div>
-                <div class="w-full md:w-2/5 flex justify-center mt-12 md:mt-0 animate-float">
-                    <div class="relative p-12 bg-slate-100 dark:bg-slate-900 rounded-[4rem] border-8 border-white dark:border-slate-800 shadow-2xl overflow-hidden group">
-                        <i data-lucide="terminal" class="w-48 h-48 md:w-64 md:h-64 text-indigo-600 group-hover:scale-110 transition-transform"></i>
+                <div class="w-full md:w-2/5 flex justify-center mt-12 md:mt-0">
+                    <div class="terminal-window w-full max-w-md overflow-hidden reveal">
+                        <div class="terminal-header">
+                            <div class="terminal-dot-red"></div>
+                            <div class="terminal-dot-yellow"></div>
+                            <div class="terminal-dot-green"></div>
+                            <span class="ml-4 text-[10px] font-mono text-slate-500 uppercase tracking-widest">User_Profile.sys</span>
+                        </div>
+                        <div class="p-6 font-mono text-xs md:text-sm space-y-2 text-indigo-400">
+                            <p class="text-[10px] text-slate-500 mb-4 opacity-50">// DERNIÈRE CONNEXION: <span id="current-time"></span></p>
+                            <div id="terminal-boot" class="text-[10px] text-cyan-500/50 mb-4 font-mono leading-tight">
+                                <p>> INITIALIZING_SYSTEM_CORE...</p>
+                                <p>> LOADING_ENCRYPTION_KEYS... [OK]</p>
+                                <p>> ESTABLISHING_SECURE_LINK... [OK]</p>
+                            </div>
+                            <p><span class="text-slate-500">01</span> <span class="text-cyan-400">class</span> <span class="text-white">ProfilProfessionnel</span> {</p>
+                            <p><span class="text-slate-500">02</span>   <span class="text-cyan-400">constructor</span>() {</p>
+                            <p><span class="text-slate-500">03</span>     <span class="text-white">this.nom</span> = <span class="text-amber-400">"Monib Mellouk"</span>;</p>
+                            <p><span class="text-slate-500">04</span>     <span class="text-white">this.role</span> = <span class="text-amber-400">"Admin Systèmes & Réseaux"</span>;</p>
+                            <p><span class="text-slate-500">05</span>     <span class="text-white">this.skills</span> = [<span class="text-amber-400">"Cisco"</span>, <span class="text-amber-400">"Linux"</span>, <span class="text-amber-400">"AD"</span>];</p>
+                            <p><span class="text-slate-500">06</span>     <span class="text-white">this.status</span> = <span class="text-emerald-400">"Opérationnel"</span>;</p>
+                            <p><span class="text-slate-500">07</span>   }</p>
+                            <p><span class="text-slate-500">08</span>   <span class="text-cyan-400">getDisponibilité</span>() {</p>
+                            <p><span class="text-slate-500">09</span>     <span class="text-cyan-400">return</span> <span class="text-amber-400">"Prêt pour déploiement"</span>;</p>
+                            <p><span class="text-slate-500">10</span>   }</p>
+                            <p><span class="text-slate-500">11</span> }</p>
+                            <div class="mt-4 pt-4 border-t border-indigo-900/50">
+                                <div class="flex justify-between items-center mb-1">
+                                    <span class="text-[10px] text-slate-500 uppercase">System_Load</span>
+                                    <span class="text-[10px] text-emerald-400">98%</span>
+                                </div>
+                                <div class="w-full h-1 bg-slate-800 rounded-full overflow-hidden">
+                                    <div class="h-full bg-emerald-500 w-[98%] animate-pulse"></div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- Parcours Professionnel & Scolaire -->
-        <section id="cv" class="py-32 bg-slate-50 dark:bg-slate-900 transition-colors">
-            <div class="max-w-5xl mx-auto px-6">
+        <section id="cv" class="py-32 bg-slate-50 dark:bg-slate-900 transition-colors relative">
+            <div class="max-w-5xl mx-auto px-6 relative z-10">
                 <div class="text-center mb-16 reveal">
-                    <h2 class="text-5xl font-black mb-4 uppercase tracking-tighter">Mon Parcours</h2>
-                    <div class="h-1.5 w-32 bg-indigo-600 mx-auto rounded-full"></div>
+                    <h2 class="text-5xl md:text-6xl font-black mb-4 uppercase tracking-tighter glitch-text" data-text="MON PARCOURS">Mon Parcours</h2>
+                    <p class="text-xs font-mono text-indigo-600 uppercase tracking-[0.4em]">Récupération_Données_Historiques()</p>
                 </div>
 
                 <!-- Tabs Selector -->
                 <div class="flex justify-center mb-16 reveal">
-                    <div class="bg-white dark:bg-slate-800 p-1.5 rounded-2xl shadow-xl inline-flex border border-slate-200 dark:border-slate-700">
-                        <button onclick="switchParcoursTab('scolaire')" id="btn-tab-scolaire" class="tab-btn active px-8 py-3 rounded-xl text-sm font-bold transition-all">
+                    <div class="bg-white dark:bg-slate-800 p-1 rounded-none shadow-xl inline-flex border border-slate-200 dark:border-slate-700">
+                        <button onclick="switchParcoursTab('scolaire')" id="btn-tab-scolaire" class="tab-btn active px-8 py-3 text-xs font-mono uppercase tracking-widest transition-all">
                             Scolaire
                         </button>
-                        <button onclick="switchParcoursTab('stages')" id="btn-tab-stages" class="tab-btn px-8 py-3 rounded-xl text-sm font-bold transition-all text-slate-500 hover:text-indigo-600">
-                            Expériences (Stages)
+                        <button onclick="switchParcoursTab('stages')" id="btn-tab-stages" class="tab-btn px-8 py-3 text-xs font-mono uppercase tracking-widest transition-all text-slate-500 hover:text-indigo-600">
+                            Expériences
                         </button>
                     </div>
                 </div>
@@ -136,24 +179,24 @@
                 <div id="parcours-scolaire" class="timeline-container space-y-12 reveal active">
                     <div class="timeline-line"></div>
                     
-                    <div class="relative bg-white dark:bg-slate-800 p-8 rounded-[2rem] shadow-xl border border-slate-100 dark:border-slate-700">
+                    <div class="relative cyber-border bg-white dark:bg-slate-800 p-8 shadow-xl border-l-4 border-indigo-600">
                         <div class="timeline-dot top-10"></div>
                         <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-4">
-                            <h3 class="text-2xl font-black text-slate-900 dark:text-white">BTS SIO</h3>
-                            <span class="text-indigo-600 font-bold font-mono">2024 - 2026</span>
+                            <h3 class="text-2xl font-black text-slate-900 dark:text-white uppercase tracking-tight">BTS SIO SISR</h3>
+                            <span class="text-indigo-600 font-bold font-mono">[ 2024 - 2026 ]</span>
                         </div>
-                        <p class="text-lg font-bold text-slate-700 dark:text-slate-300 mb-2">Lycée René Descartes, Champs sur Marne</p>
-                        <p class="text-slate-500 dark:text-slate-400">Option SISR (Solutions d'infrastructure, systèmes et réseaux)</p>
+                        <p class="text-lg font-mono text-slate-700 dark:text-slate-300 mb-2">Lycée René Descartes, Champs sur Marne</p>
+                        <p class="text-slate-500 dark:text-slate-400 font-mono text-sm">Spécialisation: Solutions d'infrastructure, systèmes et réseaux</p>
                     </div>
 
-                    <div class="relative bg-white dark:bg-slate-800 p-8 rounded-[2rem] shadow-xl border border-slate-100 dark:border-slate-700">
+                    <div class="relative cyber-border bg-white dark:bg-slate-800 p-8 shadow-xl border-l-4 border-slate-400">
                         <div class="timeline-dot top-10 bg-slate-400"></div>
                         <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-4">
-                            <h3 class="text-2xl font-black text-slate-900 dark:text-white">Baccalauréat professionnel</h3>
-                            <span class="text-slate-500 font-bold font-mono">2020 - 2024</span>
+                            <h3 class="text-2xl font-black text-slate-900 dark:text-white uppercase tracking-tight">Baccalauréat Pro SN</h3>
+                            <span class="text-slate-500 font-bold font-mono">[ 2020 - 2024 ]</span>
                         </div>
-                        <p class="text-lg font-bold text-slate-700 dark:text-slate-300 mb-2">Lycée Claude Chappe, Nanterre</p>
-                        <p class="text-slate-500 dark:text-slate-400">Systèmes numériques option RISC (Réseaux Informatiques et Systèmes Communicants) <span class="ml-2 px-3 py-1 bg-emerald-100 text-emerald-700 text-xs font-black rounded-full uppercase">Mention Assez Bien</span></p>
+                        <p class="text-lg font-mono text-slate-700 dark:text-slate-300 mb-2">Lycée Claude Chappe, Nanterre</p>
+                        <p class="text-slate-500 dark:text-slate-400 font-mono text-sm">Option RISC (Réseaux Informatiques et Systèmes Communicants) <span class="ml-2 px-3 py-1 bg-emerald-100 text-emerald-700 text-[10px] font-black uppercase">Mention Assez Bien</span></p>
                     </div>
                 </div>
 
@@ -161,274 +204,280 @@
                 <div id="parcours-stages" class="timeline-container hidden space-y-8 reveal">
                     <div class="timeline-line"></div>
 
-                    <div class="relative mb-12 bg-indigo-600 p-8 rounded-[2.5rem] shadow-2xl border border-indigo-400 group overflow-hidden">
+                    <div class="relative mb-12 bg-indigo-600 p-8 shadow-2xl border border-indigo-400 group overflow-hidden cyber-border">
                         <div class="absolute -right-10 -top-10 w-40 h-40 bg-white/10 rounded-full blur-3xl group-hover:scale-150 transition-transform"></div>
                         <div class="relative z-10 flex flex-col md:flex-row items-center justify-between gap-6">
                             <div class="text-center md:text-left">
-                                <h3 class="text-2xl font-black text-white mb-2">Synthèse PFMP</h3>
-                                <p class="text-indigo-100 text-sm">Consultez le résumé ou téléchargez le rapport complet de mes stages.</p>
+                                <h3 class="text-2xl font-black text-white mb-2 uppercase tracking-tight">Synthèse_PFMP.exe</h3>
+                                <p class="text-indigo-100 text-xs font-mono">Accès aux rapports d'activités et synthèses de stage.</p>
                             </div>
                             <div class="flex flex-wrap gap-4">
-                                <a href="synthese.html" class="px-8 py-4 bg-white text-indigo-600 font-black rounded-2xl shadow-xl hover:bg-indigo-50 transition-all flex items-center gap-3 whitespace-nowrap">
-                                    Voir le résumé <i data-lucide="eye" class="w-5 h-5"></i>
+                                <a href="synthese.html" class="px-6 py-3 bg-white text-indigo-600 font-black uppercase tracking-widest text-xs hover:bg-indigo-50 transition-all flex items-center gap-3 whitespace-nowrap">
+                                    Visualiser <i data-lucide="eye" class="w-4 h-4"></i>
                                 </a>
-                                <a href="Dossier de synthèse Période de PFMP.pdf" download class="px-8 py-4 bg-indigo-500 text-white font-black rounded-2xl shadow-xl hover:bg-indigo-400 transition-all flex items-center gap-3 whitespace-nowrap border border-white/20">
-                                    Télécharger PDF <i data-lucide="download" class="w-5 h-5"></i>
+                                <a href="Dossier de synthèse Période de PFMP.pdf" download class="px-6 py-3 bg-indigo-500 text-white font-black uppercase tracking-widest text-xs hover:bg-indigo-400 transition-all flex items-center gap-3 whitespace-nowrap border border-white/20">
+                                    Télécharger <i data-lucide="download" class="w-4 h-4"></i>
                                 </a>
                             </div>
                         </div>
                     </div>
 
                     <!-- Stage 1 -->
-                    <div class="relative bg-white dark:bg-slate-800 p-8 rounded-[2rem] shadow-xl border border-slate-100 dark:border-slate-700 hover:border-indigo-500 transition-all">
+                    <div class="relative cyber-border bg-white dark:bg-slate-800 p-8 shadow-xl border-l-4 border-indigo-600 hover:border-indigo-400 transition-all">
                         <div class="timeline-dot top-10 bg-indigo-500"></div>
                         <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-4">
-                            <h3 class="text-xl font-black">Les réparateurs Mac et Pc - Montreuil</h3>
+                            <h3 class="text-xl font-black uppercase tracking-tight">Les réparateurs Mac et Pc</h3>
                             <div class="flex flex-col items-end">
-                                <span class="text-indigo-600 font-bold font-mono text-sm uppercase">JANVIER 2026 - MARS 2026</span>
+                                <span class="text-indigo-600 font-bold font-mono text-xs uppercase tracking-widest">[ JAN 2026 - MARS 2026 ]</span>
                             </div>
                         </div>
-                        <div class="mb-4"><span class="px-4 py-1.5 bg-emerald-100 text-emerald-700 text-xs font-black rounded-full uppercase tracking-widest">Effectué</span></div>
-                        <p class="text-brand-indigo font-bold text-sm mb-3 uppercase tracking-tighter">Stage – Réparateur Informatique</p>
-                        <ul class="text-sm text-slate-500 dark:text-slate-400 space-y-1 mb-6">
-                            <li>• Perfectionnement sur micro-soudure de composants CMS</li>
-                            <li>• Maintenance préventive et curative de parcs informatiques</li>
-                            <li>• Accueil et diagnostic client approfondi</li>
+                        <div class="mb-4"><span class="px-3 py-1 bg-emerald-100 text-emerald-700 text-[10px] font-black uppercase tracking-widest">Status: Terminé</span></div>
+                        <p class="text-indigo-600 font-mono text-xs mb-3 uppercase tracking-tighter">>_ Stage – Maintenance & Réparation</p>
+                        <ul class="text-xs font-mono text-slate-500 dark:text-slate-400 space-y-1 mb-6">
+                            <li>• Perfectionnement micro-soudure CMS</li>
+                            <li>• Maintenance curative parcs informatiques</li>
+                            <li>• Diagnostic hardware approfondi</li>
                         </ul>
-                        <a href="Compte rendu de stage - Les réparateurs Mac et Pc.pdf" download class="inline-flex items-center gap-2 px-6 py-3 bg-indigo-600 text-white font-black rounded-xl hover:bg-indigo-700 transition-all text-sm">
-                            <i data-lucide="download" class="w-4 h-4"></i> Télécharger le compte rendu
+                        <a href="Compte rendu de stage - Les réparateurs Mac et Pc.pdf" download class="inline-flex items-center gap-2 px-5 py-3 bg-indigo-600 text-white font-black uppercase tracking-widest text-[10px] hover:bg-indigo-700 transition-all">
+                            <i data-lucide="download" class="w-3 h-3"></i> Rapport_Download.sys
                         </a>
                     </div>
 
                     <!-- Stage 2 -->
-                    <div class="relative bg-white dark:bg-slate-800 p-8 rounded-[2rem] shadow-xl border border-slate-100 dark:border-slate-700">
-                        <div class="timeline-dot top-10"></div>
+                    <div class="relative cyber-border bg-white dark:bg-slate-800 p-8 shadow-xl border-l-4 border-cyan-600 hover:border-cyan-400 transition-all">
+                        <div class="timeline-dot top-10 bg-cyan-500"></div>
                         <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-4">
-                            <h3 class="text-xl font-black">LAPHONY - Paris</h3>
-                            <span class="text-slate-500 font-bold font-mono uppercase">SEPT 2023 - JAN 2024</span>
+                            <h3 class="text-xl font-black uppercase tracking-tight">LAPHONY - Paris</h3>
+                            <span class="text-cyan-600 font-bold font-mono text-xs uppercase tracking-widest">[ SEPT 2023 - JAN 2024 ]</span>
                         </div>
-                        <div class="mb-4"><span class="px-4 py-1.5 bg-emerald-100 text-emerald-700 text-xs font-black rounded-full uppercase tracking-widest">Effectué</span></div>
-                        <p class="text-brand-indigo font-bold text-sm mb-3 uppercase tracking-tighter">Stage – Réparateur Informatique</p>
-                        <ul class="text-sm text-slate-500 dark:text-slate-400 space-y-1">
+                        <div class="mb-4"><span class="px-3 py-1 bg-emerald-100 text-emerald-700 text-[10px] font-black uppercase tracking-widest">Status: Effectué</span></div>
+                        <p class="text-cyan-600 font-mono text-xs mb-3 uppercase tracking-tighter">>_ Stage – Réparateur Informatique</p>
+                        <ul class="text-xs font-mono text-slate-500 dark:text-slate-400 space-y-1">
                             <li>• Réparation smartphones & terminaux mobiles</li>
                             <li>• Diagnostic de pannes hardware complexes</li>
                         </ul>
                     </div>
 
                     <!-- Stage 3 -->
-                    <div class="relative bg-white dark:bg-slate-800 p-8 rounded-[2rem] shadow-xl border border-slate-100 dark:border-slate-700">
-                        <div class="timeline-dot top-10"></div>
+                    <div class="relative cyber-border bg-white dark:bg-slate-800 p-8 shadow-xl border-l-4 border-amber-600 hover:border-amber-400 transition-all">
+                        <div class="timeline-dot top-10 bg-amber-500"></div>
                         <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-4">
-                            <h3 class="text-xl font-black">Speed Laptop - Nanterre</h3>
-                            <span class="text-slate-500 font-bold font-mono uppercase">JUIN 2023</span>
+                            <h3 class="text-xl font-black uppercase tracking-tight">Speed Laptop - Nanterre</h3>
+                            <span class="text-amber-600 font-bold font-mono text-xs uppercase tracking-widest">[ JUIN 2023 ]</span>
                         </div>
-                        <div class="mb-4"><span class="px-4 py-1.5 bg-emerald-100 text-emerald-700 text-xs font-black rounded-full uppercase tracking-widest">Effectué</span></div>
-                        <p class="text-brand-indigo font-bold text-sm mb-3 uppercase tracking-tighter">Stage – Réparateur Informatique</p>
-                        <p class="text-sm text-slate-500">Installation systèmes Windows 10/11 et tri rigoureux de composants hardware.</p>
+                        <div class="mb-4"><span class="px-3 py-1 bg-emerald-100 text-emerald-700 text-[10px] font-black uppercase tracking-widest">Status: Effectué</span></div>
+                        <p class="text-amber-600 font-mono text-xs mb-3 uppercase tracking-tighter">>_ Stage – Réparateur Informatique</p>
+                        <p class="text-xs font-mono text-slate-500 dark:text-slate-400 leading-relaxed">Installation systèmes Windows 10/11 et tri rigoureux de composants hardware.</p>
                     </div>
 
                     <!-- Stage 4 -->
-                    <div class="relative bg-white dark:bg-slate-800 p-8 rounded-[2rem] shadow-xl border border-slate-100 dark:border-slate-700">
-                        <div class="timeline-dot top-10"></div>
+                    <div class="relative cyber-border bg-white dark:bg-slate-800 p-8 shadow-xl border-l-4 border-indigo-600 hover:border-indigo-400 transition-all">
+                        <div class="timeline-dot top-10 bg-indigo-500"></div>
                         <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-4">
-                            <h3 class="text-xl font-black">Les réparateurs Mac et Pc - Montreuil</h3>
-                            <span class="text-slate-500 font-bold font-mono uppercase">JANVIER 2023</span>
+                            <h3 class="text-xl font-black uppercase tracking-tight">Les réparateurs Mac et Pc - Montreuil</h3>
+                            <span class="text-indigo-600 font-bold font-mono text-xs uppercase tracking-widest">[ JANVIER 2023 ]</span>
                         </div>
-                        <div class="mb-4"><span class="px-4 py-1.5 bg-emerald-100 text-emerald-700 text-xs font-black rounded-full uppercase tracking-widest">Effectué</span></div>
-                        <p class="text-brand-indigo font-bold text-sm mb-3 uppercase tracking-tighter">Stage – Réparateur Informatique</p>
-                        <p class="text-sm text-slate-500">Maintenance hardware de précision et gestion administrative du SAV.</p>
+                        <div class="mb-4"><span class="px-3 py-1 bg-emerald-100 text-emerald-700 text-[10px] font-black uppercase tracking-widest">Status: Effectué</span></div>
+                        <p class="text-indigo-600 font-mono text-xs mb-3 uppercase tracking-tighter">>_ Stage – Réparateur Informatique</p>
+                        <p class="text-xs font-mono text-slate-500 dark:text-slate-400 leading-relaxed">Maintenance hardware de précision et gestion administrative du SAV.</p>
                     </div>
 
                     <!-- Stage 5 -->
-                    <div class="relative bg-white dark:bg-slate-800 p-8 rounded-[2rem] shadow-xl border border-slate-100 dark:border-slate-700">
-                        <div class="timeline-dot top-10"></div>
+                    <div class="relative cyber-border bg-white dark:bg-slate-800 p-8 shadow-xl border-l-4 border-cyan-600 hover:border-cyan-400 transition-all">
+                        <div class="timeline-dot top-10 bg-cyan-500"></div>
                         <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-4">
-                            <h3 class="text-xl font-black">Presta Plus - La Garenne-Colombes</h3>
-                            <span class="text-slate-500 font-bold font-mono uppercase">JUIN 2022</span>
+                            <h3 class="text-xl font-black uppercase tracking-tight">Presta Plus - La Garenne-Colombes</h3>
+                            <span class="text-cyan-600 font-bold font-mono text-xs uppercase tracking-widest">[ JUIN 2022 ]</span>
                         </div>
-                        <div class="mb-4"><span class="px-4 py-1.5 bg-emerald-100 text-emerald-700 text-xs font-black rounded-full uppercase tracking-widest">Effectué</span></div>
-                        <p class="text-brand-indigo font-bold text-sm mb-3 uppercase tracking-tighter">Stage – Réparateur Informatique</p>
+                        <div class="mb-4"><span class="px-3 py-1 bg-emerald-100 text-emerald-700 text-[10px] font-black uppercase tracking-widest">Status: Effectué</span></div>
+                        <p class="text-cyan-600 font-mono text-xs mb-3 uppercase tracking-tighter">>_ Stage – Réparateur Informatique</p>
+                        <p class="text-xs font-mono text-slate-500 dark:text-slate-400 leading-relaxed">Maintenance préventive et curative sur parcs informatiques clients.</p>
                     </div>
 
                     <!-- Stage 6 -->
-                    <div class="relative bg-white dark:bg-slate-800 p-8 rounded-[2rem] shadow-xl border border-slate-100 dark:border-slate-700">
-                        <div class="timeline-dot top-10"></div>
+                    <div class="relative cyber-border bg-white dark:bg-slate-800 p-8 shadow-xl border-l-4 border-amber-600 hover:border-amber-400 transition-all">
+                        <div class="timeline-dot top-10 bg-amber-500"></div>
                         <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-4">
-                            <h3 class="text-xl font-black">XXL info - Paris</h3>
-                            <span class="text-slate-500 font-bold font-mono uppercase">JANVIER 2022</span>
+                            <h3 class="text-xl font-black uppercase tracking-tight">XXL info - Paris</h3>
+                            <span class="text-amber-600 font-bold font-mono text-xs uppercase tracking-widest">[ JANVIER 2022 ]</span>
                         </div>
-                        <div class="mb-4"><span class="px-4 py-1.5 bg-emerald-100 text-emerald-700 text-xs font-black rounded-full uppercase tracking-widest">Effectué</span></div>
-                        <p class="text-brand-indigo font-bold text-sm mb-3 uppercase tracking-tighter">Stage – Réparateur Informatique</p>
+                        <div class="mb-4"><span class="px-3 py-1 bg-emerald-100 text-emerald-700 text-[10px] font-black uppercase tracking-widest">Status: Effectué</span></div>
+                        <p class="text-amber-600 font-mono text-xs mb-3 uppercase tracking-tighter">>_ Stage – Réparateur Informatique</p>
+                        <p class="text-xs font-mono text-slate-500 dark:text-slate-400 leading-relaxed">Assistance technique de premier niveau et préparation de postes de travail.</p>
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- Compétences Section -->
-        <section id="competences" class="py-32 bg-white dark:bg-slate-950">
-            <div class="max-w-7xl mx-auto px-6">
+        <section id="competences" class="py-32 bg-white dark:bg-slate-950 relative">
+            <div class="max-w-7xl mx-auto px-6 relative z-10">
                 <div class="text-center mb-20 reveal">
-                    <h2 class="text-6xl font-black mb-6 uppercase tracking-tighter">Mes Compétences</h2>
+                    <h2 class="text-6xl font-black mb-6 uppercase tracking-tighter glitch-text" data-text="MES COMPÉTENCES">Mes Compétences</h2>
+                    <p class="text-xs font-mono text-indigo-600 uppercase tracking-[0.4em]">Scan_Capacités_Système()</p>
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 reveal">
-                    <div class="flex flex-col p-8 bg-indigo-50 dark:bg-indigo-900/20 rounded-3xl border border-indigo-100 dark:border-indigo-800 hover:border-indigo-500 transition-all group h-full">
-                        <div class="w-12 h-12 bg-indigo-600 rounded-xl flex items-center justify-center text-white mb-6 group-hover:scale-110 transition-transform"><i data-lucide="network"></i></div>
-                        <h3 class="text-xl font-bold text-indigo-700 dark:text-indigo-400 mb-4 uppercase tracking-tight">Réseaux Cisco</h3>
-                        <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">Configuration d'équipements actifs : VLANs, routage IP statique et dynamique.</p>
+                    <div class="flex flex-col p-8 bg-slate-900/50 dark:bg-indigo-950/20 cyber-border border-l-2 border-indigo-600 hover:bg-indigo-900/30 transition-all group h-full">
+                        <div class="w-12 h-12 bg-indigo-600 flex items-center justify-center text-white mb-6 group-hover:scale-110 transition-transform"><i data-lucide="network"></i></div>
+                        <h3 class="text-lg font-mono font-bold text-indigo-400 mb-4 uppercase tracking-tight">Réseaux Cisco</h3>
+                        <p class="text-slate-400 text-xs font-mono leading-relaxed">VLANs, routage statique/dynamique, configuration switchs & routeurs.</p>
                     </div>
-                    <div class="flex flex-col p-8 bg-cyan-50 dark:bg-cyan-900/20 rounded-3xl border border-cyan-100 dark:border-cyan-800 hover:border-cyan-500 transition-all group h-full">
-                        <div class="w-12 h-12 bg-cyan-600 rounded-xl flex items-center justify-center text-white mb-6 group-hover:scale-110 transition-transform"><i data-lucide="server"></i></div>
-                        <h3 class="text-xl font-bold text-cyan-700 dark:text-cyan-400 mb-4 uppercase tracking-tight">Windows Server</h3>
-                        <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">Administration d'Active Directory : déploiement de GPO et gestion centralisée DNS/DHCP.</p>
+                    <div class="flex flex-col p-8 bg-slate-900/50 dark:bg-cyan-950/20 cyber-border border-l-2 border-cyan-600 hover:bg-cyan-900/30 transition-all group h-full">
+                        <div class="w-12 h-12 bg-cyan-600 flex items-center justify-center text-white mb-6 group-hover:scale-110 transition-transform"><i data-lucide="server"></i></div>
+                        <h3 class="text-lg font-mono font-bold text-cyan-400 mb-4 uppercase tracking-tight">Windows Server</h3>
+                        <p class="text-slate-400 text-xs font-mono leading-relaxed">Active Directory, GPO, DNS, DHCP, administration centralisée.</p>
                     </div>
-                    <div class="flex flex-col p-8 bg-orange-50 dark:bg-orange-900/20 rounded-3xl border border-orange-100 dark:border-orange-800 hover:border-orange-500 transition-all group h-full">
-                        <div class="w-12 h-12 bg-orange-600 rounded-xl flex items-center justify-center text-white mb-6 group-hover:scale-110 transition-transform"><i data-lucide="terminal-square"></i></div>
-                        <h3 class="text-xl font-bold text-orange-700 dark:text-orange-400 mb-4 uppercase tracking-tight">Systèmes Linux</h3>
-                        <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">Administration Debian et Ubuntu en ligne de commande (CLI).</p>
+                    <div class="flex flex-col p-8 bg-slate-900/50 dark:bg-orange-950/20 cyber-border border-l-2 border-orange-600 hover:bg-orange-900/30 transition-all group h-full">
+                        <div class="w-12 h-12 bg-orange-600 flex items-center justify-center text-white mb-6 group-hover:scale-110 transition-transform"><i data-lucide="terminal-square"></i></div>
+                        <h3 class="text-lg font-mono font-bold text-orange-400 mb-4 uppercase tracking-tight">Systèmes Linux</h3>
+                        <p class="text-slate-400 text-xs font-mono leading-relaxed">Administration Debian/Ubuntu, scripting Bash, gestion CLI.</p>
                     </div>
-                    <div class="flex flex-col p-8 bg-violet-50 dark:bg-violet-900/20 rounded-3xl border border-violet-100 dark:border-violet-800 hover:border-violet-500 transition-all group h-full">
-                        <div class="w-12 h-12 bg-violet-600 rounded-xl flex items-center justify-center text-white mb-6 group-hover:scale-110 transition-transform"><i data-lucide="box"></i></div>
-                        <h3 class="text-xl font-bold text-violet-700 dark:text-violet-400 mb-4 uppercase tracking-tight">Virtualisation</h3>
-                        <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">Administration d'hyperviseurs VMware et VirtualBox pour l'isolation des serveurs.</p>
+                    <div class="flex flex-col p-8 bg-slate-900/50 dark:bg-violet-950/20 cyber-border border-l-2 border-violet-600 hover:bg-violet-900/30 transition-all group h-full">
+                        <div class="w-12 h-12 bg-violet-600 flex items-center justify-center text-white mb-6 group-hover:scale-110 transition-transform"><i data-lucide="box"></i></div>
+                        <h3 class="text-lg font-mono font-bold text-violet-400 mb-4 uppercase tracking-tight">Virtualisation</h3>
+                        <p class="text-slate-400 text-xs font-mono leading-relaxed">VMware, VirtualBox, isolation de services, snapshots & clones.</p>
                     </div>
-                    <div class="flex flex-col p-8 bg-emerald-50 dark:bg-emerald-900/20 rounded-3xl border border-emerald-100 dark:border-emerald-800 hover:border-emerald-500 transition-all group h-full">
-                        <div class="w-12 h-12 bg-emerald-600 rounded-xl flex items-center justify-center text-white mb-6 group-hover:scale-110 transition-transform"><i data-lucide="database"></i></div>
-                        <h3 class="text-xl font-bold text-emerald-700 dark:text-emerald-400 mb-4 uppercase tracking-tight">Données & Scripts</h3>
-                        <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">Scripts d'automatisation Python et gestion de bases de données MySQL.</p>
+                    <div class="flex flex-col p-8 bg-slate-900/50 dark:bg-emerald-950/20 cyber-border border-l-2 border-emerald-600 hover:bg-emerald-900/30 transition-all group h-full">
+                        <div class="w-12 h-12 bg-emerald-600 flex items-center justify-center text-white mb-6 group-hover:scale-110 transition-transform"><i data-lucide="database"></i></div>
+                        <h3 class="text-lg font-mono font-bold text-emerald-400 mb-4 uppercase tracking-tight">Données & Scripts</h3>
+                        <p class="text-slate-400 text-xs font-mono leading-relaxed">Scripts d'automatisation Python et gestion de bases de données MySQL.</p>
                     </div>
-                    <div class="flex flex-col p-8 bg-rose-50 dark:bg-rose-900/20 rounded-3xl border border-rose-100 dark:border-rose-800 hover:border-rose-500 transition-all group h-full">
-                        <div class="w-12 h-12 bg-rose-600 rounded-xl flex items-center justify-center text-white mb-6 group-hover:scale-110 transition-transform"><i data-lucide="cpu"></i></div>
-                        <h3 class="text-xl font-bold text-rose-700 dark:text-rose-400 mb-4 uppercase tracking-tight">Maintenance HW</h3>
-                        <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">Micro-soudure de composants CMS avancée et diagnostic électronique.</p>
+                    <div class="flex flex-col p-8 bg-slate-900/50 dark:bg-rose-950/20 cyber-border border-l-2 border-rose-600 hover:bg-rose-900/30 transition-all group h-full">
+                        <div class="w-12 h-12 bg-rose-600 flex items-center justify-center text-white mb-6 group-hover:scale-110 transition-transform"><i data-lucide="cpu"></i></div>
+                        <h3 class="text-lg font-mono font-bold text-rose-400 mb-4 uppercase tracking-tight">Maintenance HW</h3>
+                        <p class="text-slate-400 text-xs font-mono leading-relaxed">Micro-soudure de composants CMS avancée et diagnostic électronique.</p>
                     </div>
-                    <div class="flex flex-col p-8 bg-amber-50 dark:bg-amber-900/20 rounded-3xl border border-amber-100 dark:border-amber-800 hover:border-amber-500 transition-all group h-full">
-                        <div class="w-12 h-12 bg-amber-600 rounded-xl flex items-center justify-center text-white mb-6 group-hover:scale-110 transition-transform"><i data-lucide="wrench"></i></div>
-                        <h3 class="text-xl font-bold text-amber-700 dark:text-amber-400 mb-4 uppercase tracking-tight">Maintenance SW</h3>
-                        <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">Réinstallation d'OS, diagnostic logiciel et nettoyage préventif.</p>
+                    <div class="flex flex-col p-8 bg-slate-900/50 dark:bg-amber-950/20 cyber-border border-l-2 border-amber-600 hover:bg-amber-900/30 transition-all group h-full">
+                        <div class="w-12 h-12 bg-amber-600 flex items-center justify-center text-white mb-6 group-hover:scale-110 transition-transform"><i data-lucide="wrench"></i></div>
+                        <h3 class="text-lg font-mono font-bold text-amber-400 mb-4 uppercase tracking-tight">Maintenance SW</h3>
+                        <p class="text-slate-400 text-xs font-mono leading-relaxed">Réinstallation d'OS, diagnostic logiciel et nettoyage préventif.</p>
                     </div>
-                    <div class="flex flex-col p-8 bg-slate-100 dark:bg-slate-800/60 rounded-3xl border border-slate-200 dark:border-slate-700 hover:border-slate-500 transition-all group h-full">
-                        <div class="w-12 h-12 bg-slate-600 rounded-xl flex items-center justify-center text-white mb-6 group-hover:scale-110 transition-transform"><i data-lucide="shield-check"></i></div>
-                        <h3 class="text-xl font-bold text-slate-700 dark:text-slate-400 mb-4 uppercase tracking-tight">Sécurité Info</h3>
-                        <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">Hygiène informatique et contrôle rigoureux des accès réseau.</p>
+                    <div class="flex flex-col p-8 bg-slate-900/50 dark:bg-slate-800/20 cyber-border border-l-2 border-slate-600 hover:bg-slate-700/30 transition-all group h-full">
+                        <div class="w-12 h-12 bg-slate-600 flex items-center justify-center text-white mb-6 group-hover:scale-110 transition-transform"><i data-lucide="shield-check"></i></div>
+                        <h3 class="text-lg font-mono font-bold text-slate-400 mb-4 uppercase tracking-tight">Sécurité Info</h3>
+                        <p class="text-slate-400 text-xs font-mono leading-relaxed">Hygiène informatique et contrôle rigoureux des accès réseau.</p>
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- Travaux Pratiques (TPS) -->
-        <section id="tps" class="py-32 bg-slate-50 dark:bg-slate-900 transition-colors">
-            <div class="max-w-7xl mx-auto px-6">
+        <section id="tps" class="py-32 bg-slate-50 dark:bg-slate-900 transition-colors relative">
+            <div class="max-w-7xl mx-auto px-6 relative z-10">
                 <div class="text-center mb-20 reveal">
-                    <h2 class="text-5xl font-black mb-4 uppercase tracking-tighter">Travaux Pratiques</h2>
-                    <div class="h-1.5 w-24 bg-brand-indigo mx-auto rounded-full"></div>
+                    <h2 class="text-5xl md:text-6xl font-black mb-4 uppercase tracking-tighter glitch-text" data-text="TRAVAUX PRATIQUES">Travaux Pratiques</h2>
+                    <p class="text-xs font-mono text-indigo-600 uppercase tracking-[0.4em]">Dépôt_Artéfacts_Projets()</p>
                 </div>
                 <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 reveal">
-                    <!-- VPN SNS (Existing) -->
-                    <div class="flex flex-col p-8 bg-indigo-50 dark:bg-indigo-900/20 rounded-[2.5rem] border border-indigo-100 dark:border-indigo-800 hover:border-indigo-500 transition-all group h-full shadow-lg">
-                        <div class="w-14 h-14 bg-indigo-600 rounded-2xl flex items-center justify-center text-white mb-8 group-hover:rotate-12 transition-transform shadow-xl">
+                    <!-- VPN SNS -->
+                    <div class="flex flex-col p-8 bg-slate-900/50 dark:bg-indigo-950/20 cyber-border border-l-2 border-indigo-600 hover:bg-indigo-900/30 transition-all group h-full shadow-lg">
+                        <div class="w-14 h-14 bg-indigo-600 flex items-center justify-center text-white mb-8 group-hover:rotate-12 transition-transform shadow-xl">
                             <i data-lucide="shield-check" class="w-8 h-8"></i>
                         </div>
-                        <h3 class="text-2xl font-black text-indigo-700 dark:text-indigo-400 mb-4 uppercase tracking-tight">VPN Site à Site SNS</h3>
-                        <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-8 flex-grow">Configuration d'un tunnel VPN IPsec entre deux sites distants via des pare-feu Stormshield.</p>
-                        <a href="vpn sns.pdf" download class="w-full py-4 bg-white dark:bg-slate-800 border-2 border-indigo-600 dark:border-indigo-500 text-indigo-600 dark:text-indigo-400 font-black rounded-2xl flex items-center justify-center gap-3 hover:bg-indigo-600 hover:text-white transition-all">
-                            <i data-lucide="download" class="w-4 h-4"></i> Télécharger le PDF
+                        <h3 class="text-xl font-mono font-bold text-indigo-400 mb-4 uppercase tracking-tight">VPN Site à Site SNS</h3>
+                        <p class="text-slate-400 text-xs font-mono leading-relaxed mb-8 flex-grow">Tunnel IPsec entre sites distants via pare-feu Stormshield.</p>
+                        <a href="vpn sns.pdf" download class="w-full py-3 bg-transparent border border-indigo-600 text-indigo-400 font-mono text-[10px] uppercase tracking-widest flex items-center justify-center gap-3 hover:bg-indigo-600 hover:text-white transition-all">
+                            <i data-lucide="download" class="w-3 h-3"></i> Télécharger_Données.bin
                         </a>
                     </div>
 
                     <!-- Labo Réplication -->
-                    <div class="flex flex-col p-8 bg-indigo-50 dark:bg-indigo-900/20 rounded-[2.5rem] border border-indigo-100 dark:border-indigo-800 hover:border-indigo-500 transition-all group h-full shadow-lg">
-                        <div class="w-14 h-14 bg-indigo-600 rounded-2xl flex items-center justify-center text-white mb-8 group-hover:rotate-12 transition-transform shadow-xl">
+                    <div class="flex flex-col p-8 bg-slate-900/50 dark:bg-indigo-950/20 cyber-border border-l-2 border-indigo-600 hover:bg-indigo-900/30 transition-all group h-full shadow-lg">
+                        <div class="w-14 h-14 bg-indigo-600 flex items-center justify-center text-white mb-8 group-hover:rotate-12 transition-transform shadow-xl">
                             <i data-lucide="copy" class="w-8 h-8"></i>
                         </div>
-                        <h3 class="text-2xl font-black text-indigo-700 dark:text-indigo-400 mb-4 uppercase tracking-tight">Réplication & GlusterFS</h3>
-                        <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-8 flex-grow">Mise en place d'une réplication de données haute disponibilité entre serveurs Debian avec Rsync et GlusterFS.</p>
-                        <a href="Labo réplication.pdf" download class="w-full py-4 bg-white dark:bg-slate-800 border-2 border-indigo-600 dark:border-indigo-500 text-indigo-600 dark:text-indigo-400 font-black rounded-2xl flex items-center justify-center gap-3 hover:bg-indigo-600 hover:text-white transition-all">
-                            <i data-lucide="download" class="w-4 h-4"></i> Télécharger le PDF
+                        <h3 class="text-xl font-mono font-bold text-indigo-400 mb-4 uppercase tracking-tight">Réplication GlusterFS</h3>
+                        <p class="text-slate-400 text-xs font-mono leading-relaxed mb-8 flex-grow">Haute disponibilité de données entre serveurs Debian avec Rsync.</p>
+                        <a href="Labo réplication.pdf" download class="w-full py-3 bg-transparent border border-indigo-600 text-indigo-400 font-mono text-[10px] uppercase tracking-widest flex items-center justify-center gap-3 hover:bg-indigo-600 hover:text-white transition-all">
+                            <i data-lucide="download" class="w-3 h-3"></i> Télécharger_Données.bin
                         </a>
                     </div>
 
                     <!-- Labo UTM -->
-                    <div class="flex flex-col p-8 bg-indigo-50 dark:bg-indigo-900/20 rounded-[2.5rem] border border-indigo-100 dark:border-indigo-800 hover:border-indigo-500 transition-all group h-full shadow-lg">
-                        <div class="w-14 h-14 bg-indigo-600 rounded-2xl flex items-center justify-center text-white mb-8 group-hover:rotate-12 transition-transform shadow-xl">
+                    <div class="flex flex-col p-8 bg-slate-900/50 dark:bg-indigo-950/20 cyber-border border-l-2 border-indigo-600 hover:bg-indigo-900/30 transition-all group h-full shadow-lg">
+                        <div class="w-14 h-14 bg-indigo-600 flex items-center justify-center text-white mb-8 group-hover:rotate-12 transition-transform shadow-xl">
                             <i data-lucide="shield-alert" class="w-8 h-8"></i>
                         </div>
-                        <h3 class="text-2xl font-black text-indigo-700 dark:text-indigo-400 mb-4 uppercase tracking-tight">Labo UTM pfSense</h3>
-                        <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-8 flex-grow">Configuration d'un portail UTM complet : Proxy Squid, filtrage web et détection d'intrusion Snort/Suricata.</p>
-                        <a href="LABO UTM.pdf" download class="w-full py-4 bg-white dark:bg-slate-800 border-2 border-indigo-600 dark:border-indigo-500 text-indigo-600 dark:text-indigo-400 font-black rounded-2xl flex items-center justify-center gap-3 hover:bg-indigo-600 hover:text-white transition-all">
-                            <i data-lucide="download" class="w-4 h-4"></i> Télécharger le PDF
+                        <h3 class="text-xl font-mono font-bold text-indigo-400 mb-4 uppercase tracking-tight">Labo UTM pfSense</h3>
+                        <p class="text-slate-400 text-xs font-mono leading-relaxed mb-8 flex-grow">Portail captif, Proxy Squid, filtrage web et IDS Snort/Suricata.</p>
+                        <a href="LABO UTM.pdf" download class="w-full py-3 bg-transparent border border-indigo-600 text-indigo-400 font-mono text-[10px] uppercase tracking-widest flex items-center justify-center gap-3 hover:bg-indigo-600 hover:text-white transition-all">
+                            <i data-lucide="download" class="w-3 h-3"></i> Télécharger_Données.bin
                         </a>
                     </div>
+                </div>
+            </div>
+        </section>
 
                     <!-- Labo DNS -->
-                    <div class="flex flex-col p-8 bg-indigo-50 dark:bg-indigo-900/20 rounded-[2.5rem] border border-indigo-100 dark:border-indigo-800 hover:border-indigo-500 transition-all group h-full shadow-lg">
-                        <div class="w-14 h-14 bg-indigo-600 rounded-2xl flex items-center justify-center text-white mb-8 group-hover:rotate-12 transition-transform shadow-xl">
+                    <div class="flex flex-col p-8 bg-slate-900/50 dark:bg-indigo-950/20 cyber-border border-l-2 border-indigo-600 hover:bg-indigo-900/30 transition-all group h-full shadow-lg">
+                        <div class="w-14 h-14 bg-indigo-600 flex items-center justify-center text-white mb-8 group-hover:rotate-12 transition-transform shadow-xl">
                             <i data-lucide="globe" class="w-8 h-8"></i>
                         </div>
-                        <h3 class="text-2xl font-black text-indigo-700 dark:text-indigo-400 mb-4 uppercase tracking-tight">DNS Bind9 Debian</h3>
-                        <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-8 flex-grow">Installation et configuration d'un serveur DNS Bind9 pour la gestion de zones locales et résolution de noms.</p>
-                        <a href="Labo dns.pdf" download class="w-full py-4 bg-white dark:bg-slate-800 border-2 border-indigo-600 dark:border-indigo-500 text-indigo-600 dark:text-indigo-400 font-black rounded-2xl flex items-center justify-center gap-3 hover:bg-indigo-600 hover:text-white transition-all">
-                            <i data-lucide="download" class="w-4 h-4"></i> Télécharger le PDF
+                        <h3 class="text-xl font-mono font-bold text-indigo-400 mb-4 uppercase tracking-tight">DNS Bind9 Debian</h3>
+                        <p class="text-slate-400 text-xs font-mono leading-relaxed mb-8 flex-grow">Installation et configuration d'un serveur DNS Bind9 pour zones locales.</p>
+                        <a href="Labo dns.pdf" download class="w-full py-3 bg-transparent border border-indigo-600 text-indigo-400 font-mono text-[10px] uppercase tracking-widest flex items-center justify-center gap-3 hover:bg-indigo-600 hover:text-white transition-all">
+                            <i data-lucide="download" class="w-3 h-3"></i> Télécharger_Données.bin
                         </a>
                     </div>
 
                     <!-- Labo Windows Server -->
-                    <div class="flex flex-col p-8 bg-indigo-50 dark:bg-indigo-900/20 rounded-[2.5rem] border border-indigo-100 dark:border-indigo-800 hover:border-indigo-500 transition-all group h-full shadow-lg">
-                        <div class="w-14 h-14 bg-indigo-600 rounded-2xl flex items-center justify-center text-white mb-8 group-hover:rotate-12 transition-transform shadow-xl">
+                    <div class="flex flex-col p-8 bg-slate-900/50 dark:bg-indigo-950/20 cyber-border border-l-2 border-indigo-600 hover:bg-indigo-900/30 transition-all group h-full shadow-lg">
+                        <div class="w-14 h-14 bg-indigo-600 flex items-center justify-center text-white mb-8 group-hover:rotate-12 transition-transform shadow-xl">
                             <i data-lucide="layout-grid" class="w-8 h-8"></i>
                         </div>
-                        <h3 class="text-2xl font-black text-indigo-700 dark:text-indigo-400 mb-4 uppercase tracking-tight">Windows Server & AD</h3>
-                        <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-8 flex-grow">Administration Active Directory : gestion des utilisateurs, déploiement de GPOs et automatisation PowerShell.</p>
-                        <a href="Labo windows.pdf" download class="w-full py-4 bg-white dark:bg-slate-800 border-2 border-indigo-600 dark:border-indigo-500 text-indigo-600 dark:text-indigo-400 font-black rounded-2xl flex items-center justify-center gap-3 hover:bg-indigo-600 hover:text-white transition-all">
-                            <i data-lucide="download" class="w-4 h-4"></i> Télécharger le PDF
+                        <h3 class="text-xl font-mono font-bold text-indigo-400 mb-4 uppercase tracking-tight">Windows Server & AD</h3>
+                        <p class="text-slate-400 text-xs font-mono leading-relaxed mb-8 flex-grow">Administration AD : gestion utilisateurs, GPOs et PowerShell.</p>
+                        <a href="Labo windows.pdf" download class="w-full py-3 bg-transparent border border-indigo-600 text-indigo-400 font-mono text-[10px] uppercase tracking-widest flex items-center justify-center gap-3 hover:bg-indigo-600 hover:text-white transition-all">
+                            <i data-lucide="download" class="w-3 h-3"></i> Télécharger_Données.bin
                         </a>
                     </div>
 
                     <!-- Labo RAID -->
-                    <div class="flex flex-col p-8 bg-indigo-50 dark:bg-indigo-900/20 rounded-[2.5rem] border border-indigo-100 dark:border-indigo-800 hover:border-indigo-500 transition-all group h-full shadow-lg">
-                        <div class="w-14 h-14 bg-indigo-600 rounded-2xl flex items-center justify-center text-white mb-8 group-hover:rotate-12 transition-transform shadow-xl">
+                    <div class="flex flex-col p-8 bg-slate-900/50 dark:bg-indigo-950/20 cyber-border border-l-2 border-indigo-600 hover:bg-indigo-900/30 transition-all group h-full shadow-lg">
+                        <div class="w-14 h-14 bg-indigo-600 flex items-center justify-center text-white mb-8 group-hover:rotate-12 transition-transform shadow-xl">
                             <i data-lucide="hard-drive" class="w-8 h-8"></i>
                         </div>
-                        <h3 class="text-2xl font-black text-indigo-700 dark:text-indigo-400 mb-4 uppercase tracking-tight">RAID Linux mdadm</h3>
-                        <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-8 flex-grow">Mise en œuvre de grappes RAID 1 et RAID 5 logicielles pour assurer la redondance des données système.</p>
-                        <a href="Labo RAID.pdf" download class="w-full py-4 bg-white dark:bg-slate-800 border-2 border-indigo-600 dark:border-indigo-500 text-indigo-600 dark:text-indigo-400 font-black rounded-2xl flex items-center justify-center gap-3 hover:bg-indigo-600 hover:text-white transition-all">
-                            <i data-lucide="download" class="w-4 h-4"></i> Télécharger le PDF
+                        <h3 class="text-xl font-mono font-bold text-indigo-400 mb-4 uppercase tracking-tight">RAID Linux mdadm</h3>
+                        <p class="text-slate-400 text-xs font-mono leading-relaxed mb-8 flex-grow">Mise en œuvre de grappes RAID 1 et RAID 5 logicielles (redondance).</p>
+                        <a href="Labo RAID.pdf" download class="w-full py-3 bg-transparent border border-indigo-600 text-indigo-400 font-mono text-[10px] uppercase tracking-widest flex items-center justify-center gap-3 hover:bg-indigo-600 hover:text-white transition-all">
+                            <i data-lucide="download" class="w-3 h-3"></i> Télécharger_Données.bin
                         </a>
                     </div>
 
                     <!-- Sécurité Web -->
-                    <div class="flex flex-col p-8 bg-indigo-50 dark:bg-indigo-900/20 rounded-[2.5rem] border border-indigo-100 dark:border-indigo-800 hover:border-indigo-500 transition-all group h-full shadow-lg">
-                        <div class="w-14 h-14 bg-indigo-600 rounded-2xl flex items-center justify-center text-white mb-8 group-hover:rotate-12 transition-transform shadow-xl">
+                    <div class="flex flex-col p-8 bg-slate-900/50 dark:bg-indigo-950/20 cyber-border border-l-2 border-indigo-600 hover:bg-indigo-900/30 transition-all group h-full shadow-lg">
+                        <div class="w-14 h-14 bg-indigo-600 flex items-center justify-center text-white mb-8 group-hover:rotate-12 transition-transform shadow-xl">
                             <i data-lucide="lock" class="w-8 h-8"></i>
                         </div>
-                        <h3 class="text-2xl font-black text-indigo-700 dark:text-indigo-400 mb-4 uppercase tracking-tight">Sécurité & Pentest</h3>
-                        <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-8 flex-grow">Analyse de vulnérabilités avec Kali Linux et Burp Suite sur l'environnement Mutillidae II.</p>
-                        <a href="Brèche sur des informations confidentielles.pdf" download class="w-full py-4 bg-white dark:bg-slate-800 border-2 border-indigo-600 dark:border-indigo-500 text-indigo-600 dark:text-indigo-400 font-black rounded-2xl flex items-center justify-center gap-3 hover:bg-indigo-600 hover:text-white transition-all">
-                            <i data-lucide="download" class="w-4 h-4"></i> Télécharger le PDF
+                        <h3 class="text-xl font-mono font-bold text-indigo-400 mb-4 uppercase tracking-tight">Sécurité & Pentest</h3>
+                        <p class="text-slate-400 text-xs font-mono leading-relaxed mb-8 flex-grow">Analyse de vulnérabilités avec Kali Linux et Burp Suite sur Mutillidae II.</p>
+                        <a href="Brèche sur des informations confidentielles.pdf" download class="w-full py-3 bg-transparent border border-indigo-600 text-indigo-400 font-mono text-[10px] uppercase tracking-widest flex items-center justify-center gap-3 hover:bg-indigo-600 hover:text-white transition-all">
+                            <i data-lucide="download" class="w-3 h-3"></i> Télécharger_Données.bin
                         </a>
                     </div>
 
                     <!-- Labo Apache -->
-                    <div class="flex flex-col p-8 bg-indigo-50 dark:bg-indigo-900/20 rounded-[2.5rem] border border-indigo-100 dark:border-indigo-800 hover:border-indigo-500 transition-all group h-full shadow-lg">
-                        <div class="w-14 h-14 bg-indigo-600 rounded-2xl flex items-center justify-center text-white mb-8 group-hover:rotate-12 transition-transform shadow-xl">
+                    <div class="flex flex-col p-8 bg-slate-900/50 dark:bg-indigo-950/20 cyber-border border-l-2 border-indigo-600 hover:bg-indigo-900/30 transition-all group h-full shadow-lg">
+                        <div class="w-14 h-14 bg-indigo-600 flex items-center justify-center text-white mb-8 group-hover:rotate-12 transition-transform shadow-xl">
                             <i data-lucide="server" class="w-8 h-8"></i>
                         </div>
-                        <h3 class="text-2xl font-black text-indigo-700 dark:text-indigo-400 mb-4 uppercase tracking-tight">Serveur Web Apache</h3>
-                        <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-8 flex-grow">Configuration avancée d'Apache2 : VirtualHosts, sécurisation SSL/TLS et gestion des répertoires.</p>
-                        <a href="Labo apache.pdf" download class="w-full py-4 bg-white dark:bg-slate-800 border-2 border-indigo-600 dark:border-indigo-500 text-indigo-600 dark:text-indigo-400 font-black rounded-2xl flex items-center justify-center gap-3 hover:bg-indigo-600 hover:text-white transition-all">
-                            <i data-lucide="download" class="w-4 h-4"></i> Télécharger le PDF
+                        <h3 class="text-xl font-mono font-bold text-indigo-400 mb-4 uppercase tracking-tight">Serveur Web Apache</h3>
+                        <p class="text-slate-400 text-xs font-mono leading-relaxed mb-8 flex-grow">Configuration avancée Apache2 : VirtualHosts, SSL/TLS et répertoires.</p>
+                        <a href="Labo apache.pdf" download class="w-full py-3 bg-transparent border border-indigo-600 text-indigo-400 font-mono text-[10px] uppercase tracking-widest flex items-center justify-center gap-3 hover:bg-indigo-600 hover:text-white transition-all">
+                            <i data-lucide="download" class="w-3 h-3"></i> Télécharger_Données.bin
                         </a>
                     </div>
 
                     <!-- Labo Firewalling -->
-                    <div class="flex flex-col p-8 bg-indigo-50 dark:bg-indigo-900/20 rounded-[2.5rem] border border-indigo-100 dark:border-indigo-800 hover:border-indigo-500 transition-all group h-full shadow-lg">
-                        <div class="w-14 h-14 bg-indigo-600 rounded-2xl flex items-center justify-center text-white mb-8 group-hover:rotate-12 transition-transform shadow-xl">
+                    <div class="flex flex-col p-8 bg-slate-900/50 dark:bg-indigo-950/20 cyber-border border-l-2 border-indigo-600 hover:bg-indigo-900/30 transition-all group h-full shadow-lg">
+                        <div class="w-14 h-14 bg-indigo-600 flex items-center justify-center text-white mb-8 group-hover:rotate-12 transition-transform shadow-xl">
                             <i data-lucide="shield" class="w-8 h-8"></i>
                         </div>
-                        <h3 class="text-2xl font-black text-indigo-700 dark:text-indigo-400 mb-4 uppercase tracking-tight">Firewalling pfSense</h3>
-                        <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-8 flex-grow">Mise en place de règles de filtrage complexes, translation d'adresses (NAT) et isolation DMZ.</p>
-                        <a href="Labo firewall.pdf" download class="w-full py-4 bg-white dark:bg-slate-800 border-2 border-indigo-600 dark:border-indigo-500 text-indigo-600 dark:text-indigo-400 font-black rounded-2xl flex items-center justify-center gap-3 hover:bg-indigo-600 hover:text-white transition-all">
-                            <i data-lucide="download" class="w-4 h-4"></i> Télécharger le PDF
+                        <h3 class="text-xl font-mono font-bold text-indigo-400 mb-4 uppercase tracking-tight">Firewalling pfSense</h3>
+                        <p class="text-slate-400 text-xs font-mono leading-relaxed mb-8 flex-grow">Règles de filtrage complexes, NAT et isolation DMZ.</p>
+                        <a href="Labo firewall.pdf" download class="w-full py-3 bg-transparent border border-indigo-600 text-indigo-400 font-mono text-[10px] uppercase tracking-widest flex items-center justify-center gap-3 hover:bg-indigo-600 hover:text-white transition-all">
+                            <i data-lucide="download" class="w-3 h-3"></i> Télécharger_Données.bin
                         </a>
                     </div>
                 </div>
@@ -436,53 +485,31 @@
         </section>
 
         <!-- Veille Technologique -->
-        <section id="veille" class="py-32 bg-white dark:bg-slate-950 transition-colors">
-            <div class="max-w-5xl mx-auto px-6">
+        <section id="veille" class="py-32 bg-white dark:bg-slate-950 transition-colors relative">
+            <div class="max-w-5xl mx-auto px-6 relative z-10">
                 <div class="text-center mb-16 reveal">
-                    <h2 class="text-5xl font-black mb-4 uppercase tracking-tighter">Veille Technologique</h2>
-                    <div class="h-1.5 w-32 bg-indigo-600 mx-auto rounded-full"></div>
+                    <h2 class="text-5xl md:text-6xl font-black mb-4 uppercase tracking-tighter glitch-text" data-text="VEILLE TECHNOLOGIQUE">Veille Technologique</h2>
+                    <p class="text-xs font-mono text-indigo-600 uppercase tracking-[0.4em]">Collecte_Intelligence()</p>
                 </div>
-                <div class="bg-indigo-50 dark:bg-indigo-900/10 p-10 md:p-16 rounded-[3rem] border border-indigo-100 dark:border-indigo-800 reveal">
+                <div class="bg-slate-900/50 dark:bg-indigo-950/10 p-10 md:p-16 cyber-border border-l-4 border-indigo-600 reveal">
                     <div class="flex flex-col md:flex-row gap-12 items-center">
                         <div class="flex-1">
-                            <h3 class="text-3xl font-black mb-6 text-indigo-700 dark:text-indigo-400 uppercase tracking-tight">Cloud Computing & Souveraineté</h3>
-                            <p class="text-slate-600 dark:text-slate-400 text-lg leading-relaxed mb-8">
-                                Veille active sur les solutions de Cloud Souverain (OVHcloud, Outscale) et les certifications SecNumCloud. Étude des architectures Serverless et de l'optimisation des coûts (FinOps) sur AWS et Azure. Suivi des innovations en IA Cloud (Vertex AI, AWS Bedrock).
+                            <h3 class="text-2xl font-mono font-black mb-6 text-indigo-400 uppercase tracking-tight">Cloud Computing & Souveraineté</h3>
+                            <p class="text-slate-400 text-sm font-mono leading-relaxed mb-8">
+                                Analyse des solutions de Cloud Souverain (OVHcloud, Outscale) et certifications SecNumCloud. Étude FinOps et architectures Serverless.
                             </p>
                             <div class="flex flex-wrap gap-4 mb-8">
-                                <span class="px-4 py-2 bg-white dark:bg-slate-800 rounded-xl text-xs font-bold border border-slate-200 dark:border-slate-700">SecNumCloud</span>
-                                <span class="px-4 py-2 bg-white dark:bg-slate-800 rounded-xl text-xs font-bold border border-slate-200 dark:border-slate-700">FinOps</span>
-                                <span class="px-4 py-2 bg-white dark:bg-slate-800 rounded-xl text-xs font-bold border border-slate-200 dark:border-slate-700">Serverless</span>
-                                <span class="px-4 py-2 bg-white dark:bg-slate-800 rounded-xl text-xs font-bold border border-slate-200 dark:border-slate-700">Multi-Cloud</span>
+                                <span class="px-3 py-1 bg-indigo-900/30 text-indigo-400 font-mono text-[10px] border border-indigo-500/30">SecNumCloud</span>
+                                <span class="px-3 py-1 bg-indigo-900/30 text-indigo-400 font-mono text-[10px] border border-indigo-500/30">FinOps</span>
+                                <span class="px-3 py-1 bg-indigo-900/30 text-indigo-400 font-mono text-[10px] border border-indigo-500/30">Serverless</span>
                             </div>
                             <div class="space-y-4">
-                                <h4 class="text-sm font-black uppercase tracking-widest text-slate-400 mb-4">Sources Récentes (2025-2026)</h4>
-                                <a href="https://www.lemondeinformatique.fr/actualites/lire-le-cloud-souverain-europeen-franchit-une-etape-majeure-en-2025-95123.html" target="_blank" class="flex items-center gap-4 p-4 bg-white dark:bg-slate-800 rounded-2xl border border-slate-100 dark:border-slate-700 hover:border-indigo-500 transition-all group">
-                                    <div class="w-10 h-10 bg-indigo-100 dark:bg-indigo-900 flex items-center justify-center rounded-xl text-indigo-600"><i data-lucide="newspaper" class="w-5 h-5"></i></div>
+                                <h4 class="text-[10px] font-mono uppercase tracking-[0.3em] text-slate-500 mb-4">Feed_Sources.sys</h4>
+                                <a href="https://www.lemondeinformatique.fr/actualites/lire-le-cloud-souverain-europeen-franchit-une-etape-majeure-en-2025-95123.html" target="_blank" class="flex items-center gap-4 p-4 bg-slate-900/50 border border-slate-800 hover:border-indigo-500 transition-all group">
+                                    <div class="w-8 h-8 bg-indigo-900/50 flex items-center justify-center text-indigo-400"><i data-lucide="newspaper" class="w-4 h-4"></i></div>
                                     <div class="flex-1">
-                                        <p class="text-sm font-bold group-hover:text-indigo-600 transition-colors">Le Cloud Souverain Européen franchit une étape majeure</p>
-                                        <p class="text-xs text-slate-500">Le Monde Informatique • Janvier 2026</p>
-                                    </div>
-                                </a>
-                                <a href="https://www.silicon.fr/cloud-hybride-strategie-indispensable-2025-478231.html" target="_blank" class="flex items-center gap-4 p-4 bg-white dark:bg-slate-800 rounded-2xl border border-slate-100 dark:border-slate-700 hover:border-cyan-500 transition-all group">
-                                    <div class="w-10 h-10 bg-cyan-100 dark:bg-cyan-900 flex items-center justify-center rounded-xl text-cyan-600"><i data-lucide="newspaper" class="w-5 h-5"></i></div>
-                                    <div class="flex-1">
-                                        <p class="text-sm font-bold group-hover:text-cyan-600 transition-colors">Cloud Hybride : La stratégie indispensable pour 2025</p>
-                                        <p class="text-xs text-slate-500">Silicon.fr • Février 2026</p>
-                                    </div>
-                                </a>
-                                <a href="https://www.zdnet.fr/actualites/finops-et-ia-generative-le-duo-gagnant-de-l-optimisation-cloud-en-2025-39968451.htm" target="_blank" class="flex items-center gap-4 p-4 bg-white dark:bg-slate-800 rounded-2xl border border-slate-100 dark:border-slate-700 hover:border-emerald-500 transition-all group">
-                                    <div class="w-10 h-10 bg-emerald-100 dark:bg-emerald-900 flex items-center justify-center rounded-xl text-emerald-600"><i data-lucide="newspaper" class="w-5 h-5"></i></div>
-                                    <div class="flex-1">
-                                        <p class="text-sm font-bold group-hover:text-emerald-600 transition-colors">FinOps et IA Générative : l'optimisation Cloud en 2025</p>
-                                        <p class="text-xs text-slate-500">ZDNet France • Décembre 2025</p>
-                                    </div>
-                                </a>
-                                <a href="https://www.usine-digitale.fr/article/cybersecurite-cloud-les-nouvelles-exigences-du-label-secnumcloud-en-2026.N2305412" target="_blank" class="flex items-center gap-4 p-4 bg-white dark:bg-slate-800 rounded-2xl border border-slate-100 dark:border-slate-700 hover:border-amber-500 transition-all group">
-                                    <div class="w-10 h-10 bg-amber-100 dark:bg-amber-900 flex items-center justify-center rounded-xl text-amber-600"><i data-lucide="newspaper" class="w-5 h-5"></i></div>
-                                    <div class="flex-1">
-                                        <p class="text-sm font-bold group-hover:text-amber-600 transition-colors">Les nouvelles exigences du label SecNumCloud en 2026</p>
-                                        <p class="text-xs text-slate-500">L'Usine Digitale • Février 2026</p>
+                                        <p class="text-[10px] font-mono font-bold group-hover:text-indigo-400 transition-colors uppercase">Le Cloud Souverain Européen franchit une étape majeure</p>
+                                        <p class="text-[8px] font-mono text-slate-600">Source: Le Monde Informatique</p>
                                     </div>
                                 </a>
                             </div>
@@ -496,43 +523,131 @@
         </section>
 
         <!-- Contact Section -->
-        <section id="contact" class="py-32 bg-slate-50 dark:bg-slate-900">
-            <div class="max-w-5xl mx-auto px-6 text-center">
-                <h2 class="text-5xl font-black mb-20 reveal uppercase tracking-tighter">Me Contacter</h2>
-                <div class="grid md:grid-cols-2 gap-20 text-left reveal">
-                    <div class="space-y-12">
-                        <div class="space-y-8">
-                            <div class="flex items-center gap-8 p-8 bg-white dark:bg-slate-800 rounded-[2.5rem] shadow-xl border dark:border-slate-700">
-                                <div class="w-16 h-16 bg-indigo-100 dark:bg-indigo-900 flex items-center justify-center rounded-2xl text-indigo-600"><i data-lucide="mail" class="w-8 h-8"></i></div>
-                                <span class="font-black text-xl">melloukmonib3@gmail.com</span>
+        <section id="contact" class="py-32 relative overflow-hidden bg-slate-100 dark:bg-slate-950 transition-colors hacker-grid">
+            <!-- Scanline effect -->
+            <div class="scanline"></div>
+            
+            <!-- Decorative background elements -->
+            <div class="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none opacity-10">
+                <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-indigo-500 rounded-full blur-[150px]"></div>
+                <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-cyan-500 rounded-full blur-[150px]"></div>
+            </div>
+
+            <div class="max-w-7xl mx-auto px-6 relative z-10">
+                <div class="text-center mb-20 reveal">
+                    <div class="inline-block mb-4 px-4 py-1 bg-indigo-600 text-white text-xs font-mono tracking-[0.3em] uppercase">Initialisation_Connexion_Système()</div>
+                    <h2 class="text-6xl md:text-7xl font-black mb-4 uppercase tracking-tighter glitch-text" data-text="ME CONTACTER">Me Contacter</h2>
+                    <p class="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto text-lg font-mono">
+                        >_ Établir une liaison sécurisée. En attente de données...
+                    </p>
+                </div>
+
+                <div class="grid lg:grid-cols-5 gap-8 items-start reveal">
+                    <!-- Contact Info -->
+                    <div class="lg:col-span-2 space-y-6">
+                        <div class="cyber-border p-8 bg-white dark:bg-slate-900 shadow-2xl border-l-4 border-indigo-600 group hover:bg-indigo-600/5 transition-all">
+                            <div class="flex items-center gap-6">
+                                <div class="w-14 h-14 bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-indigo-600 group-hover:text-indigo-400 transition-colors">
+                                    <i data-lucide="mail" class="w-7 h-7"></i>
+                                </div>
+                                <div>
+                                    <p class="text-[10px] font-mono uppercase tracking-widest text-slate-500 mb-1">Channel: Email</p>
+                                    <p class="font-bold text-lg break-all font-mono">melloukmonib3@gmail.com</p>
+                                </div>
                             </div>
-                            <div class="flex items-center gap-8 p-8 bg-white dark:bg-slate-800 rounded-[2.5rem] shadow-xl border dark:border-slate-700">
-                                <div class="w-16 h-16 bg-cyan-100 dark:bg-cyan-900 flex items-center justify-center rounded-2xl text-cyan-600"><i data-lucide="phone" class="w-8 h-8"></i></div>
-                                <span class="font-black text-xl">07 81 64 24 30</span>
+                        </div>
+
+                        <div class="cyber-border p-8 bg-white dark:bg-slate-900 shadow-2xl border-l-4 border-cyan-500 group hover:bg-cyan-500/5 transition-all">
+                            <div class="flex items-center gap-6">
+                                <div class="w-14 h-14 bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-cyan-600 group-hover:text-cyan-400 transition-colors">
+                                    <i data-lucide="phone" class="w-7 h-7"></i>
+                                </div>
+                                <div>
+                                    <p class="text-[10px] font-mono uppercase tracking-widest text-slate-500 mb-1">Channel: Voice</p>
+                                    <p class="font-bold text-lg font-mono">07 81 64 24 30</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="cyber-border p-8 bg-white dark:bg-slate-900 shadow-2xl border-l-4 border-amber-500 group hover:bg-amber-500/5 transition-all">
+                            <div class="flex items-center gap-6">
+                                <div class="w-14 h-14 bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-amber-600 group-hover:text-amber-400 transition-colors">
+                                    <i data-lucide="map-pin" class="w-7 h-7"></i>
+                                </div>
+                                <div>
+                                    <p class="text-[10px] font-mono uppercase tracking-widest text-slate-500 mb-1">Node: Location</p>
+                                    <p class="font-bold text-lg font-mono">Île-de-France, FR</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="p-8 bg-slate-900 dark:bg-indigo-950/30 border border-indigo-500/30 text-white relative overflow-hidden group">
+                            <div class="absolute top-0 right-0 p-2 opacity-20"><i data-lucide="share-2" class="w-12 h-12"></i></div>
+                            <h4 class="text-sm font-mono mb-6 uppercase tracking-widest text-indigo-400">Liens_Externes.exe</h4>
+                            <div class="flex gap-4">
+                                <a href="https://github.com/WalterW920" target="_blank" class="w-12 h-12 bg-white/10 hover:bg-indigo-600 flex items-center justify-center transition-all border border-white/10">
+                                    <i data-lucide="github" class="w-6 h-6"></i>
+                                </a>
+                                <a href="https://www.linkedin.com/in/monib-mellouk-5226a4341/" target="_blank" class="w-12 h-12 bg-white/10 hover:bg-indigo-600 flex items-center justify-center transition-all border border-white/10">
+                                    <i data-lucide="linkedin" class="w-6 h-6"></i>
+                                </a>
                             </div>
                         </div>
                     </div>
-                    <form id="contact-form" action="https://formspree.io/f/mdawkykd" method="POST" class="bg-white dark:bg-slate-800 p-16 rounded-[4rem] shadow-2xl space-y-8">
-                        <input type="text" name="name" placeholder="Nom" required class="w-full p-6 rounded-3xl bg-slate-50 dark:bg-slate-900 border dark:border-slate-700 outline-none focus:ring-4 ring-indigo-500/20">
-                        <input type="email" name="email" placeholder="Votre Email" required class="w-full p-6 rounded-3xl bg-slate-50 dark:bg-slate-900 border dark:border-slate-700 outline-none focus:ring-4 ring-indigo-500/20">
-                        <textarea name="message" placeholder="Message..." rows="6" required class="w-full p-6 rounded-3xl bg-slate-50 dark:bg-slate-900 border dark:border-slate-700 outline-none focus:ring-4 ring-indigo-500/20"></textarea>
-                        <button type="submit" id="submit-btn" class="w-full py-6 bg-indigo-600 text-white font-black text-xl rounded-3xl hover:bg-indigo-700 transition-all shadow-2xl">Envoyer</button>
-                        <p id="form-status" class="hidden text-center font-bold"></p>
-                    </form>
+
+                    <!-- Contact Form -->
+                    <div class="lg:col-span-3">
+                        <form id="contact-form" action="https://formspree.io/f/mdawkykd" method="POST" class="bg-white dark:bg-slate-900 p-8 md:p-12 shadow-2xl border border-slate-200 dark:border-slate-800 relative">
+                            <div class="absolute top-0 left-0 w-4 h-4 border-t-2 border-l-2 border-indigo-600"></div>
+                            <div class="absolute top-0 right-0 w-4 h-4 border-t-2 border-r-2 border-indigo-600"></div>
+                            <div class="absolute bottom-0 left-0 w-4 h-4 border-b-2 border-l-2 border-indigo-600"></div>
+                            <div class="absolute bottom-0 right-0 w-4 h-4 border-b-2 border-r-2 border-indigo-600"></div>
+                            
+                            <div class="mb-8 flex items-center justify-between border-b border-slate-100 dark:border-slate-800 pb-4">
+                                <span class="text-xs font-mono text-indigo-600 uppercase tracking-widest">Interface_Téléversement_Paquets</span>
+                                <span class="text-[10px] font-mono text-slate-400">v2.0.4_stable</span>
+                            </div>
+
+                            <div class="grid md:grid-cols-2 gap-6 mb-6">
+                                <div class="space-y-2">
+                                    <label class="text-[10px] font-mono uppercase tracking-widest text-slate-500">Identité.Nom</label>
+                                    <input type="text" name="name" placeholder="VOTRE_NOM" required class="w-full p-4 bg-slate-50 dark:bg-slate-800 border-b-2 border-slate-200 dark:border-slate-700 outline-none focus:border-indigo-600 transition-all font-mono text-sm">
+                                </div>
+                                <div class="space-y-2">
+                                    <label class="text-[10px] font-mono uppercase tracking-widest text-slate-500">Identité.Email</label>
+                                    <input type="email" name="email" placeholder="VOTRE_EMAIL" required class="w-full p-4 bg-slate-50 dark:bg-slate-800 border-b-2 border-slate-200 dark:border-slate-700 outline-none focus:border-indigo-600 transition-all font-mono text-sm">
+                                </div>
+                            </div>
+                            <div class="space-y-2 mb-8">
+                                <label class="text-[10px] font-mono uppercase tracking-widest text-slate-500">Payload.Message</label>
+                                <textarea name="message" placeholder="SAISISSEZ_VOTRE_MESSAGE_ICI..." rows="4" required class="w-full p-4 bg-slate-50 dark:bg-slate-800 border-b-2 border-slate-200 dark:border-slate-700 outline-none focus:border-indigo-600 transition-all font-mono text-sm resize-none"></textarea>
+                            </div>
+                            
+                            <button type="submit" id="submit-btn" class="w-full py-4 bg-indigo-600 text-white font-black text-lg uppercase tracking-widest hover:bg-indigo-700 transition-all flex items-center justify-center gap-3 group relative overflow-hidden">
+                                <span class="relative z-10 flex items-center gap-3">Exécuter_Envoi <i data-lucide="terminal" class="w-5 h-5"></i></span>
+                                <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
+                            </button>
+                            <p id="form-status" class="hidden text-center font-mono mt-4 text-xs uppercase tracking-widest"></p>
+                        </form>
+                    </div>
                 </div>
             </div>
         </section>
     </main>
 
     <!-- Footer Global -->
-    <footer class="bg-slate-900 text-slate-500 py-32 text-center border-t border-slate-800">
-        <div class="max-w-7xl mx-auto px-6">
-            <h3 class="text-4xl font-black text-white mb-6">Monib Mellouk</h3>
-            <div class="flex justify-center space-x-12 mb-16">
-                <a href="https://github.com/WalterW920" target="_blank" class="text-white/40 hover:text-white transition-all transform hover:scale-125"><i data-lucide="github" class="w-10 h-10"></i></a>
-                <a href="https://www.linkedin.com/in/monib-mellouk-5226a4341/" target="_blank" class="text-white/40 hover:text-white transition-all transform hover:scale-125"><i data-lucide="linkedin" class="w-10 h-10"></i></a>
+    <footer class="bg-slate-950 text-slate-500 py-32 text-center border-t border-indigo-600/30 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6 relative z-10">
+            <div class="mb-12">
+                <span class="text-indigo-600 dark:text-cyan-400 font-mono text-2xl font-black">SYS.</span>
+                <span class="text-white font-mono text-2xl font-black uppercase tracking-widest">PORTFOLIO</span>
             </div>
-            <p class="text-[10px] font-black opacity-20 uppercase tracking-[1em]">&copy; 2024 MONIB MELLOUK</p>
+            <div class="flex justify-center space-x-12 mb-16">
+                <a href="https://github.com/WalterW920" target="_blank" class="text-white/40 hover:text-indigo-600 transition-all transform hover:scale-125"><i data-lucide="github" class="w-10 h-10"></i></a>
+                <a href="https://www.linkedin.com/in/monib-mellouk-5226a4341/" target="_blank" class="text-white/40 hover:text-indigo-600 transition-all transform hover:scale-125"><i data-lucide="linkedin" class="w-10 h-10"></i></a>
+            </div>
+            <p class="text-[10px] font-mono opacity-20 uppercase tracking-[1em] mb-4">Session Terminal Clôturée // 2026</p>
+            <p class="text-[8px] font-mono opacity-10 uppercase tracking-[0.5em]">&copy; 2026 MONIB MELLOUK. TOUS_DROITS_RÉSERVÉS [CHIFFRÉ]</p>
         </div>
     </footer>
 
@@ -589,6 +704,24 @@
         window.switchParcoursTab = switchParcoursTab;
 
         document.addEventListener('DOMContentLoaded', () => {
+          // Update current time in terminal
+          const timeEl = document.getElementById('current-time');
+          if (timeEl) {
+            const now = new Date();
+            timeEl.innerText = now.toLocaleDateString('fr-FR') + ' ' + now.toLocaleTimeString('fr-FR');
+          }
+
+          // Terminal boot sequence effect
+          const bootLines = document.querySelectorAll('#terminal-boot p');
+          bootLines.forEach((line, index) => {
+            line.style.opacity = '0';
+            setTimeout(() => {
+              line.style.opacity = '1';
+              line.classList.add('animate-pulse');
+              setTimeout(() => line.classList.remove('animate-pulse'), 500);
+            }, index * 400);
+          });
+
           if (localStorage.theme === 'dark' || (!localStorage.theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
             document.documentElement.classList.add('dark');
           }
@@ -607,8 +740,8 @@
             contactForm.addEventListener('submit', async (e) => {
                 e.preventDefault();
                 submitBtn.disabled = true;
-                const originalBtnText = submitBtn.innerText;
-                submitBtn.innerText = 'Envoi en cours...';
+                const originalBtnText = submitBtn.innerHTML;
+                submitBtn.innerHTML = '<span>Uploading_Payload...</span>';
                 
                 const formData = new FormData(contactForm);
                 const data = {};
@@ -625,7 +758,7 @@
                     });
                     
                     if (response.ok) {
-                        formStatus.innerText = 'Merci ! Votre message a été envoyé.';
+                        formStatus.innerText = '>_ SUCCESS: Données transmises avec succès.';
                         formStatus.classList.remove('hidden', 'text-red-500');
                         formStatus.classList.add('text-emerald-500');
                         contactForm.reset();
@@ -636,12 +769,12 @@
                     }
                 } catch (err) {
                     console.error('Submission Error:', err);
-                    formStatus.innerText = 'Oups ! Une erreur est survenue. Assurez-vous d\'avoir confirmé votre e-mail sur Formspree.';
+                    formStatus.innerText = '>_ ERROR: Échec de la liaison. Vérifiez votre connexion.';
                     formStatus.classList.remove('hidden', 'text-emerald-500');
                     formStatus.classList.add('text-red-500');
                 } finally {
                     submitBtn.disabled = false;
-                    submitBtn.innerText = originalBtnText;
+                    submitBtn.innerHTML = originalBtnText;
                 }
             });
           }
