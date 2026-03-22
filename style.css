@@ -184,3 +184,68 @@ h1, h2, h3, h4, h5, h6 { font-family: 'Space Grotesk', sans-serif; }
 .terminal-dot-yellow { width: 12px; height: 12px; border-radius: 50%; background: #f59e0b; }
 .terminal-dot-green { width: 12px; height: 12px; border-radius: 50%; background: #10b981; }
 
+/* Badly coded app effects */
+.bad-app-window {
+    position: relative;
+    background: #020617;
+    border: 2px solid #4f46e5;
+    box-shadow: 5px 5px 0px #ef4444, -5px -5px 0px #06b6d4;
+    overflow: hidden;
+}
+
+.bad-app-header {
+    background: #1e293b;
+    padding: 8px 12px;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #334155;
+}
+
+.glitch-card {
+    transition: all 0.2s ease;
+    position: relative;
+}
+
+.glitch-card:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 4px 4px 0px #6366f1, 8px 8px 0px rgba(99, 102, 241, 0.2);
+}
+
+.glitch-card:hover::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(0deg, transparent 0%, rgba(99, 102, 241, 0.1) 50%, transparent 100%);
+    background-size: 100% 4px;
+    pointer-events: none;
+    z-index: 10;
+    animation: scanline-mini 0.2s linear infinite;
+}
+
+@keyframes scanline-mini {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(4px); }
+}
+
+.flicker {
+    animation: flicker 0.1s infinite alternate;
+}
+
+@keyframes flicker {
+    0% { opacity: 0.9; }
+    100% { opacity: 1; }
+}
+
+.text-glitch-sm {
+    animation: text-glitch-sm 2s infinite linear alternate-reverse;
+}
+
+@keyframes text-glitch-sm {
+    0% { transform: translate(0); }
+    20% { transform: translate(-1px, 1px); color: #ff00c1; }
+    40% { transform: translate(1px, -1px); color: #00fff9; }
+    60% { transform: translate(-1px, -1px); }
+    80% { transform: translate(1px, 1px); }
+    100% { transform: translate(0); }
+}
+
