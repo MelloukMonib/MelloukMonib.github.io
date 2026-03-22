@@ -2,7 +2,6 @@ body {
     font-family: 'Inter', sans-serif; 
     overflow-x: hidden; 
     width: 100%; 
-    cursor: crosshair;
 }
 
 /* Custom Scrollbar */
@@ -79,20 +78,25 @@ h1, h2, h3, h4, h5, h6 { font-family: 'Space Grotesk', sans-serif; }
     left: 0;
     width: 100%;
     height: 100%;
-    background: inherit;
+    background: white;
+}
+
+.dark .glitch-text::before,
+.dark .glitch-text::after {
+    background: #020617;
 }
 
 .glitch-text::before {
     left: 2px;
     text-shadow: -2px 0 #ff00c1;
-    clip: rect(44px, 450px, 56px, 0);
-    animation: glitch-anim 5s infinite linear alternate-reverse;
+    clip: rect(44px, 9999px, 56px, 0);
+    animation: glitch-anim 8s infinite linear alternate-reverse;
 }
 
 .glitch-text::after {
     left: -2px;
     text-shadow: -2px 0 #00fff9, 2px 2px #ff00c1;
-    animation: glitch-anim2 1s infinite linear alternate-reverse;
+    animation: glitch-anim2 3.5s infinite linear alternate-reverse;
 }
 
 @keyframes glitch-anim {
@@ -167,16 +171,27 @@ h1, h2, h3, h4, h5, h6 { font-family: 'Space Grotesk', sans-serif; }
 }
 
 .terminal-window {
+    background: #ffffff;
+    border: 1px solid #cbd5e1;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.1);
+}
+
+.dark .terminal-window {
     background: #0f172a;
     border: 1px solid #334155;
     box-shadow: 0 20px 50px rgba(0,0,0,0.5);
 }
 
 .terminal-header {
-    background: #1e293b;
+    background: #e2e8f0;
     padding: 8px 16px;
     display: flex;
     gap: 6px;
+    border-bottom: 1px solid #cbd5e1;
+}
+
+.dark .terminal-header {
+    background: #1e293b;
     border-bottom: 1px solid #334155;
 }
 
@@ -187,17 +202,26 @@ h1, h2, h3, h4, h5, h6 { font-family: 'Space Grotesk', sans-serif; }
 /* Badly coded app effects */
 .bad-app-window {
     position: relative;
-    background: #020617;
+    background: #ffffff;
     border: 2px solid #4f46e5;
     box-shadow: 5px 5px 0px #ef4444, -5px -5px 0px #06b6d4;
     overflow: hidden;
 }
 
+.dark .bad-app-window {
+    background: #020617;
+}
+
 .bad-app-header {
-    background: #1e293b;
+    background: #e2e8f0;
     padding: 8px 12px;
     display: flex;
     align-items: center;
+    border-bottom: 1px solid #cbd5e1;
+}
+
+.dark .bad-app-header {
+    background: #1e293b;
     border-bottom: 1px solid #334155;
 }
 
@@ -238,6 +262,18 @@ h1, h2, h3, h4, h5, h6 { font-family: 'Space Grotesk', sans-serif; }
 
 .text-glitch-sm {
     animation: text-glitch-sm 2s infinite linear alternate-reverse;
+}
+
+@keyframes multicolor-blink {
+    0% { color: #6366f1; }
+    25% { color: #06b6d4; }
+    50% { color: #ef4444; }
+    75% { color: #f59e0b; }
+    100% { color: #6366f1; }
+}
+
+.multicolor-blink {
+    animation: multicolor-blink 2s infinite;
 }
 
 @keyframes text-glitch-sm {
