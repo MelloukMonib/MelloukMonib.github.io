@@ -105,9 +105,9 @@
                             <span class="relative z-10">Lire_Rapport <i data-lucide="file-text" class="ml-2 inline-block w-5 h-5"></i></span>
                             <div class="absolute inset-0 bg-white/10 translate-y-full group-hover:translate-y-0 transition-transform"></div>
                         </button>
-                        <a href="synthese_pfmp.pdf" target="_blank" class="px-8 py-4 bg-transparent border-2 border-indigo-600 text-indigo-600 dark:text-cyan-400 font-black uppercase tracking-widest hover:bg-indigo-600 hover:text-white transition-all">
+                        <button onclick="openPdfModal('synthese_pfmp.pdf', 'Synthèse_PFMP.pdf')" class="px-8 py-4 bg-transparent border-2 border-indigo-600 text-indigo-600 dark:text-cyan-400 font-black uppercase tracking-widest hover:bg-indigo-600 hover:text-white transition-all">
                             Consulter_PDF
-                        </a>
+                        </button>
                     </div>
                 </div>
                 <div class="w-full md:w-2/5 flex flex-col items-center justify-center mt-12 md:mt-0">
@@ -196,6 +196,23 @@
                 </div>
             </div>
         </section>
+
+        <!-- PDF Modal -->
+        <div id="pdf-modal" class="fixed inset-0 z-[100] hidden items-center justify-center p-4 md:p-8 bg-slate-950/80 backdrop-blur-sm">
+            <div class="terminal-window cyber-border w-full max-w-6xl h-full flex flex-col shadow-2xl animate-fadeIn">
+                <div class="terminal-header flex items-center justify-between">
+                    <div class="flex gap-2 items-center">
+                        <button onclick="closePdfModal()" class="terminal-dot-red" title="Fermer"></button>
+                        <div class="terminal-dot-yellow"></div>
+                        <div class="terminal-dot-green"></div>
+                        <span id="pdf-modal-title" class="ml-2 text-[10px] font-mono text-slate-400 uppercase tracking-widest">Document_Viewer.exe</span>
+                    </div>
+                </div>
+                <div class="flex-grow bg-slate-900 overflow-hidden relative">
+                    <iframe id="pdf-iframe" src="" class="w-full h-full border-none" title="PDF Viewer"></iframe>
+                </div>
+            </div>
+        </div>
     </main>
 
     <!-- Footer Global -->
@@ -238,6 +255,35 @@
         window.toggleTheme = toggleTheme;
         window.scrollToSection = scrollToSection;
         window.toggleMobileMenu = toggleMobileMenu;
+
+        const openPdfModal = (url, title) => {
+            const modal = document.getElementById('pdf-modal');
+            const iframe = document.getElementById('pdf-iframe');
+            const titleEl = document.getElementById('pdf-modal-title');
+            
+            if (modal && iframe && titleEl) {
+                iframe.src = url;
+                titleEl.innerText = title || 'Document_Viewer.exe';
+                modal.classList.remove('hidden');
+                modal.classList.add('flex');
+                document.body.style.overflow = 'hidden';
+            }
+        };
+
+        const closePdfModal = () => {
+            const modal = document.getElementById('pdf-modal');
+            const iframe = document.getElementById('pdf-iframe');
+            
+            if (modal && iframe) {
+                modal.classList.add('hidden');
+                modal.classList.remove('flex');
+                iframe.src = '';
+                document.body.style.overflow = '';
+            }
+        };
+
+        window.openPdfModal = openPdfModal;
+        window.closePdfModal = closePdfModal;
 
         document.addEventListener('DOMContentLoaded', () => {
           if (localStorage.theme === 'dark' || (!localStorage.theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
