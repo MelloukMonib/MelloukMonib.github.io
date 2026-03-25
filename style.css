@@ -195,9 +195,47 @@ h1, h2, h3, h4, h5, h6 { font-family: 'Space Grotesk', sans-serif; }
     border-bottom: 1px solid #334155;
 }
 
-.terminal-dot-red { width: 12px; height: 12px; border-radius: 50%; background: #ef4444; }
-.terminal-dot-yellow { width: 12px; height: 12px; border-radius: 50%; background: #f59e0b; }
-.terminal-dot-green { width: 12px; height: 12px; border-radius: 50%; background: #10b981; }
+@keyframes scroll-news {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-50%); }
+}
+
+.news-scroll-container {
+    height: 400px;
+    overflow: hidden;
+    position: relative;
+}
+
+.news-scroll-content {
+    animation: scroll-news 30s linear infinite;
+}
+
+.news-scroll-content:hover {
+    animation-play-state: paused;
+}
+
+.terminal-dot-red { 
+    width: 12px; 
+    height: 12px; 
+    border-radius: 50%; 
+    background: #ef4444; 
+    cursor: pointer; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 8px;
+    color: transparent;
+    transition: all 0.2s ease;
+}
+.terminal-dot-red:hover { 
+    transform: scale(1.1);
+    color: rgba(0,0,0,0.5);
+}
+.terminal-dot-red::before {
+    content: "×";
+}
+.terminal-dot-yellow { width: 12px; height: 12px; border-radius: 50%; background: #f59e0b; cursor: pointer; }
+.terminal-dot-green { width: 12px; height: 12px; border-radius: 50%; background: #10b981; cursor: pointer; }
 
 /* Badly coded app effects */
 .bad-app-window {
@@ -284,3 +322,4 @@ h1, h2, h3, h4, h5, h6 { font-family: 'Space Grotesk', sans-serif; }
     80% { transform: translate(1px, 1px); }
     100% { transform: translate(0); }
 }
+
