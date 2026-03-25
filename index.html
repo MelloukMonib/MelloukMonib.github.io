@@ -229,9 +229,9 @@
                                 <a href="synthese.html" class="px-6 py-3 bg-white text-indigo-600 font-black uppercase tracking-widest text-xs hover:bg-indigo-50 transition-all flex items-center gap-3 whitespace-nowrap">
                                     Visualiser <i data-lucide="eye" class="w-4 h-4"></i>
                                 </a>
-                                <a href="synthese_pfmp.pdf" target="_blank" class="px-6 py-3 bg-indigo-500 text-white font-black uppercase tracking-widest text-xs hover:bg-indigo-400 transition-all flex items-center gap-3 whitespace-nowrap border border-white/20">
+                                <button onclick="openPdfModal('synthese_pfmp.pdf', 'Synthèse_PFMP.pdf')" class="px-6 py-3 bg-indigo-500 text-white font-black uppercase tracking-widest text-xs hover:bg-indigo-400 transition-all flex items-center gap-3 whitespace-nowrap border border-white/20">
                                     Consulter <i data-lucide="eye" class="w-4 h-4"></i>
-                                </a>
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -252,9 +252,9 @@
                             <li>• Maintenance curative parcs informatiques</li>
                             <li>• Diagnostic hardware approfondi</li>
                         </ul>
-                        <a href="Compte rendu de stage - Les réparateurs Mac et Pc.pdf" download class="inline-flex items-center gap-2 px-5 py-3 bg-indigo-600 text-white font-black uppercase tracking-widest text-[10px] hover:bg-indigo-700 transition-all">
-                            <i data-lucide="download" class="w-3 h-3"></i> Rapport_Download.sys
-                        </a>
+                        <button onclick="openPdfModal('Compte rendu de stage - Les réparateurs Mac et Pc.pdf', 'CR_Stage_Mac_PC.pdf')" class="inline-flex items-center gap-2 px-5 py-3 bg-indigo-600 text-white font-black uppercase tracking-widest text-[10px] hover:bg-indigo-700 transition-all">
+                            <i data-lucide="eye" class="w-3 h-3"></i> Consulter_Rapport.pdf
+                        </button>
                     </div>
 
                     <!-- Stage 2 -->
@@ -442,9 +442,9 @@
                             </div>
                             <h3 class="text-xl font-mono font-bold text-indigo-600 dark:text-indigo-400 mb-4 uppercase tracking-tight text-glitch-sm">VPN Site à Site SNS</h3>
                             <p class="text-slate-600 dark:text-slate-400 text-xs font-mono leading-relaxed mb-8 flex-grow">Tunnel IPsec entre sites distants via pare-feu Stormshield.</p>
-                            <a href="tp_vpn_stormshield.pdf" target="_blank" class="w-full py-3 bg-transparent border border-indigo-600 text-indigo-600 dark:text-indigo-400 font-mono text-[10px] uppercase tracking-widest flex items-center justify-center gap-3 hover:bg-indigo-600 hover:text-white transition-all">
+                            <button onclick="openPdfModal('tp_vpn_stormshield.pdf', 'TP_VPN_Stormshield.pdf')" class="w-full py-3 bg-transparent border border-indigo-600 text-indigo-600 dark:text-indigo-400 font-mono text-[10px] uppercase tracking-widest flex items-center justify-center gap-3 hover:bg-indigo-600 hover:text-white transition-all">
                                 <i data-lucide="eye" class="w-3 h-3"></i> Consulter_Document.pdf
-                            </a>
+                            </button>
                         </div>
                     </div>
 
@@ -462,9 +462,9 @@
                             </div>
                             <h3 class="text-xl font-mono font-bold text-indigo-600 dark:text-indigo-400 mb-4 uppercase tracking-tight text-glitch-sm">Réplication GlusterFS</h3>
                             <p class="text-slate-600 dark:text-slate-400 text-xs font-mono leading-relaxed mb-8 flex-grow">Haute disponibilité de données entre serveurs Debian avec Rsync.</p>
-                            <a href="Labo réplication.pdf" target="_blank" class="w-full py-3 bg-transparent border border-indigo-600 text-indigo-600 dark:text-indigo-400 font-mono text-[10px] uppercase tracking-widest flex items-center justify-center gap-3 hover:bg-indigo-600 hover:text-white transition-all">
+                            <button onclick="openPdfModal('Labo réplication.pdf', 'Labo_Réplication.pdf')" class="w-full py-3 bg-transparent border border-indigo-600 text-indigo-600 dark:text-indigo-400 font-mono text-[10px] uppercase tracking-widest flex items-center justify-center gap-3 hover:bg-indigo-600 hover:text-white transition-all">
                                 <i data-lucide="eye" class="w-3 h-3"></i> Consulter_Document.pdf
-                            </a>
+                            </button>
                         </div>
                     </div>
 
@@ -482,9 +482,9 @@
                             </div>
                             <h3 class="text-xl font-mono font-bold text-indigo-600 dark:text-indigo-400 mb-4 uppercase tracking-tight text-glitch-sm">Labo UTM pfSense</h3>
                             <p class="text-slate-600 dark:text-slate-400 text-xs font-mono leading-relaxed mb-8 flex-grow">Portail captif, Proxy Squid, filtrage web et IDS Snort/Suricata.</p>
-                            <a href="LABO UTM.pdf" target="_blank" class="w-full py-3 bg-transparent border border-indigo-600 text-indigo-600 dark:text-indigo-400 font-mono text-[10px] uppercase tracking-widest flex items-center justify-center gap-3 hover:bg-indigo-600 hover:text-white transition-all">
+                            <button onclick="openPdfModal('LABO UTM.pdf', 'Labo_UTM.pdf')" class="w-full py-3 bg-transparent border border-indigo-600 text-indigo-600 dark:text-indigo-400 font-mono text-[10px] uppercase tracking-widest flex items-center justify-center gap-3 hover:bg-indigo-600 hover:text-white transition-all">
                                 <i data-lucide="eye" class="w-3 h-3"></i> Consulter_Document.pdf
-                            </a>
+                            </button>
                         </div>
                     </div>
 
@@ -502,9 +502,9 @@
                             </div>
                             <h3 class="text-xl font-mono font-bold text-indigo-600 dark:text-indigo-400 mb-4 uppercase tracking-tight text-glitch-sm">DNS Bind9 Debian</h3>
                             <p class="text-slate-600 dark:text-slate-400 text-xs font-mono leading-relaxed mb-8 flex-grow">Installation et configuration d'un serveur DNS Bind9 pour zones locales.</p>
-                            <a href="Labo dns.pdf" target="_blank" class="w-full py-3 bg-transparent border border-indigo-600 text-indigo-600 dark:text-indigo-400 font-mono text-[10px] uppercase tracking-widest flex items-center justify-center gap-3 hover:bg-indigo-600 hover:text-white transition-all">
+                            <button onclick="openPdfModal('Labo dns.pdf', 'Labo_DNS.pdf')" class="w-full py-3 bg-transparent border border-indigo-600 text-indigo-600 dark:text-indigo-400 font-mono text-[10px] uppercase tracking-widest flex items-center justify-center gap-3 hover:bg-indigo-600 hover:text-white transition-all">
                                 <i data-lucide="eye" class="w-3 h-3"></i> Consulter_Document.pdf
-                            </a>
+                            </button>
                         </div>
                     </div>
 
@@ -522,9 +522,9 @@
                             </div>
                             <h3 class="text-xl font-mono font-bold text-indigo-600 dark:text-indigo-400 mb-4 uppercase tracking-tight text-glitch-sm">Windows Server & AD</h3>
                             <p class="text-slate-600 dark:text-slate-400 text-xs font-mono leading-relaxed mb-8 flex-grow">Administration AD : gestion utilisateurs, GPOs et PowerShell.</p>
-                            <a href="Labo windows.pdf" target="_blank" class="w-full py-3 bg-transparent border border-indigo-600 text-indigo-600 dark:text-indigo-400 font-mono text-[10px] uppercase tracking-widest flex items-center justify-center gap-3 hover:bg-indigo-600 hover:text-white transition-all">
+                            <button onclick="openPdfModal('Labo windows.pdf', 'Labo_Windows.pdf')" class="w-full py-3 bg-transparent border border-indigo-600 text-indigo-600 dark:text-indigo-400 font-mono text-[10px] uppercase tracking-widest flex items-center justify-center gap-3 hover:bg-indigo-600 hover:text-white transition-all">
                                 <i data-lucide="eye" class="w-3 h-3"></i> Consulter_Document.pdf
-                            </a>
+                            </button>
                         </div>
                     </div>
 
@@ -542,9 +542,9 @@
                             </div>
                             <h3 class="text-xl font-mono font-bold text-indigo-600 dark:text-indigo-400 mb-4 uppercase tracking-tight text-glitch-sm">RAID Linux mdadm</h3>
                             <p class="text-slate-600 dark:text-slate-400 text-xs font-mono leading-relaxed mb-8 flex-grow">Mise en œuvre de grappes RAID 1 et RAID 5 logicielles (redondance).</p>
-                            <a href="Labo RAID.pdf" target="_blank" class="w-full py-3 bg-transparent border border-indigo-600 text-indigo-600 dark:text-indigo-400 font-mono text-[10px] uppercase tracking-widest flex items-center justify-center gap-3 hover:bg-indigo-600 hover:text-white transition-all">
+                            <button onclick="openPdfModal('Labo RAID.pdf', 'Labo_RAID.pdf')" class="w-full py-3 bg-transparent border border-indigo-600 text-indigo-600 dark:text-indigo-400 font-mono text-[10px] uppercase tracking-widest flex items-center justify-center gap-3 hover:bg-indigo-600 hover:text-white transition-all">
                                 <i data-lucide="eye" class="w-3 h-3"></i> Consulter_Document.pdf
-                            </a>
+                            </button>
                         </div>
                     </div>
 
@@ -562,9 +562,9 @@
                             </div>
                             <h3 class="text-xl font-mono font-bold text-indigo-600 dark:text-indigo-400 mb-4 uppercase tracking-tight text-glitch-sm">Sécurité & Pentest</h3>
                             <p class="text-slate-600 dark:text-slate-400 text-xs font-mono leading-relaxed mb-8 flex-grow">Analyse de vulnérabilités avec Kali Linux et Burp Suite sur Mutillidae II.</p>
-                            <a href="Brèche sur des informations confidentielles.pdf" target="_blank" class="w-full py-3 bg-transparent border border-indigo-600 text-indigo-600 dark:text-indigo-400 font-mono text-[10px] uppercase tracking-widest flex items-center justify-center gap-3 hover:bg-indigo-600 hover:text-white transition-all">
+                            <button onclick="openPdfModal('Brèche sur des informations confidentielles.pdf', 'Sécurité_Pentest.pdf')" class="w-full py-3 bg-transparent border border-indigo-600 text-indigo-600 dark:text-indigo-400 font-mono text-[10px] uppercase tracking-widest flex items-center justify-center gap-3 hover:bg-indigo-600 hover:text-white transition-all">
                                 <i data-lucide="eye" class="w-3 h-3"></i> Consulter_Document.pdf
-                            </a>
+                            </button>
                         </div>
                     </div>
 
@@ -582,9 +582,9 @@
                             </div>
                             <h3 class="text-xl font-mono font-bold text-indigo-600 dark:text-indigo-400 mb-4 uppercase tracking-tight text-glitch-sm">Serveur Web Apache</h3>
                             <p class="text-slate-600 dark:text-slate-400 text-xs font-mono leading-relaxed mb-8 flex-grow">Configuration avancée Apache2 : VirtualHosts, SSL/TLS et répertoires.</p>
-                            <a href="Labo apache.pdf" target="_blank" class="w-full py-3 bg-transparent border border-indigo-600 text-indigo-600 dark:text-indigo-400 font-mono text-[10px] uppercase tracking-widest flex items-center justify-center gap-3 hover:bg-indigo-600 hover:text-white transition-all">
+                            <button onclick="openPdfModal('Labo apache.pdf', 'Labo_Apache.pdf')" class="w-full py-3 bg-transparent border border-indigo-600 text-indigo-600 dark:text-indigo-400 font-mono text-[10px] uppercase tracking-widest flex items-center justify-center gap-3 hover:bg-indigo-600 hover:text-white transition-all">
                                 <i data-lucide="eye" class="w-3 h-3"></i> Consulter_Document.pdf
-                            </a>
+                            </button>
                         </div>
                     </div>
 
@@ -602,9 +602,9 @@
                             </div>
                             <h3 class="text-xl font-mono font-bold text-indigo-600 dark:text-indigo-400 mb-4 uppercase tracking-tight text-glitch-sm">Firewalling pfSense</h3>
                             <p class="text-slate-600 dark:text-slate-400 text-xs font-mono leading-relaxed mb-8 flex-grow">Règles de filtrage complexes, NAT et isolation DMZ.</p>
-                            <a href="Labo firewall.pdf" target="_blank" class="w-full py-3 bg-transparent border border-indigo-600 text-indigo-600 dark:text-indigo-400 font-mono text-[10px] uppercase tracking-widest flex items-center justify-center gap-3 hover:bg-indigo-600 hover:text-white transition-all">
+                            <button onclick="openPdfModal('Labo firewall.pdf', 'Labo_Firewall.pdf')" class="w-full py-3 bg-transparent border border-indigo-600 text-indigo-600 dark:text-indigo-400 font-mono text-[10px] uppercase tracking-widest flex items-center justify-center gap-3 hover:bg-indigo-600 hover:text-white transition-all">
                                 <i data-lucide="eye" class="w-3 h-3"></i> Consulter_Document.pdf
-                            </a>
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -612,49 +612,140 @@
         </section>
 
         <!-- Veille Technologique -->
-        <section id="veille" class="py-32 bg-white dark:bg-slate-950 transition-colors relative">
-            <div class="max-w-5xl mx-auto px-6 relative z-10">
-                <div class="text-center mb-16 reveal">
-                    <h2 class="text-5xl md:text-6xl font-black mb-4 uppercase tracking-tighter glitch-text" data-text="VEILLE TECHNOLOGIQUE">Veille Technologique</h2>
-                    <p class="text-xs font-mono text-indigo-600 uppercase tracking-[0.4em]">Veille_Technologique</p>
+        <section id="veille" class="py-32 bg-white dark:bg-slate-950 transition-colors relative overflow-hidden">
+            <!-- Decorative background elements -->
+            <div class="absolute top-0 right-0 w-full h-full overflow-hidden pointer-events-none opacity-5">
+                <div class="absolute top-1/2 right-0 w-[800px] h-[800px] bg-indigo-500 rounded-full blur-[200px]"></div>
+            </div>
+
+            <div class="max-w-7xl mx-auto px-6 relative z-10">
+                <div class="text-center mb-20 reveal">
+                    <h2 class="text-6xl md:text-7xl font-black mb-4 uppercase tracking-tighter glitch-text" data-text="VEILLE TECHNOLOGIQUE">Veille Technologique</h2>
+                    <p class="text-xs font-mono text-indigo-600 uppercase tracking-[0.4em]">Cloud_Computing_Monitoring.sys</p>
                 </div>
-                <div class="bg-slate-50 dark:bg-indigo-950/10 p-10 md:p-16 cyber-border border-l-4 border-indigo-600 reveal">
-                    <div class="mb-12">
-                        <h3 class="text-2xl font-mono font-black mb-6 text-indigo-600 dark:text-indigo-400 uppercase tracking-tight">Cloud Computing & Souveraineté</h3>
-                        <p class="text-slate-600 dark:text-slate-400 text-sm font-mono leading-relaxed mb-8">
-                            Analyse des solutions de Cloud Souverain (OVHcloud, Outscale) et certifications SecNumCloud. Étude FinOps et architectures Serverless.
-                        </p>
-                        <div class="flex flex-wrap gap-4 mb-8">
-                            <span class="px-3 py-1 bg-indigo-100 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400 font-mono text-[10px] border border-indigo-500/30">SecNumCloud</span>
-                            <span class="px-3 py-1 bg-indigo-100 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400 font-mono text-[10px] border border-indigo-500/30">FinOps</span>
-                            <span class="px-3 py-1 bg-indigo-100 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400 font-mono text-[10px] border border-indigo-500/30">Serverless</span>
+
+                <div class="grid lg:grid-cols-5 gap-12 reveal">
+                    <!-- Left: Auto-scroll News Feed -->
+                    <div class="lg:col-span-2">
+                        <div class="terminal-window cyber-border overflow-hidden flex flex-col h-[500px] shadow-2xl">
+                            <div class="terminal-header flex items-center justify-between">
+                                <div class="flex gap-2">
+                                    <div class="terminal-dot-red"></div>
+                                    <div class="terminal-dot-yellow"></div>
+                                    <div class="terminal-dot-green"></div>
+                                    <span class="ml-2 text-[9px] font-mono text-slate-400 uppercase tracking-widest">Live_News_Feed.exe</span>
+                                </div>
+                                <div class="flex items-center gap-2">
+                                    <span class="w-2 h-2 bg-red-500 rounded-full animate-pulse"></span>
+                                    <span class="text-[8px] font-mono text-red-500 uppercase">Live</span>
+                                </div>
+                            </div>
+                            <div class="flex-grow bg-slate-900 p-6 news-scroll-container">
+                                <div id="news-feed" class="news-scroll-content space-y-6">
+                                    <!-- News items will be duplicated here for seamless scroll -->
+                                    <div class="border-l-2 border-indigo-500 pl-4 py-2">
+                                        <p class="text-[10px] text-indigo-400 font-mono mb-1">25/03/2026 14:15</p>
+                                        <h5 class="text-white font-mono text-sm uppercase">Cloud Souverain : Nouvelle certification SecNumCloud 3.2</h5>
+                                    </div>
+                                    <div class="border-l-2 border-cyan-500 pl-4 py-2">
+                                        <p class="text-[10px] text-cyan-400 font-mono mb-1">25/03/2026 13:42</p>
+                                        <h5 class="text-white font-mono text-sm uppercase">AWS annonce une réduction de 20% sur les instances Graviton4</h5>
+                                    </div>
+                                    <div class="border-l-2 border-amber-500 pl-4 py-2">
+                                        <p class="text-[10px] text-amber-400 font-mono mb-1">25/03/2026 12:10</p>
+                                        <h5 class="text-white font-mono text-sm uppercase">Kubernetes 1.30 : Focus sur la sécurité des nœuds</h5>
+                                    </div>
+                                    <div class="border-l-2 border-indigo-500 pl-4 py-2">
+                                        <p class="text-[10px] text-indigo-400 font-mono mb-1">25/03/2026 11:05</p>
+                                        <h5 class="text-white font-mono text-sm uppercase">Azure AI : Intégration native de GPT-5 dans le Cloud</h5>
+                                    </div>
+                                    <div class="border-l-2 border-emerald-500 pl-4 py-2">
+                                        <p class="text-[10px] text-emerald-400 font-mono mb-1">25/03/2026 09:30</p>
+                                        <h5 class="text-white font-mono text-sm uppercase">Google Cloud : Lancement de la région Paris-2</h5>
+                                    </div>
+                                    <!-- Duplicate for seamless scroll -->
+                                    <div class="border-l-2 border-indigo-500 pl-4 py-2">
+                                        <p class="text-[10px] text-indigo-400 font-mono mb-1">25/03/2026 14:15</p>
+                                        <h5 class="text-white font-mono text-sm uppercase">Cloud Souverain : Nouvelle certification SecNumCloud 3.2</h5>
+                                    </div>
+                                    <div class="border-l-2 border-cyan-500 pl-4 py-2">
+                                        <p class="text-[10px] text-cyan-400 font-mono mb-1">25/03/2026 13:42</p>
+                                        <h5 class="text-white font-mono text-sm uppercase">AWS annonce une réduction de 20% sur les instances Graviton4</h5>
+                                    </div>
+                                    <div class="border-l-2 border-amber-500 pl-4 py-2">
+                                        <p class="text-[10px] text-amber-400 font-mono mb-1">25/03/2026 12:10</p>
+                                        <h5 class="text-white font-mono text-sm uppercase">Kubernetes 1.30 : Focus sur la sécurité des nœuds</h5>
+                                    </div>
+                                    <div class="border-l-2 border-indigo-500 pl-4 py-2">
+                                        <p class="text-[10px] text-indigo-400 font-mono mb-1">25/03/2026 11:05</p>
+                                        <h5 class="text-white font-mono text-sm uppercase">Azure AI : Intégration native de GPT-5 dans le Cloud</h5>
+                                    </div>
+                                    <div class="border-l-2 border-emerald-500 pl-4 py-2">
+                                        <p class="text-[10px] text-emerald-400 font-mono mb-1">25/03/2026 09:30</p>
+                                        <h5 class="text-white font-mono text-sm uppercase">Google Cloud : Lancement de la région Paris-2</h5>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
-                    <div class="space-y-8">
-                        <h4 class="text-[10px] font-mono uppercase tracking-[0.3em] text-slate-500 mb-4">Flux_Actualités_Techno</h4>
-                        <div id="rss-container" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                            <!-- RSS items will be injected here -->
-                            <div class="animate-pulse space-y-4">
-                                <div class="h-48 bg-slate-200 dark:bg-slate-800 rounded"></div>
-                                <div class="h-4 bg-slate-200 dark:bg-slate-800 rounded w-3/4"></div>
-                                <div class="h-4 bg-slate-200 dark:bg-slate-800 rounded w-1/2"></div>
-                            </div>
-                            <div class="animate-pulse space-y-4">
-                                <div class="h-48 bg-slate-200 dark:bg-slate-800 rounded"></div>
-                                <div class="h-4 bg-slate-200 dark:bg-slate-800 rounded w-3/4"></div>
-                                <div class="h-4 bg-slate-200 dark:bg-slate-800 rounded w-1/2"></div>
-                            </div>
-                            <div class="animate-pulse space-y-4">
-                                <div class="h-48 bg-slate-200 dark:bg-slate-800 rounded"></div>
-                                <div class="h-4 bg-slate-200 dark:bg-slate-800 rounded w-3/4"></div>
-                                <div class="h-4 bg-slate-200 dark:bg-slate-800 rounded w-1/2"></div>
-                            </div>
+                    <!-- Right: 5 Articles -->
+                    <div class="lg:col-span-3 space-y-6">
+                        <h3 class="text-2xl font-mono font-black mb-4 text-indigo-600 dark:text-indigo-400 uppercase tracking-tight flex items-center gap-4">
+                            <i data-lucide="cloud" class="w-8 h-8"></i>
+                            Cloud Computing en Entreprise
+                        </h3>
+                        <p class="text-sm font-mono text-slate-600 dark:text-slate-400 mb-8 leading-relaxed border-l-2 border-slate-200 dark:border-slate-800 pl-6 italic">
+                            Le Cloud Computing est devenu le moteur de l'innovation en entreprise, offrant agilité, scalabilité et réduction des coûts. Il permet aux organisations de se concentrer sur leur cœur de métier en externalisant la gestion complexe des infrastructures informatiques.
+                        </p>
+                        
+                        <!-- Article 1 -->
+                        <div class="p-6 bg-slate-50 dark:bg-slate-900 border-l-4 border-indigo-600 cyber-border group hover:bg-indigo-600/5 transition-all">
+                            <h4 class="text-lg font-bold mb-2 font-mono uppercase group-hover:text-indigo-600 transition-colors">01. Le Cloud, levier de transformation numérique</h4>
+                            <p class="text-slate-600 dark:text-slate-400 text-xs font-mono leading-relaxed">
+                                Analyse de l'agilité apportée par le Cloud Public pour le déploiement rapide de nouveaux services et la réduction des coûts d'infrastructure (CAPEX vers OPEX).
+                            </p>
                         </div>
 
-                        <div class="mt-12 text-center reveal">
+                        <!-- Article 2 -->
+                        <div class="p-6 bg-slate-50 dark:bg-slate-900 border-l-4 border-cyan-500 cyber-border group hover:bg-cyan-500/5 transition-all">
+                            <h4 class="text-lg font-bold mb-2 font-mono uppercase group-hover:text-cyan-500 transition-colors">02. Souveraineté numérique & SecNumCloud</h4>
+                            <p class="text-slate-600 dark:text-slate-400 text-xs font-mono leading-relaxed">
+                                Pourquoi les entreprises françaises privilégient désormais les solutions certifiées par l'ANSSI pour protéger leurs données sensibles contre les lois extra-territoriales.
+                            </p>
+                        </div>
+
+                        <!-- Article 3 -->
+                        <div class="p-6 bg-slate-50 dark:bg-slate-900 border-l-4 border-amber-500 cyber-border group hover:bg-amber-500/5 transition-all">
+                            <h4 class="text-lg font-bold mb-2 font-mono uppercase group-hover:text-amber-500 transition-colors">03. L'essor stratégique du Cloud Hybride</h4>
+                            <p class="text-slate-600 dark:text-slate-400 text-xs font-mono leading-relaxed">
+                                Comment concilier la flexibilité du Cloud Public avec la sécurité du Cloud Privé pour les applications critiques nécessitant une latence minimale.
+                            </p>
+                        </div>
+
+                        <!-- Article 4 -->
+                        <div class="p-6 bg-slate-50 dark:bg-slate-900 border-l-4 border-emerald-500 cyber-border group hover:bg-emerald-500/5 transition-all">
+                            <h4 class="text-lg font-bold mb-2 font-mono uppercase group-hover:text-emerald-500 transition-colors">04. FinOps : Maîtriser la facture Cloud</h4>
+                            <p class="text-slate-600 dark:text-slate-400 text-xs font-mono leading-relaxed">
+                                Étude des méthodologies d'optimisation des coûts (Reserved Instances, Spot Instances) pour éviter le gaspillage de ressources dans le Cloud.
+                            </p>
+                        </div>
+
+                        <!-- Article 5 -->
+                        <div class="p-6 bg-slate-50 dark:bg-slate-900 border-l-4 border-indigo-600 cyber-border group hover:bg-indigo-600/5 transition-all">
+                            <h4 class="text-lg font-bold mb-2 font-mono uppercase group-hover:text-indigo-600 transition-colors">05. IA & Cloud : Le futur de l'innovation</h4>
+                            <p class="text-slate-600 dark:text-slate-400 text-xs font-mono leading-relaxed">
+                                Comment le Cloud Computing démocratise l'accès aux puissances de calcul nécessaires pour l'entraînement et le déploiement de modèles d'IA générative.
+                            </p>
+                        </div>
+
+                        <div class="mt-10 flex flex-wrap justify-end gap-4">
+                            <button class="inline-flex items-center gap-3 px-8 py-4 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-900 dark:text-white font-mono text-xs uppercase tracking-[0.2em] transition-all shadow-xl hover:shadow-slate-500/10 group border border-slate-200 dark:border-slate-700 opacity-80 cursor-not-allowed">
+                                <i data-lucide="file-text" class="w-4 h-4"></i>
+                                Synthèse de veille (Bientôt)
+                            </button>
                             <a href="/rss" class="inline-flex items-center gap-3 px-8 py-4 bg-indigo-600 hover:bg-indigo-700 text-white font-mono text-xs uppercase tracking-[0.2em] transition-all shadow-xl hover:shadow-indigo-500/20 group">
-                                Accéder au flux complet
+                                Accéder au flux complet RSS
                                 <i data-lucide="arrow-right" class="w-4 h-4 transition-transform group-hover:translate-x-2"></i>
                             </a>
                         </div>
@@ -940,7 +1031,7 @@
           }
 
           async function fetchRSS() {
-            const container = document.getElementById('rss-container');
+            const container = document.getElementById('news-feed');
             if (!container) return;
             
             const feeds = [
@@ -962,8 +1053,6 @@
                         title: item.title.replace(/<[^>]*>?/gm, ''),
                         link: item.link,
                         pubDate: item.pubDate,
-                        contentSnippet: item.description.replace(/<[^>]*>?/gm, '').slice(0, 150) + '...',
-                        image: item.thumbnail || item.enclosure?.link || "",
                         source: data.feed.title.replace("Alerte Google - ", "")
                     }));
                 });
@@ -976,51 +1065,82 @@
                     }
                 });
 
-                // Sort and take top 3
+                // Sort and take top 10
                 const sortedItems = allItems
                     .sort((a, b) => new Date(b.pubDate).getTime() - new Date(a.pubDate).getTime())
-                    .slice(0, 3);
+                    .slice(0, 10);
 
-                if (sortedItems.length === 0) {
-                    container.innerHTML = '<p class="text-slate-500 font-mono text-[10px] col-span-full text-center p-8">Aucun article récent.</p>';
-                    return;
-                }
+                if (sortedItems.length === 0) return;
 
-                container.innerHTML = sortedItems.map(item => `
-                    <a href="${item.link}" target="_blank" class="group block bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:border-indigo-500 transition-all overflow-hidden shadow-lg hover:shadow-indigo-500/10 reveal">
-                        ${item.image ? `
-                        <div class="relative h-48 overflow-hidden">
-                            <img src="${item.image}" alt="${item.title}" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" referrerPolicy="no-referrer">
-                            <div class="absolute top-4 left-4">
-                                <span class="px-2 py-1 bg-indigo-600 text-white text-[8px] font-mono uppercase tracking-widest">${item.source}</span>
-                            </div>
-                        </div>
-                        ` : `
-                        <div class="p-6 pb-0">
-                            <span class="px-2 py-1 bg-indigo-600 text-white text-[8px] font-mono uppercase tracking-widest">${item.source}</span>
-                        </div>
-                        `}
-                        <div class="p-6">
-                            <p class="text-[9px] font-mono text-slate-500 mb-2 uppercase tracking-widest">${new Date(item.pubDate).toLocaleDateString('fr-FR', { day: '2-digit', month: 'short', year: 'numeric' })}</p>
-                            <h4 class="text-sm font-bold font-mono text-slate-900 dark:text-white mb-3 line-clamp-2 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors uppercase">${item.title}</h4>
-                            <p class="text-[10px] font-mono text-slate-500 dark:text-slate-400 line-clamp-3 leading-relaxed">${item.contentSnippet || ''}</p>
-                        </div>
-                    </a>
-                `).join('');
+                const renderItem = (item) => `
+                    <div class="border-l-2 border-indigo-500 pl-4 py-2 group cursor-pointer hover:bg-indigo-500/10 transition-colors">
+                        <a href="${item.link}" target="_blank">
+                            <p class="text-[9px] text-indigo-400 font-mono mb-1 uppercase tracking-widest">${new Date(item.pubDate).toLocaleDateString('fr-FR')} ${new Date(item.pubDate).toLocaleTimeString('fr-FR', {hour: '2-digit', minute:'2-digit'})}</p>
+                            <h5 class="text-white font-mono text-xs uppercase group-hover:text-cyan-400 transition-colors line-clamp-2">${item.title}</h5>
+                            <p class="text-[8px] font-mono text-slate-500 mt-1">SOURCE: ${item.source}</p>
+                        </a>
+                    </div>
+                `;
+
+                // Duplicate items for seamless scroll
+                const htmlContent = sortedItems.map(renderItem).join('');
+                container.innerHTML = htmlContent + htmlContent;
                 
-                if (window.observer) {
-                    container.querySelectorAll('.reveal').forEach(el => window.observer.observe(el));
-                }
                 updateIcons();
             } catch (error) {
                 console.error('RSS Error:', error);
-                container.innerHTML = `<p class="text-red-500 font-mono text-xs col-span-full text-center p-8 bg-red-500/5 border border-red-500/20">Erreur lors du chargement direct du flux.</p>`;
             }
           }
 
           // Initialize RSS
           fetchRSS();
         });
+
+        const openPdfModal = (url, title) => {
+            const modal = document.getElementById('pdf-modal');
+            const iframe = document.getElementById('pdf-iframe');
+            const titleEl = document.getElementById('pdf-modal-title');
+            
+            if (modal && iframe && titleEl) {
+                iframe.src = url;
+                titleEl.innerText = title || 'Document_Viewer.exe';
+                modal.classList.remove('hidden');
+                modal.classList.add('flex');
+                document.body.style.overflow = 'hidden';
+            }
+        };
+
+        const closePdfModal = () => {
+            const modal = document.getElementById('pdf-modal');
+            const iframe = document.getElementById('pdf-iframe');
+            
+            if (modal && iframe) {
+                modal.classList.add('hidden');
+                modal.classList.remove('flex');
+                iframe.src = '';
+                document.body.style.overflow = '';
+            }
+        };
+
+        window.openPdfModal = openPdfModal;
+        window.closePdfModal = closePdfModal;
     </script>
+
+    <!-- PDF Modal -->
+    <div id="pdf-modal" class="fixed inset-0 z-[100] hidden items-center justify-center p-4 md:p-8 bg-slate-950/80 backdrop-blur-sm">
+        <div class="terminal-window cyber-border w-full max-w-6xl h-full flex flex-col shadow-2xl animate-fadeIn">
+            <div class="terminal-header flex items-center justify-between">
+                <div class="flex gap-2 items-center">
+                    <button onclick="closePdfModal()" class="terminal-dot-red" title="Fermer"></button>
+                    <div class="terminal-dot-yellow"></div>
+                    <div class="terminal-dot-green"></div>
+                    <span id="pdf-modal-title" class="ml-2 text-[10px] font-mono text-slate-400 uppercase tracking-widest">Document_Viewer.exe</span>
+                </div>
+            </div>
+            <div class="flex-grow bg-slate-900 overflow-hidden relative">
+                <iframe id="pdf-iframe" src="" class="w-full h-full border-none" title="PDF Viewer"></iframe>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
