@@ -214,6 +214,36 @@ h1, h2, h3, h4, h5, h6 { font-family: 'Space Grotesk', sans-serif; }
     animation-play-state: paused;
 }
 
+.rss-terminal-expanded {
+    height: 850px !important;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.rss-app-icon {
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(135deg, #ff9d6c 0%, #ff6321 100%);
+    border-radius: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 10px 20px rgba(255, 99, 33, 0.3);
+    transition: all 0.3s ease;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.rss-app-icon:hover {
+    transform: scale(1.05) translateY(-5px);
+    box-shadow: 0 15px 30px rgba(255, 99, 33, 0.5);
+}
+
+.rss-app-icon i {
+    color: white;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+}
+
 .terminal-dot-red { 
     width: 12px; 
     height: 12px; 
@@ -234,7 +264,17 @@ h1, h2, h3, h4, h5, h6 { font-family: 'Space Grotesk', sans-serif; }
 .terminal-dot-red::before {
     content: "×";
 }
-.terminal-dot-yellow { width: 12px; height: 12px; border-radius: 50%; background: #f59e0b; cursor: pointer; }
+.terminal-dot-yellow { 
+    width: 12px; 
+    height: 12px; 
+    border-radius: 50%; 
+    background: #f59e0b; 
+    cursor: pointer; 
+    transition: all 0.2s ease;
+}
+.terminal-dot-yellow:hover {
+    transform: scale(1.1);
+}
 .terminal-dot-green { width: 12px; height: 12px; border-radius: 50%; background: #10b981; cursor: pointer; }
 
 /* Badly coded app effects */
@@ -307,5 +347,3 @@ h1, h2, h3, h4, h5, h6 { font-family: 'Space Grotesk', sans-serif; }
     50% { text-shadow: -1px -1px #00fff9; }
     100% { text-shadow: 1px -1px #ff00c1; }
 }
-
-
