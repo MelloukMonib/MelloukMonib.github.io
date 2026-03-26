@@ -16,7 +16,7 @@ export default defineConfig(({ mode }) => {
         rollupOptions: {
           input: {
             main: path.resolve(__dirname, 'index.html'),
-            rss: path.resolve(__dirname, 'rss.html'),
+            synthese: path.resolve(__dirname, 'synthese.html'),
           },
         },
       },
