@@ -15,15 +15,6 @@ async function startServer() {
     res.json({ status: "ok" });
   });
 
-  // Serve RSS page
-  app.get("/rss", (req, res) => {
-    if (process.env.NODE_ENV !== "production") {
-      res.sendFile(path.join(process.cwd(), 'rss.html'));
-    } else {
-      res.sendFile(path.join(process.cwd(), 'dist', 'rss.html'));
-    }
-  });
-
   // Vite middleware for development
   if (process.env.NODE_ENV !== "production") {
     const vite = await createViteServer({
